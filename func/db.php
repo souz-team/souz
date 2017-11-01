@@ -21,26 +21,71 @@ function Menu ($connection, $var)
     }
     return $array; 
 }
-function Menu1 ($connection) 
+// Добаление РАЗДЕЛА
+
+function Add_Razdel ($connection, $Name)
 {
-      $menu = "SELECT * FROM Razdel WHERE P_id = '0'";
-      $result = $connection->query ($menu);
-      if (!$result) die ($connect->error);
-      $rows = $result->num_rows;
-     if (!$rows) return 0;
-       else
-    {
-        $array = array ();
-        for ($i=0; $i<$rows; $i++)
-        {
-            $result->data_seek ($i);
-            $row =$result->fetch_array (MYSQLI_ASSOC);
-            $array["$i"] = $row;
-        }   
-    }
-    return $array; 
+		$add_query ="INSERT INTO Razdel VALUES(NULL, '0','$Name')";
+		$result = $connection->query($add_query); 
+        if ($result) 
+            return true;
+        else
+            die ($connect->error);
 }
-// Добаление пользователя
+
+// Удаление РАЗДЕЛА
+
+function Delete_Razdel ($connection, $var) 
+{
+    $all_podrazdels = Menu ($connection, $var);
+    for ($i = 0; $i < count($all_podrazdels); $i++)
+    {
+        $podrazdel = $all_podrazdels[$i]['id'];
+        $delete_podrazdel = Delete_Podrazdel($connection, $podrazdel);
+    }
+    $delete = "DELETE FROM Razdel WHERE id = '$var'";
+    $result = $connection->query ($delete);
+    if ($result) return true;
+    else
+        die ($connect->error);
+}
+
+// Добаление ПОДРАЗДЕЛА
+
+function Add_Podrazdel ($connection, $P_id, $Name)
+{
+		$add_query ="INSERT INTO Razdel VALUES(NULL, '$P_id','$Name')";
+		$result = $connection->query($add_query); 
+        if ($result) 
+            return true;
+        else
+            die ($connect->error);
+}
+
+// Удаление ПОДРАЗДЕЛА
+
+function Delete_Podrazdel ($connection, $var) 
+{
+    $delete = "DELETE FROM Articles FROM Razdel WHERE Articles.id_Podrazdel = '$var' and Razdel.id = '$var'";
+    $result = $connection->query ($delete);
+        if ($result) return true;
+        else
+            die ($connect->error);
+   /* $delete = "DELETE FROM Articles WHERE id_Podrazdel = '$var'"; // Удаляются все статьи подраздела
+    $bet_result = $connection->query ($delete);
+    if (!$bet_result) die ($connect->error);
+    else {
+        $delete_query = "DELETE FROM Razdel WHERE id = '$var'";
+        $result = $connection->query ($delete_query);
+        if ($result) return true;
+        else
+            die ($connect->error);
+    }
+    */
+}
+
+// Добаление ПОЛЬЗОВАТЕЛЯ
+
 function Login_Exist ($connection, $var)
 {
     $select_query = "SELECT * FROM Users WHERE login='$var'";	
@@ -87,7 +132,7 @@ function Add_User ($connection, $login, $name, $surname, $email, $password, $reg
 }
 
 
-// Редактирование пользователя
+// Редактирование ПОЛЬЗОВАТЕЛЯ
 
 function Edit_User ($connection, $var) // Принимает подключение и id
 {
@@ -101,7 +146,7 @@ function Edit_User ($connection, $var) // Принимает подключен�
     else return 0;
 }
 
-// Редактирование пароля
+// Редактирование ПАРОЛЯ
 function Update_Passwort ($connection, $password_, $email_)
 {
     $update = "UPDATE Users SET pass='$password_' WHERE email='$email_'";
@@ -111,7 +156,7 @@ function Update_Passwort ($connection, $password_, $email_)
         die ($connect->error);
 }
 
-// Показ пользователей 
+// Показ ПОЛЬЗОВАТЕЛЕЙ 
 
 function Show_Users ($connection) // Принимает подключение и возвращает массив пользователей
 {
@@ -218,36 +263,14 @@ function Show_Last ($connection)
     return $array; 
 }
 
-// Вспомогательные фунции
+// Добавление СТАТЬИ
 
-// Существует ли Id?
-
-function Search_id ($connection, $var, $table) //Принимает подключение и id
-{
-    $search = "SELECT * FROM $table WHERE id = '$var'";
-    $result = $connection->query ($search);
-    if ($result)
-    {
-        $rows = $result->fetch_array (MYSQLI_ASSOC);
-    }
-    if ($rows) return $rows;
-    else return 0;
-}
-//Обрезание текста статьи для превью
-function Cut ($string, $length)
-{
-	$string = mb_substr($string, 0, $length,'UTF-8'); // обрезаем и работаем со всеми кодировками и указываем исходную кодировку
-	$position = mb_strrpos($string, ' ', 'UTF-8'); // определение позиции последнего пробела. Именно по нему и разделяем слова
-	$string = mb_substr($string, 0, $position, 'UTF-8'); // Обрезаем переменную по позиции
-	return $string;
-}
-
-function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
+function Add_Article ($connection, $id_Podrazdel, $Name, $Author, $Text, $Date)
 {
     // создание строки запроса
 	
 		
-		$add_query ="INSERT INTO boardt VALUES(NULL, '4','$topic','$name','$subject', '$date', '$email')";
+		$add_query ="INSERT INTO Articles VALUES(NULL, '$id_Podrazdel','$Name','$Author','$Text', '$Date')";
 		// выполняем запрос
 		$result = $connection->query($add_query); 
         if ($result) 
@@ -255,6 +278,27 @@ function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
         else
             die ($connect->error);
     
+}
+
+// Удаление СТАТЬИ
+
+function Delete_Article ($connection, $var) // Принимает подключение и id
+{
+    $delete_query = "DELETE FROM Articles WHERE id = '$var'";
+    $result = $connection->query ($delete_query);
+    if ($result) return true;
+    else
+        die ($connect->error); // TODO: Каскадное удаление сообщений из личного форума
+}
+
+// Обрезание текста
+
+function Cut ($string, $length)
+{
+	$string = mb_substr($string, 0, $length,'UTF-8'); // обрезаем и работаем со всеми кодировками и указываем исходную кодировку
+	$position = mb_strrpos($string, ' ', 'UTF-8'); // определение позиции последнего пробела. Именно по нему и разделяем слова
+	$string = mb_substr($string, 0, $position, 'UTF-8'); // Обрезаем переменную по позиции
+	return $string;
 }
 
 //Хлебные крошки
@@ -444,3 +488,19 @@ function Last_Date ($connection, $var) // Принимает подключен�
     if ($rows) return $rows;
     else return 0;
 }
+
+// Добавление обратной связи
+
+function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
+{
+		$add_query ="INSERT INTO boardt VALUES(NULL, '4','$topic','$name','$subject', '$date', '$email')";
+		// выполняем запрос
+		$result = $connection->query($add_query); 
+        if ($result) 
+            return true;
+        else
+            die ($connect->error);
+}
+
+
+
