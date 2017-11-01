@@ -20,26 +20,26 @@
 						</div>
 						<div class="manage-table__body">
 							<?php for($j=1; $j<rand(3,10); $j++) { ?>
-								<?php $sectionId = rand(1,99); ?>
-								<div class="manage-table__row manage-table__row_body" entity-id='<?= $sectionId ?>'>
+								<?php $id = rand(1,99); ?>
+								<div class="manage-table__row manage-table__row_body" entity-id='<?= $id ?>'>
 									<div class="manage-table__cell manage-table__cell_name manage-table__cell_section-name">
 										<a href='#' class='manage-table__name-link'>Раздел <?= $j ?></a>
 									</div>
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
-										<a href="/section.php?sectionId=<?= $sectionId ?>" class="manage-table__action-link">Изменить</a>
+										<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
-										<a href="/section.php?sectionParent=<?= $sectionId ?>" class="manage-table__action-link">Создать подраздел</a>
+										<a href="/section.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>
 								<?php for($i=1; $i<rand(2,5); $i++) { ?>
-									<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id='<?= $sectionId ?>'>
+									<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id='<?= $id ?>'>
 										<div class="manage-table__cell manage-table__cell_name">
-											<a href='manage-articles.php' class='manage-table__name-link'>Подраздел <?= $sectionId ?></a>
+											<a href='manage-articles.php' class='manage-table__name-link'>Подраздел <?= $id ?></a>
 										</div>
-										<div class="manage-table__cell manage-table__cell_count-articles"><?= $sectionId ?></div>
+										<div class="manage-table__cell manage-table__cell_count-articles"><?= $id ?></div>
 										<div class="manage-table__cell manage-table__cell_actions">
-											<a href="#" class="manage-table__action-link">Изменить</a>
+											<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										</div>
 									</div>
