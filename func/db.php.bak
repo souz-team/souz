@@ -1,0 +1,235 @@
+<?php
+
+// ВЫВОД МЕНЮ
+ 
+function Menu ($connection, $var) 
+{
+	  $menu = "SELECT * FROM Razdel WHERE P_id = '$var'";
+      $result = $connection->query ($menu);
+      if (!$result) die ($connect->error);
+      $rows = $result->num_rows;
+     if (!$rows) return 0;
+       else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+}
+function Menu1 ($connection) 
+{
+      $menu = "SELECT * FROM Razdel WHERE P_id = '0'";
+      $result = $connection->query ($menu);
+      if (!$result) die ($connect->error);
+      $rows = $result->num_rows;
+     if (!$rows) return 0;
+       else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+}
+// Добаление пользователя
+function Login_Exist ($connection, $var)
+{
+    $select_query = "SELECT * FROM Users WHERE login='$var'";	
+	$result=$connection->query ($select_query);
+    $rows = $result->fetch_array(MYSQLI_ASSOC);
+    if ($rows) return rows;
+    else
+       return 0;
+}
+
+function Email_Exist ($connection, $var)
+{
+    $checkmail= "SELECT * FROM Users WHERE email='$var'";	
+	$result = $connection->query ($checkmail);
+    $rows = $result->fetch_array(MYSQLI_ASSOC);
+    if ($rows) return rows;
+    else
+        return 0;
+}
+
+function User_Exist ($connection, $var)
+{
+    $checkuser = "SELECT * FROM Users WHERE login='$var' OR email='$var'";
+    $result = $connection->query ($checkuser);
+    $rows = $result->fetch_array(MYSQLI_ASSOC);
+    if ($rows) return rows;
+    else
+        return 0;
+}
+
+function Add_User ($connection, $login, $name, $surname, $email, $password)
+{
+    // создание строки запроса
+		$add_query ="INSERT INTO Users VALUES(NULL, '$login','$password','$email','$name', '$surname')";
+		// выполняем запрос
+		$result = $connection->query($add_query); 
+        if ($result) 
+            return true;
+        else
+            die ($connect->error);
+    
+}
+
+
+// Редактирование пользователя
+
+function Edit_User ($connection, $var) // Принимает подключение и id
+{
+    $search = "SELECT * FROM Users WHERE id = '$var'";
+    $result = $connection->query ($search);
+    if ($result)
+    {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows) return $rows;
+    else return 0;
+}
+
+// Редактирование пароля
+function Update_Passwort ($connection, $password_, $email_)
+{
+    $update = "UPDATE Users SET pass='$password_' WHERE email='$email_'";
+    $result = $connection->query ($update);
+    if ($result) return true;
+    else
+        die ($connect->error);
+}
+
+// Показ пользователей 
+
+function Show_Users ($connection) // Принимает подключение и возвращает массив пользователей
+{
+    $search = "SELECT * FROM Users";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) return false;
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+}
+
+// Удаление ПОЛЬЗОВАТЕЛЯ
+
+function Delete_User ($connection, $var) // Принимает подключение и id
+{
+    $delete_query = "DELETE FROM Users WHERE id = '$var'";
+    $result = $connection->query ($delete_query);
+    if ($result) return true;
+    else
+        die ($connect->error); // TODO: Каскадное удаление сообщений из личного форума
+}
+
+// Показ СТАТЕЙ 
+function Show_All_Articles ($connection) // Принимает подключение и id, возвращает массив пользователей
+{
+    $search = "SELECT * FROM Articles";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) return 0;
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+} 
+
+function Show_Articles ($connection, $var) // Принимает подключение и id, возвращает массив пользователей
+{
+    $search = "SELECT * FROM Articles WHERE id_Podrazdel = '$var'";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) return 0;
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+}
+
+function Show_One_Article ($connection, $var) // Принимает подключение и id
+{
+    $search = "SELECT * FROM Articles WHERE id = '$var'";
+    $result = $connection->query ($search);
+    if ($result)
+    {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows) return $rows;
+    else return 0;
+	mysql_close();
+}
+
+function Show_Last ($connection)
+{
+    $search = "SELECT * FROM Articles ORDER BY id DESC LIMIT 4";
+    $result = $connection->query ($search);
+    if ($result)
+    {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows) return $rows;
+    else return 0;
+}
+
+// Вспомогательные фунции
+
+// Существует ли Id?
+
+function Search_id ($connection, $var, $table) //Принимает подключение и id
+{
+    $search = "SELECT * FROM $table WHERE id = '$var'";
+    $result = $connection->query ($search);
+    if ($result)
+    {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows) return $rows;
+    else return 0;
+}
+
+function Cut ($string, $length)
+{
+	$string = mb_substr($string, 0, $length,'UTF-8'); // обрезаем и работаем со всеми кодировками и указываем исходную кодировку
+	$position = mb_strrpos($string, ' ', 'UTF-8'); // определение позиции последнего пробела. Именно по нему и разделяем слова
+	$string = mb_substr($string, 0, $position, 'UTF-8'); // Обрезаем переменную по позиции
+	return $string;
+}
+
+?>
