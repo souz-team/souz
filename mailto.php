@@ -10,4 +10,5 @@
 	$message_3="From: 15istv1@mail.ru \r\n";
 	//отправка сообщения на почту
 	mail($email, 'SOUZ', $message, $message_2, $message_3);
+//тестирование гит
 ?>
