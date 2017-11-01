@@ -1,11 +1,24 @@
 <?php require 'config.php';?>
-
 <?php require_once 'blocks/header.php';?>
+
+<?php 
+if (isset($_GET['id']))
+{
+	$sectionid = $_GET['id'];
+	$zagolovok = "Создание раздела";
+}	
+	else {
+		$zagolovok = "Изменение раздела";
+	}
+?>
+
+
+
 
 	<section class="section">
 		<div class="section__wrap">
 			<div class="new-material">
-				<p class="new-material__title">Создание раздела</p>
+				<p class="new-material__title"><?php echo $zagolovok?></p>
 					
 				<div class="new-material__form">
 					<form action="" class="table-input-info">
@@ -57,4 +70,6 @@
 		</div>
 	</section>
 
+
+	
 <?php require_once 'blocks/footer.php'; ?>
