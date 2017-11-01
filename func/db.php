@@ -331,11 +331,11 @@ function podrazdel_id ($array, $id){
 //Получение списка статей ХК
 function get_articles($ids){
 	if ($ids){
-		$query = mysql_query("SELECT * FROM Articles WHERE P_id IN($ids) ");
+		$query = mysql_query("SELECT * FROM articles WHERE id_Podrazdel IN($ids) ");
 	}
 	else {
-		$query = mysql_query("SELECT * FROM Articles");
-	}
+		$query = mysql_query("SELECT * FROM articles");
+    }
 	$articles = array();
 	while($row = mysql_fetch_assoc($query)){
 		$articles[] = $row;

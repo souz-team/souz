@@ -11,7 +11,7 @@ gulp.task('browser-sync', function(done) {
 gulp.task('default', function server() {
 
 	browserSync({
-		proxy: "http://souz.ru/",
+		proxy: "http://souz2.ru/",
 		port: 3000,
 		notify: false,
 		open: false,
