@@ -27,9 +27,9 @@
 									</div>
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
-										<a href="/new-section.php?sectionId=<?= $sectionId ?>" class="manage-table__action-link">Изменить</a>
+										<a href="/section.php?sectionId=<?= $sectionId ?>" class="manage-table__action-link">Изменить</a>
 										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
-										<a href="/new-section.php?sectionParent=<?= $sectionId ?>" class="manage-table__action-link">Создать подраздел</a>
+										<a href="/section.php?sectionParent=<?= $sectionId ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>
 								<?php for($i=1; $i<rand(2,5); $i++) { ?>
@@ -50,7 +50,7 @@
 				</div>
 				
 				<div class="manage-sections__wrap-button">
-					<a href="/new-section.php" class="manage-sections__link-new-section">
+					<a href="/section.php" class="manage-sections__link-new-section">
 						<button class="button button_default">Создать раздел</button>
 					</a>
 				</div>
