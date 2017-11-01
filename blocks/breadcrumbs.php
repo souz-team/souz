@@ -1,7 +1,3 @@
-<?php
-//require_once 'config.php';
-//require_once '/func/db.php';
-?>
 <section class="section section_breadcrumbs">
 	<div class="section__wrap">
 		<div class="section-breadcrumbs">
