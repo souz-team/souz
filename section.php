@@ -5,10 +5,10 @@
 if (isset($_GET['id']))
 {
 	$sectionid = $_GET['id'];
-	$zagolovok = "Создание раздела";
+	$zagolovok = "Изменение раздела";
 }	
 	else {
-		$zagolovok = "Изменение раздела";
+		$zagolovok = "Создание раздела";
 	}
 ?>
 
