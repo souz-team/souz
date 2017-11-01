@@ -1423,20 +1423,20 @@ img {
 	display: none;
 }
 
-.lk-personal-information {
+.table-input-info {
 
 }
 
-.lk-personal-information__row {
+.table-input-info__row {
 
 }
 
-.lk-personal-information__row_delimiter {
+.table-input-info__row_delimiter {
 	border-top: 1px dashed rgba(106,121,137,0.5);
 	margin: 15px 0;
 }
 
-.lk-personal-information__label {
+.table-input-info__label {
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;
@@ -1445,7 +1445,7 @@ img {
 	padding: 10px 0;
 }
 
-.lk-personal-information__wrap-text {
+.table-input-info__wrap-text {
 	flex-basis: 150px;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -1455,15 +1455,15 @@ img {
 	align-items: center;
 }
 
-.lk-personal-information__text {
+.table-input-info__text {
 	font-weight: 500;
 }
 
-.lk-personal-information__wrap-textfield {
+.table-input-info__wrap-textfield {
 	flex-grow: 1;
 }
 
-.lk-personal-information__textfield {
+.table-input-info__textfield {
 	width: 100%;
 	border-style: solid;
 	border-width: 0 0 1px 0;
@@ -1472,7 +1472,7 @@ img {
 	transition: all 250ms;
 }
 
-.lk-personal-information__textfield:focus {
+.table-input-info__textfield:focus {
 	border-bottom-width: 2px;
 	padding-top: 10px;
 	border-color: rgba(106, 121, 137, 1.0);
@@ -1480,7 +1480,7 @@ img {
 
 
 
-.lk-personal-information__buttons {
+.table-input-info__buttons {
 	margin-top: 50px;
 	text-align: right;
 }
