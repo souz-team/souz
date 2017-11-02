@@ -1461,6 +1461,10 @@ img {
 	align-items: center;
 }
 
+.table-input-info__wrap-text_top {
+	align-items: flex-start;
+}
+
 .table-input-info__text {
 	font-weight: 500;
 }
@@ -1474,15 +1478,21 @@ img {
 	border-style: solid;
 	border-width: 0 0 1px 0;
 	border-color: rgba(106, 121, 137, 0.5);
-	padding: 11px 0 10px 0;
+	padding: 11px 10px 10px 10px;
 	transition: all 250ms;
 	background-color: rgba(0,0,0,0);
+	background-color: rgba(106, 121, 137, 0.05);
 }
 
 .table-input-info__textfield:focus {
 	border-bottom-width: 2px;
 	padding-top: 10px;
 	border-color: rgba(106, 121, 137, 1.0);
+}
+
+.table-input-info__textfield_textarea {
+	min-height: 200px;
+	resize: vertical;
 }
 
 .table-input-info__select {

@@ -493,13 +493,13 @@ function Last_Date ($connection, $var) // Принимает подключен�
 
 function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
 {
-		$add_query ="INSERT INTO boardt VALUES(NULL, '4','$topic','$name','$subject', '$date', '$email')";
+		$add_query ="INSERT INTO boardt VALUES(NULL, 4, '$topic','$name','$subject', '$date', '$email')";
 		// выполняем запрос
-		$result = $connection->query($add_query); 
+		$result = $connection->query($add_query);
         if ($result) 
             return true;
         else
-            die ($connect->error);
+            die ($connection->error);
 }
 
 

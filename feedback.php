@@ -1,69 +1,81 @@
 <?php
-	require '/config.php';
 
-		
-	$data = $_POST;
+	require './config.php';
+
+	$data=$_POST;
 	$capcha = $_SESSION['rand_code'];
 	$date = date("Y-m-d");
+
+	$doFeedback = filter_input(INPUT_POST, 'do_feedback');
 	
-	if( isset($data['do_feedback']))
-	{
-	$errors=array();//массив сообшений ошибок
+	if(isset($doFeedback)) {
+
+		//массив сообшений ошибок
+		$errors = array();
+
+		$name = trim(filter_input(INPUT_POST, 'name'));
+		$email = trim(filter_input(INPUT_POST, 'email'));
+		$subject = trim(filter_input(INPUT_POST, 'subject'));
+		$topic = trim(filter_input(INPUT_POST, 'topic'));
+		$capcha = trim(filter_input(INPUT_POST, 'capcha'));
 	
-		if($data['name']=='') //проверка на пустое значение
-		{
+		//проверка на пустое значение
+		if(empty($name)) {
 			$errors[] = 'Введите ваше имя';
 		}
 		
-		if( trim($data['email'])=='')//проверка на пустое значение поля ввода email
-		{
+		//проверка на пустое значение поля ввода email
+		if(empty($email)) {
 			$errors[] = 'Введите адрес электронной почты!';
 		}
 		
-		if($data['subject']=='')//проверка на пустое значение поля ввода темы сообщения
-		{
+		//проверка на пустое значение поля ввода темы сообщения
+		if(empty($subject)) {
 			$errors[] = 'Введите тему сообщения!';
 		}
 		
-		if($data['topic']=='')//проверка на пустое значение поля ввода сообщения
-		{
+		//проверка на пустое значение поля ввода сообщения
+		if(empty($topic)) {
 			$errors[] = 'Введите ваше сообщение!';
 		}
 		
-		if( trim($data['capcha'])=='' OR trim($data['capcha'])!=$capcha )//проверка на капчу
-		{
+		//проверка на капчу
+		if(empty($capcha) OR $capcha != $capcha) {
 			$errors[] = 'Введенный вами текст с картинки не совпадает!';
 		}
-$all = array_shift($errors);
-		$name = htmlentities(mysqli_real_escape_string($link, $data['name']), ENT_QUOTES, 'UTF-8');
-		$email = htmlentities(mysqli_real_escape_string($link, $data['email']), ENT_QUOTES, 'UTF-8');
-		$subject = htmlentities(mysqli_real_escape_string($link, $data['subject']), ENT_QUOTES, 'UTF-8');
-		$topic = htmlentities(mysqli_real_escape_string($link, $data['topic']), ENT_QUOTES, 'UTF-8');
-		
-         
-	if(empty($errors)){                                                                                  
 
-			$result = Add_feedback ($link, $name, $email, $subject, $topic, $date); // Добавление юзера через пользовательскую функцию
-			if($result)
-			{
+		$all = array_shift($errors);
+		$name = htmlentities(mysqli_real_escape_string($link, $name), ENT_QUOTES, 'UTF-8');
+		$email = htmlentities(mysqli_real_escape_string($link, $email), ENT_QUOTES, 'UTF-8');
+		$subject = htmlentities(mysqli_real_escape_string($link, $subject), ENT_QUOTES, 'UTF-8');
+		$topic = htmlentities(mysqli_real_escape_string($link, $topic), ENT_QUOTES, 'UTF-8');
+
+		if(empty($errors)) {
+
+			// Добавление юзера через пользовательскую функцию
+			$result = Add_feedback($link, $name, $email, $subject, $topic, $date);
+
+			if($result) {
 				mysqli_close($link);
 				header('Refresh: 4; URL=/index.php');
-				echo '<div style="color: red; text-align: center; vertical-align: middle;">Спасибо за обращение в нашу службу технической поддержки Мы обязательно свяжемся с вами в этом году!</div>';
+				include './blocks/success-feedback.php';
 				exit;
 			}
-		//подключения модуля отправки email с кодом подтверждения
-		require '/mailto.php';
-		//перенаправление на страницу проверки кода
-		header('Location: reg.php');
-    }
-	else
-		{
+
+			//подключения модуля отправки email с кодом подтверждения
+			require '/mailto.php';
+			//перенаправление на страницу проверки кода
+			header('Location: reg.php');
+
+		} else {
 			echo '<div style="color: red; text-align: center;">'.array_shift($errors).'</div><hr>';
 		}
-	}	
 
-?>		
-	<?php require 'blocks/header.php';	?>
+	}
+
+?>
+
+	<?php require 'blocks/header.php'; ?>
 
 		<section class="section section_2">
 			<div class="section__wrap">
@@ -72,33 +84,61 @@ $all = array_shift($errors);
 						<p class="section-2__title">Если у Вас возникли проблемы, пожалуйста заполните форму обратной связи
 						</p>
 						<div class="section-2__form-auth">
-							<form class="form-auth" action="feedback.php" method="POST">
-								<label class="form-auth__textfield-wrap form-auth__textfield-wrap_with-label">
-									<p class="form-auth__label">Ваше Имя
-									</p><input class="form-auth__textfield form-auth__textfield_feedback" placeholder="Ваше Имя" name="name" type="text" value="<?php echo @$data["name"];?>"/>
-								</label>
-								<label class="form-auth__textfield-wrap form-auth__textfield-wrap_with-label">
-									<p class="form-auth__label">Ваш Email
-									</p><input class="form-auth__textfield form-auth__textfield_feedback" placeholder="Ваш Email" name="email" type="text" value="<?php echo @$data["email"];?>"/>
-								</label>
-								<label class="form-auth__textfield-wrap form-auth__textfield-wrap_with-label">
-									<p class="form-auth__label">Название темы
-									</p><input class="form-auth__textfield form-auth__textfield_feedback" placeholder="Название темы" type="text" name="subject" value="<?php echo @$data["subject"];?>"/>
-								</label>
-								<label class="form-auth__textfield-wrap form-auth__textfield-wrap_with-label">
-									<p class="form-auth__label">Ваше сообщение
-									</p><textarea class="form-auth__textfield form-auth__textfield_textarea" placeholder="Ваше сообщение..." name="topic" value="<?php echo @$data["topic"];?>"></textarea>
-								</label>
-								
-								<div class="form-auth__buttons">
-									<a href="/feedback.php"> <img src = "/capcha/captcha.php"></a>
-								<input style="width: 200px; height: 25px;" type = "text"  name = "capcha" placeholder = "Введите текст с картинки"/>
-								<button class="button button_form-auth" onclick="show_prompt()" name="do_feedback">Отправить
-									</button>
 
+							<form action="feedback.php" method="POST" class="table-input-info">
 
+								<div class="table-input-info__row">
+									<label class='table-input-info__label'>
+										<div class="table-input-info__wrap-text">
+											<span class="table-input-info__text">Ваше Имя</span>
+										</div>
+										<div class="table-input-info__wrap-textfield">
+											<input type="text" class="table-input-info__textfield" name="name" value="<?= @$data["name"] ?>">
+										</div>
+									</label>
 								</div>
+
+								<div class="table-input-info__row">
+									<label class='table-input-info__label'>
+										<div class="table-input-info__wrap-text">
+											<span class="table-input-info__text">Ваш Email</span>
+										</div>
+										<div class="table-input-info__wrap-textfield">
+											<input type="text" class="table-input-info__textfield" name="email" value="<?= @$data["email"] ?>">
+										</div>
+									</label>
+								</div>
+
+								<div class="table-input-info__row">
+									<label class='table-input-info__label'>
+										<div class="table-input-info__wrap-text">
+											<span class="table-input-info__text">Название темы</span>
+										</div>
+										<div class="table-input-info__wrap-textfield">
+											<input type="text" class="table-input-info__textfield" name="subject" value="<?= @$data["subject"] ?>">
+										</div>
+									</label>
+								</div>
+
+								<div class="table-input-info__row">
+									<label class='table-input-info__label'>
+										<div class="table-input-info__wrap-text table-input-info__wrap-text_top">
+											<span class="table-input-info__text">Ваше сообщение</span>
+										</div>
+										<div class="table-input-info__wrap-textfield">
+											<textarea class="table-input-info__textfield table-input-info__textfield_textarea" name="topic"><?= @$data["topic"] ?></textarea>
+										</div>
+									</label>
+								</div>
+
+								<div class="form-auth__buttons">
+									<a href="/feedback.php"><img src="/capcha/captcha.php"></a>
+									<input style="width: 200px; height: 25px;" type="text" name="capcha" placeholder="Введите текст с картинки"/>
+									<button class="button button_form-auth" name="do_feedback">Отправить</button>
+								</div>
+
 							</form>
+
 						</div>
 					</div>
 				</div>
