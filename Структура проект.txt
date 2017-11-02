@@ -1,0 +1,52 @@
+actions/
+	sign-in.php
+	sign-up.php
+	get-articles.php
+	get-sections.php
+	get-article-by-id.php
+	get-articles-by-section-id.php
+
+database/
+	config.php
+	auth.php
+	articles.php
+	sections.php
+
+blocks/
+	header.php
+	navigation.php
+	footer.php
+
+parts/
+	form-auth.php
+	forum-row.php
+	menu.php
+
+images/
+styles/
+js/
+
+index.php
+about.php
+
+1. папка 'actions/' содержит файлы с кодом, который вызывает функции из папки 'database/'.
+Возвращает ответы отбратно, откуда пришел запрос.
+На эти файлы идут запросы из form и ajax.
+Их нельзя подключать ниоткуда.
+Чисто PHP. Нет запросов в БД. Нет верстки.
+
+2. папка 'database/' содержит файлы с функциями, которые делают запросы в БД.
+Эти файлы можно подключать только из папки 'actions/'. Со страниц подключать нельзя.
+Соответственно, вызвать функции из этих файлов можно только из файлов из 'actions/'.
+
+3. 'blocks/' содержит независимые блоки верстки. Например, header, footer.
+Здесь не хранятся блоки, которые повторяются несколько раз на странице (это part).
+
+4. 'parts/'  содержит повторяющиеся блоки верстки.
+Например, строки таблиц, preview статьи (это на главной), сообщение в теме.
+Здесь не хранятся независимые блоки (это block).
+
+5. 'images/' - картинки
+6. 'styles/' - Стили. Один файл.
+7. 'js/' - javascript. Один файл и библиотеки.
+
