@@ -1,20 +1,20 @@
 <?php
-
+	require_once 'config.php';
 	$id_topic = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
-	if (!$id_topic) {
+	/*if (!$id_topic) {
 		header('Location: /');
 		die();
-	}
+	}*/
 
-	require_once 'config.php'; 
-	require_once 'blocks/header.php';
+	 
+	
 
-	if (!$id_topic) {
+	/*if (!$id_topic) {
 		$id_topic = $_SESSION['idview'];
 	} else {
 		$_SESSION['idview'] = $id_topic;
-	}
+	}*/
 
 	$data = $_POST;
 	$auth_login = $_SESSION['login'];
@@ -22,10 +22,14 @@
 	$auth_fio = $_SESSION['fio'];
 	$date = date("Y-m-d");
 
-	$topic_start = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id=$id_topic");
+	$topic_start = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id=$id_topic") or die("Ошибка " . mysqli_error($link));
 	
 	//$post = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id='$id'");
 	$row_topic = mysqli_fetch_array($topic_start);
+		if(empty($row_topic)){
+		header('Location: /errors/404.htm');
+		die();		
+	}
 	$topic_id = $row_topic['theme_id'];
 	$topic_author = $row_topic['author'];
 	$reg_info_topic = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM Users WHERE login='$topic_author'"));
@@ -42,7 +46,7 @@
 	//$row_posts = mysqli_fetch_array($posts);
 
 ?>
-
+<?php require_once 'blocks/header.php';?>
 <section class="section section_forum">
 	<div class="section__wrap">
 		<div class="view-topic">
@@ -109,19 +113,22 @@
 
 		?>
 
-		<div class='pagination'>
+		<div class='pagination'>Страницы: 
 			<?php for($i=1; $i<=$num_pages; $i++) { ?>
 					<?php if ($i-1 == $page) { ?>
 						<?= $i ?>
 					<?php } else { ?>
-						<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?= $i ?>'>[<?= $i ?>]</a>
+					
+					<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id_topic ?>&page=<?= $i ?>'>[<?= $i ?>]</a>
+					
 					<?php } ?>
 			<?php } ?>
+			
 		</div>
-
+		<br>
 		<?php
 
-			$comment = htmlentities(mysqli_real_escape_string($link, $data['comment']), ENT_QUOTES, 'UTF-8');
+/* 			$comment = htmlentities(mysqli_real_escape_string($link, $data['comment']), ENT_QUOTES, 'UTF-8');
 
 			if (isset($data['write'])) {
 
@@ -141,21 +148,25 @@
 
 					if($result) {
 						mysqli_close($link);
-						header("Refresh: 0; URL=/topic-view.php?id=$id_topic"); //задержка 2 секунды перед перенаправлением на главную страницу
+						if(!empty($page)){
+							header("Refresh: 0; URL=/topic-view.php?id='$id_topic'&page='$page'"); 	
+						}
+						else {
+							header("Refresh: 0; URL=/topic-view.php?id=$id_topic");
+						}
 						exit;
 					}
 
 				}	else {
 					echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
 				}
-
-			}
+			} */
 		?>
 
 		<?php if(isset($_SESSION['login'])) { ?>
-
 			<form action="./blocks/new_comment.php" method="POST">
 				<input name="id_topic" type="hidden" value='<?= $id_topic ?>'>
+				<input name="page" type="hidden" value='<?= $page ?>'>
 				<div class="section-message section-message_new-message">
 					<div class="section-message__content">
 						<p class="message-title">Ваше сообщение</p>
@@ -166,9 +177,7 @@
 					</div>
 				</div>
 			</form>
-					
 		<?php } ?>
-
 	</div>
 </section>
 

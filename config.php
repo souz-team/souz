@@ -2,7 +2,7 @@
 session_start();
 
 $host = "5.164.244.129:8888";
-// $host = "localhost";
+//$host = "localhost";
 $db_name = "SOUZ";
 $login = "admin";
 $pswrd = "15istv1";
