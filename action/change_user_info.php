@@ -50,7 +50,7 @@
 		}
 	}
 	if($username==$reg_info['name'] AND $usersurname = $reg_info['surname'] AND  $useremail = $reg_info['email'] AND $no_change_pass==1){
-		$errors[] = 'Ваши данные не изменились!';
+		$errors[] = $reg_info['name'].', хватит тыкать на кнопки! Меняй что-нибудь!';
 	}
 		
 	if($no_change_pass==1 AND (empty($errors)))
@@ -62,7 +62,7 @@
 		$user_update = update_user($link, $auth_login, $userpasswordnew, $useremail, $username, $usersurname, $reg_info['level_id']);
 		if ($user_update)
 			{
-				$errors[] = 'Данные обновлены! <br/>Для корректного отображения перезайдите на сайт';
+				$errors[] = 'Данные обновлены! <br/>Для корректного отображения перезайдите на сайт.';
 			}
 			else
 			{

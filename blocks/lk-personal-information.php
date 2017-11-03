@@ -33,7 +33,7 @@ require_once '/action/get_user_info.php';
 				<span class="table-input-info__text">Имя</span>
 			</div>
 			<div class="table-input-info__wrap-textfield">
-				<input type="text" class="table-input-info__textfield" name='username'value='<?=$name?>'>
+				<input type="text" class="table-input-info__textfield" placeholder="Введите другое имя" name='username'value='<?=$name?>'>
 			</div>
 		</label>
 	</div>
@@ -43,7 +43,7 @@ require_once '/action/get_user_info.php';
 				<span class="table-input-info__text">Фамилия</span>
 			</div>
 			<div class="table-input-info__wrap-textfield">
-				<input type="text" class="table-input-info__textfield" name='usersurname' value='<?=$surname?>'>
+				<input type="text" class="table-input-info__textfield" placeholder="Введите другую фамилию" name='usersurname' value='<?=$surname?>'>
 			</div>
 		</label>
 	</div>
@@ -53,7 +53,7 @@ require_once '/action/get_user_info.php';
 				<span class="table-input-info__text">Email</span>
 			</div>
 			<div class="table-input-info__wrap-textfield">
-				<input type="email" class="table-input-info__textfield" name='useremail' value='<?=$email?>'>
+				<input type="email" class="table-input-info__textfield" placeholder="Введите другой email" name='useremail' value='<?=$email?>'>
 			</div>
 		</label>
 	</div>
