@@ -3,7 +3,7 @@ $data = $_POST;
 
 if(isset($data['do_change']))
 {
-	require_once '/action/change_user_password.php';
+	require_once '/action/change_user_info.php';
 	
 	
 	
@@ -62,7 +62,7 @@ require_once '/action/get_user_info.php';
 	<?php if(!empty($errors)){?>
 	<div style="text-align: center;"><?php echo array_shift($errors);?></div>
 	<?php } ?>
-	<div class="table-input-info__row table-input-info__row_delimiter"></div>
+<!--	<div class="table-input-info__row table-input-info__row_delimiter"></div> -->
 	<div class="table-input-info__row">
 		<label class='table-input-info__label'>
 			<div class="table-input-info__wrap-text">

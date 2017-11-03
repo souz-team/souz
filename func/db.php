@@ -91,9 +91,10 @@ function Login_Exist ($connection, $var)
     $select_query = "SELECT * FROM Users WHERE login='$var'";	
 	$result=$connection->query ($select_query);
     $rows = $result->fetch_array(MYSQLI_ASSOC);
-    if ($rows) return rows;
+    if ($rows) return $rows;
     else
        return 0;
+	mysqli_close($link);
 }
 
 function Email_Exist ($connection, $var)
@@ -101,7 +102,7 @@ function Email_Exist ($connection, $var)
     $checkmail= "SELECT * FROM Users WHERE email='$var'";	
 	$result = $connection->query ($checkmail);
     $rows = $result->fetch_array(MYSQLI_ASSOC);
-    if ($rows) return rows;
+    if ($rows) return $rows;
     else
         return 0;
 }
@@ -111,7 +112,7 @@ function User_Exist ($connection, $var)
     $checkuser = "SELECT * FROM Users WHERE login='$var' OR email='$var'";
     $result = $connection->query ($checkuser);
     $rows = $result->fetch_array(MYSQLI_ASSOC);
-    if ($rows) return rows;
+    if ($rows) return $rows;
     else
         return 0;
 }
@@ -502,5 +503,14 @@ function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
             die ($connection->error);
 }
 
-
+// Редактирование пользовательских данных
+function update_user ($connection, $login, $password, $email, $name, $surname, $level_id)
+{
+    $update = "UPDATE Users SET pass='$password', email='$email', name='$name', surname='$surname', level_id='$level_id'  WHERE login='$login'";
+    $result = $connection->query ($update);
+    if ($result) return true;
+    else
+        die ($connect->error);
+	mysqli_close($link);
+}
 

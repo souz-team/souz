@@ -27,18 +27,18 @@
 					<div class="section-header__service-name">Система Обработки <br>Юзерских Заявок
 					</div>
 					<div class="section-header__form-auth">
-						<?php
-							if($_SESSION['auch']==1)
-							{
-								echo '<div class="form-auth">';
-								echo 'Вы авторизованы, <br/>';
-								echo $_SESSION["fio"].".";
-								echo "<br>[".$_SESSION["userlevelname"]."]";
-								echo '<br/><br/>';
-								echo '<a href="../logout.php">Выйти</a>';
-								echo '</div>';
-								
-							}
+						
+							<?php if($_SESSION['auch']==1){?>
+								<div class="form-auth">
+								Вы авторизованы, <br/>
+								<?=$_SESSION["fio"]?>
+								<br>[<?=$_SESSION["userlevelname"]?>]
+								<br/><br/>
+								<a href="../logout.php">Выйти</a>
+								</div>
+							<?php } ?>
+							
+							<?php
 							if($_SESSION['auch']!=1)
 							{
 								echo	'<form class="form-auth" action="/auth.php" method="POST">
@@ -55,7 +55,6 @@
 								
 													if($_SESSION['count']!=0){
 														$_SESSION['form']=1;
-													
 													echo '<p class="form-auth__forgot-password"><a class="form-auth__forgot-password-link" href="/remember.php">Забыли пароль?</a></p>'; 	
 													}					
 													
