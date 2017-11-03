@@ -1,6 +1,20 @@
 <?php
 require_once 'config.php';
-require_once '/func/db.php';?>
+//require_once '/func/db.php';?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<?php require_once 'blocks/header.php'; ?>
 	<section class="section section_lk">
 		<div class="section__wrap">
@@ -22,7 +36,6 @@ require_once '/func/db.php';?>
 								<a href="#" class="lk__navigation-link">Мои комментарии</a>
 							</li>
 						</ul>
-
 					</div>
 					<div class="lk__side-bar lk__side-bar_right">
 					
@@ -37,12 +50,8 @@ require_once '/func/db.php';?>
 						<div class="lk__content-item lk__comments" id='lk-comments'>
 							<?php require('./blocks/lk-comments.php') ?>
 						</div>
-
 					</div>
 				</div>
-
-				
-
 			</div>
 		</div>
 	</section>
