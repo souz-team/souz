@@ -159,9 +159,15 @@ function Update_Passwort ($connection, $password_, $email_)
 
 // Показ ПОЛЬЗОВАТЕЛЕЙ 
 
-function Show_Users ($connection) // Принимает подключение и возвращает массив пользователей
+function Show_Users ($connection, $sort, $direct) // Принимает подключение и возвращает массив пользователей
 {
-    $search = "SELECT * FROM Users";
+	if(isset($sort)){
+		$search = "SELECT * FROM Users ORDER BY $sort $direct";
+	}
+	else {
+		$search = "SELECT * FROM Users ORDER BY id ASC";
+	}
+    //$search = "SELECT * FROM Users";
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;
