@@ -6,10 +6,10 @@
 			<div class="section__wrap">
 				<div class="control-user">
 					<div class="wrap__control-user">
-						
+						<?php require 'blocks/cu-personal.php';?>
 					</div>
 				</div>
 			</div>
 		</section>
-
+		
 <?php require_once 'blocks/footer.php'; ?>

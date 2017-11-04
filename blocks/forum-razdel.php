@@ -27,7 +27,6 @@
 							$num_rows_post += Post_Amount($link, $theme_id);
 				//Определение даты последнего сообщения
 							$date =  Last_Date($link, $theme_id);
-							echo count($date);
 							$date_post = $date[0]; // Вернуть строку с датой последнего сообщения
 						}
 				

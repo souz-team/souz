@@ -513,4 +513,3 @@ function update_user ($connection, $login, $password, $email, $name, $surname, $
         die ($connect->error);
 	mysqli_close($link);
 }
-
