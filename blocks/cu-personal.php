@@ -7,12 +7,12 @@ require_once '/action/showusers.php';
 	<tr bgcolor="#FFFFFF" align="center">
 
 		<th rowspan="2">№</th>
-		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=1' title = 'Сортировка по логину'><?=chr($dir[login])?> Логин*</a></th>
-		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=2' title = 'Сортировка по имени'><?=chr($dir[name])?> Имя*</a></th>
-		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=3' title = 'Сортировка по фамилии'><?=chr($dir[surname])?> Фамилия*</th>
-		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=4' title = 'Сортировка по email'><?=chr($dir[email])?> Email*</th>
-		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=5' title = 'Сортировка по дате регистрации'><?=chr($dir[reg_date])?> Дата регистрации*</th>
-		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=6' title = 'Сортировка по уровню'><?=chr($dir[level_id])?> Уровень пользователя*</th>
+		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=1' title = 'Сортировка по логину'><img src='/images/<?=$dir[login]?>' alt=''> Логин</a></th>
+		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=2' title = 'Сортировка по имени'><img src='/images/<?=$dir[name]?>'> Имя</a></th>
+		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=3' title = 'Сортировка по фамилии'><img src='/images/<?=$dir[surname]?>'> Фамилия</th>
+		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=4' title = 'Сортировка по email'><img src='/images/<?=$dir[email]?>'> Email</th>
+		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=5' title = 'Сортировка по дате регистрации'><img src='/images/<?=$dir[reg_date]?>'> Дата регистрации</th>
+		<th rowspan="2"><a href='<?= $_SERVER[PHP_SELF]?>?sort=6' title = 'Сортировка по уровню'><img src='/images/<?=$dir[level_id]?>'> Уровень пользователя</th>
 		<th colspan="2">Операции с пользователем</th>
 	
 	</tr>
