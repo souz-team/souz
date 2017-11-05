@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 		<title>Союз
 		</title>
-		<script type="text/javascript" src='js/jquery.min.js'></script>
-		<script type="text/javascript" src='js/index.js'></script>
+		<script type="text/javascript" src='/js/jquery.min.js'></script>
+		<script type="text/javascript" src='/js/index.js'></script>
 
 	</head>
 
@@ -20,7 +20,7 @@
 					<div class="section-header__logo">
 						<div class="logo">
 							<a href="/" class="logo__link">
-								<img class="logo__image" src="images/logo.png" alt="" role="presentation">
+								<img class="logo__image" src="/images/logo.png" alt="" role="presentation">
 							</a>
 						</div>
 					</div>

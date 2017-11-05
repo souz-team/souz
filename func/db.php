@@ -161,7 +161,7 @@ function Update_Passwort ($connection, $password_, $email_)
 
 function Show_Users ($connection, $sort, $direct) // Принимает подключение и возвращает массив пользователей
 {
-	if(isset($sort)){
+	if(isset($sort) AND isset($direct)){
 		$search = "SELECT * FROM Users ORDER BY $sort $direct";
 	}
 	else {
@@ -519,3 +519,15 @@ function update_user ($connection, $login, $password, $email, $name, $surname, $
         die ($connect->error);
 	mysqli_close($link);
 }
+function create_section($connection, $name, $closed)
+{
+	$new_section ="INSERT INTO boardsection VALUES(NULL, '$name','$closed')";
+	// выполняем запрос
+	$result = $connection->query($new_section);
+	if ($result) 
+		return true;
+	else
+		die ($connection->error);
+	mysqli_close($link);
+}
+
