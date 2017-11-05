@@ -19,11 +19,7 @@
 				<div class="forum-table__cell forum-table__cell_topics">Количество тем</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
-<<<<<<< HEAD
 				<div class="forum-table__cell forum-table__cell_admintools">Действия</div>
-
-=======
->>>>>>> 3a93e24580b65532b392e3a543bbd2d549ddf940
 			</div>
 		</div>
 		<div class="forum-table__body">
@@ -65,23 +61,23 @@
 						<div class="forum-table__cell forum-table__cell_sections">'.$section[$i]['name'].'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
-<<<<<<< HEAD
 						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
-						<div class="forum-table__cell forum-table__cell_admintools">Изменить Удалить</div>
-					</a>
+					
 					';
-=======
-						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>';
 						
-					if(!($_SESSION['userlevel']==1)){
+					if(!($_SESSION['userlevel']==1))
+					{
 						echo '</a>';
 					}
 					else{	
-						echo '	<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
-							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
-						</a>';
+						echo '
+						<div class="forum-table__cell forum-table__cell_admintools">
+							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
+								<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						</div>
+						</a>
+						';
 					}
->>>>>>> 3a93e24580b65532b392e3a543bbd2d549ddf940
 				}
 				elseif(($section[$i]['close']==1) and ($_SESSION['userlevel']==1))
 				{
@@ -90,14 +86,13 @@
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 							<div class="forum-table__cell forum-table__cell_messages">'.$date_post.'</div>
-<<<<<<< HEAD
-							<div class="forum-table__cell forum-table__cell_admintools">Изменить Удалить</div>
 							
-=======
->>>>>>> 3a93e24580b65532b392e3a543bbd2d549ddf940
+						
+						<div class="forum-table__cell forum-table__cell_admintools">
+							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
+							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						</div>
 						</a>
-						<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
-						<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						';
 				}
 			
