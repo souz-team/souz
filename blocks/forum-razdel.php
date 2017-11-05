@@ -57,8 +57,8 @@
 				if ($section[$i]['close']!=1)
 				{
 					
-				echo '	<a class="forum-table__row forum-table__row_body" href="forum-topic.php?id='.$section[$i]['section_id'].'">
-						<div class="forum-table__cell forum-table__cell_sections">'.$section[$i]['name'].'</div>
+				echo '	<div class="forum-table__row forum-table__row_body">
+						<div class="forum-table__cell forum-table__cell_sections"><a  href="forum-topic.php?id='.$section[$i]['section_id'].'">'.$section[$i]['name'].'</a></div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
@@ -67,7 +67,7 @@
 						
 					if(!($_SESSION['userlevel']==1))
 					{
-						echo '</a>';
+						echo '</div>';
 					}
 					else{	
 						echo '
@@ -75,13 +75,13 @@
 							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
 								<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
-						</a>
+						</div>
 						';
 					}
 				}
 				elseif(($section[$i]['close']==1) and ($_SESSION['userlevel']==1))
 				{
-					echo '	<a class="forum-table__row forum-table__row_body" href="forum-topic.php?id='.$section[$i]['section_id'].'">
+					echo '	<div class="forum-table__row forum-table__row_body" href="forum-topic.php?id='.$section[$i]['section_id'].'">
 							<div class="forum-table__cell forum-table__cell_sections">[ЗАКРЫТЫЙ РАЗДЕЛ] '.$section[$i]['name'].'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
@@ -92,12 +92,17 @@
 							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
 							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
-						</a>
+						</div>
 						';
 				}
 			
 			}
 			?>
+
+
+
+
+
 		</div>
 	</div>
 
