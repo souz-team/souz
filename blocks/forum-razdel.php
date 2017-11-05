@@ -34,15 +34,19 @@
 					$theme = Show_Topic ($link, $section_id); 
 				//Подсчет количества тем в разделе
 					$num_rows_theme = Topic_Amount($link, $section_id);
-					$num_rows_post = 0;
-						for ($j=0; $j<count($theme); $j++) {
-							$theme_id = $theme[$j]['theme_id'];
-				//Подсчет количества сообщений в разделе
-							$num_rows_post += Post_Amount($link, $theme_id);
-				//Определение даты последнего сообщения
-							$date =  Last_Date($link, $theme_id);
-							$date_post = $date[0]; // Вернуть строку с датой последнего сообщения
-						}
+                    $num_rows_post = 0;
+                    for ($j=0; $j<count($theme); $j++) {
+                        $tempdate = '0000-00-00';
+                        $theme_id = $theme[$j]['theme_id'];
+			//Подсчет количества сообщений в разделе
+                        $num_rows_post += Post_Amount($link, $theme_id);
+			//Определение даты последнего сообщения
+                        $date =  Last_Date($link, $theme_id);
+                        $date_post = $date[0]; // Вернуть строку с датой последнего сообщения
+                        $maxdate = max($date_post, $tempdate);
+                        $tempdate = $maxdate;
+                        if ($maxdate == '0000-00-00') $maxdate = NULL;
+                    }
 				
 				if ($section[$i]['close']!=1)
 				{
@@ -51,7 +55,7 @@
 						<div class="forum-table__cell forum-table__cell_sections">'.$section[$i]['name'].'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
-						<div class="forum-table__cell forum-table__cell_messages">'.$date_post.'</div>
+						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
 					</a>
 					';
 				}
