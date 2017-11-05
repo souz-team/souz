@@ -13,12 +13,12 @@
 					 	$author = $row['Author'];
 					 	$text = $row['Text'];
 					 	$date = $row['Date'];
-					 	$image = 'Stat.png';
+					 	//$image = 'Stat.png';
 						
 					?>
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">
-						<img src="images/<?= $image ?>" alt="" class="section-article__image">
+						
 						<p class="section-article__text"><?= $text ?></p>
 					</div>
 					<div class="section-article__footer">
