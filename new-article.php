@@ -8,34 +8,46 @@
 				<p class="new-material__title">Создание статьи</p>
 					
 				<div class="new-material__form">
-					<form action="" class="form-new-material">
+					<form action="create-article.php" method="post" class="form-new-material">
 						
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
-							<input type="text" class="form-new-material__textfield">
+							<input type="text" name="articleName" class="form-new-material__textfield">
 						</label>
 
 						<div class="form-new-material__row form-new-material__row_selects">
 
-							<div class="form-new-material__wrap-select">
+							<!--div class="form-new-material__wrap-select">
 								<p class="form-new-material__label">Раздел</p>
-								<select class='form-new-material__select'>
+								<select class='form-new-material__select'name="id_Razdel">
 									<option value="">Раздел 1</option>
 									<option value="">Раздел 2</option>
 									<option value="">Раздел 3</option>
 									<option value="">Раздел 4</option>
 									<option value="">Раздел 5</option>
 								</select>
-							</div>
+							</div-->
 
 							<div class="form-new-material__wrap-select">
 								<p class="form-new-material__label">Подраздел</p>
-								<select class='form-new-material__select'>
-									<option value="">Подраздел 1</option>
-									<option value="">Подраздел 2</option>
-									<option value="">Подраздел 3</option>
-									<option value="">Подраздел 4</option>
-									<option value="">Подраздел 5</option>
+								<select class='form-new-material__select' name="id_Podrazdel">
+								<?
+									$optionList = "";
+									$lastParentId = "THIS_PARAM_MUST_BE_INTEGER";
+									$razdel_query = mysql_query ("SELECT a.id as parentId, a.Name as parentName, b.id as childId, b.Name as childName FROM Razdel a, Razdel b WHERE b.P_id=a.id and a.P_id=0 ORDER BY a.Name, a.id");
+									while ($row = mysql_fetch_assoc($razdel_query)) {
+										$parentId   = $row['parentId'];
+										$parentName = $row['parentName'];
+										$childId    = $row['childId'];
+										$childName  = $row['childName'];
+										if( $lastParentId != $parentId ) {
+											$lastParentId = $parentId;
+											$optionList .= "<option disabled>$parentName</option>";
+										}
+										$optionList .= "<option value=\"$childId\">&nbsp;&nbsp;&nbsp;&nbsp;$childName</option>";
+									}
+									echo $optionList;
+								?>
 								</select>
 							</div>
 
@@ -43,7 +55,7 @@
 
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Текст статьи</p>
-							<textarea class="form-new-material__textarea"></textarea>
+							<textarea class="form-new-material__textarea"name= "articleText"></textarea>
 						</label>
 
 						<div class="form-new-material__row form-new-material__row_buttons">
@@ -55,7 +67,7 @@
 
 
 
-							<button class="button button_default">Создать</button>
+							<button class="button button_default"input type="submit">Создать</button>
 						</div>
 
 					</form>
