@@ -1,3 +1,16 @@
+<?php 
+	require_once 'config.php';
+	$id = $_GET['id'];					
+	if(isset($_SESSION['login']) AND ($_SESSION['userlevel']==1)){
+	echo "	
+
+		<div class='article__button article__button_new'>
+			<a href='/forum-new-section.php'>
+			<button class='button button_article'>Создать раздел</button>
+			</a>
+		</div>";
+	}
+?>
 <div class="section-forum">
 	<div class="forum-table">
 		<div class="forum-table__header">
@@ -6,11 +19,12 @@
 				<div class="forum-table__cell forum-table__cell_topics">Количество тем</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
+
 			</div>
 		</div>
 		<div class="forum-table__body">
 			<?php 
-			require_once 'config.php';
+			//require_once 'config.php';
 			$section = Show_Razdel($link); // Находим все разделы
 			$tempo = array();
             for ($i=0; $i<count($section); $i++)
@@ -52,10 +66,11 @@
 				elseif(($section[$i]['close']==1) and ($_SESSION['userlevel']==1))
 				{
 					echo '	<a class="forum-table__row forum-table__row_body" href="forum-topic.php?id='.$section[$i]['section_id'].'">
-							<div class="forum-table__cell forum-table__cell_sections">'.$section[$i]['name'].'</div>
+							<div class="forum-table__cell forum-table__cell_sections">[ЗАКРЫТЫЙ РАЗДЕЛ] '.$section[$i]['name'].'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 							<div class="forum-table__cell forum-table__cell_messages">'.$date_post.'</div>
+							
 						</a>
 						';
 				}
