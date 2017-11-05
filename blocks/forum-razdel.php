@@ -19,6 +19,7 @@
 				<div class="forum-table__cell forum-table__cell_topics">Количество тем</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
+				<div class="forum-table__cell forum-table__cell_admintools">Действия</div>
 
 			</div>
 		</div>
@@ -61,6 +62,7 @@
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
+						<div class="forum-table__cell forum-table__cell_admintools">Изменить Удалить</div>
 					</a>
 					';
 				}
@@ -71,6 +73,7 @@
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 							<div class="forum-table__cell forum-table__cell_messages">'.$date_post.'</div>
+							<div class="forum-table__cell forum-table__cell_admintools">Изменить Удалить</div>
 							
 						</a>
 						';
