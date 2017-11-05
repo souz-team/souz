@@ -37,15 +37,11 @@ require_once '/action/showusers.php';
 		<td><?=$array[$i]['email']?></td>
 		<td><?=$array[$i]['reg_date']?></td>
 		<td><?=$array[$i]['level_id']?></td>
-		<td>#</td>
-		<td>@</td>
+		<td><a href='edit_expenses.php?id=<?=$array[$i]['id']?>'><img src='/images/edit.png' width = '20' height = '20'></a></td>
+		<td><a href='showdelete_expenses.php?id=<?=$array[$i]['id']?>'><img src='/images/delete.png' width = '15' height = '15'></a></td>
 		
 		</tr>
-        <!-- 
-		<td width = '10%'><a href='edit_expenses.php?id={$array[$i]['id']}'><img src='edit.png' width = '15' height = '15'></a></td>";
-        <td width = '10%'><a href='showdelete_expenses.php?id={$array[$i]['id']}'><img src='delete.png' width = '15' height = '15'></a></td></tr>";
-		-->
-   <?php  }?>
+<?php  }?>
 
 
 

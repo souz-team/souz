@@ -398,7 +398,7 @@ function get_articles($ids){
  
 function Show_Razdel ($connection) // Принимает подключение и id, возвращает массив пользователей
 {
-    $search = "SELECT * FROM boardsection";
+    $search = "SELECT * FROM boardsection ORDER BY close";
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;

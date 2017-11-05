@@ -1,16 +1,16 @@
 <?php 
-	require_once 'config.php';
-	$id = $_GET['id'];					
-	if(isset($_SESSION['login']) AND ($_SESSION['userlevel']==1)){
-	echo "	
+	require_once 'config.php';?>
+						
+	<?php if(isset($_SESSION['login']) AND ($_SESSION['userlevel']==1)){?>
 
 		<div class='article__button article__button_new'>
 			<a href='/forum-new-section.php'>
 			<button class='button button_article'>Создать раздел</button>
 			</a>
-		</div>";
-	}
-?>
+		</div>
+
+	<?php } ?>
+
 <div class="section-forum">
 	<div class="forum-table">
 		<div class="forum-table__header">
@@ -19,12 +19,16 @@
 				<div class="forum-table__cell forum-table__cell_topics">Количество тем</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
+<<<<<<< HEAD
 				<div class="forum-table__cell forum-table__cell_admintools">Действия</div>
 
+=======
+>>>>>>> 3a93e24580b65532b392e3a543bbd2d549ddf940
 			</div>
 		</div>
 		<div class="forum-table__body">
 			<?php 
+			$id = $_GET['id'];
 			//require_once 'config.php';
 			$section = Show_Razdel($link); // Находим все разделы
 			$tempo = array();
@@ -61,10 +65,23 @@
 						<div class="forum-table__cell forum-table__cell_sections">'.$section[$i]['name'].'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
+<<<<<<< HEAD
 						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
 						<div class="forum-table__cell forum-table__cell_admintools">Изменить Удалить</div>
 					</a>
 					';
+=======
+						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>';
+						
+					if(!($_SESSION['userlevel']==1)){
+						echo '</a>';
+					}
+					else{	
+						echo '	<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
+							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						</a>';
+					}
+>>>>>>> 3a93e24580b65532b392e3a543bbd2d549ddf940
 				}
 				elseif(($section[$i]['close']==1) and ($_SESSION['userlevel']==1))
 				{
@@ -73,9 +90,14 @@
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 							<div class="forum-table__cell forum-table__cell_messages">'.$date_post.'</div>
+<<<<<<< HEAD
 							<div class="forum-table__cell forum-table__cell_admintools">Изменить Удалить</div>
 							
+=======
+>>>>>>> 3a93e24580b65532b392e3a543bbd2d549ddf940
 						</a>
+						<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>
+						<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						';
 				}
 			
