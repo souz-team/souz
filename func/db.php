@@ -396,9 +396,14 @@ function get_articles($ids){
 
 // Показ РАЗДЕЛОВ ФОРУМА
  
-function Show_Razdel ($connection) // Принимает подключение и id, возвращает массив пользователей
+function Show_Razdel ($connection, $id) // Принимает подключение и id, возвращает массив пользователей
 {
-    $search = "SELECT * FROM boardsection ORDER BY close";
+	if(isset($id)){
+		$search = "SELECT * FROM boardsection WHERE section_id = '$id'";
+	}
+	else {
+		$search = "SELECT * FROM boardsection ORDER BY close";
+	}
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;
