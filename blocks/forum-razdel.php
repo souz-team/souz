@@ -1,6 +1,6 @@
 <?php 
 	require_once 'config.php';?>
-						
+
 	<?php if(isset($_SESSION['login']) AND ($_SESSION['userlevel']==1)){?>
 
 		<div class='article__button article__button_new'>

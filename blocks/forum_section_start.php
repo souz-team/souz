@@ -15,7 +15,7 @@ if(isset($data['new_section']))
 ?>
 
 
-<section class="section section_1">
+
 	<div class="section__wrap">
 		<div class="new-topic">
 			<form action="/forum-new-section.php" method="POST">
@@ -40,4 +40,4 @@ if(isset($data['new_section']))
 			</form>
 		</div>
 	</div>
-</div>
+

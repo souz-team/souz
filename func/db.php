@@ -524,6 +524,16 @@ function update_user ($connection, $login, $password, $email, $name, $surname, $
         die ($connect->error);
 	mysqli_close($link);
 }
+
+function update_section ($connection, $id, $name, $close)
+{
+    $update = "UPDATE boardsection SET name='$name', close='$close' WHERE section_id='$id'";
+    $result = $connection->query ($update);
+    if ($result) return true;
+    else
+        die ($connect->error);
+	mysqli_close($link);
+}
 function create_section($connection, $name, $closed)
 {
 	$new_section ="INSERT INTO boardsection VALUES(NULL, '$name','$closed')";
