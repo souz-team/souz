@@ -1171,7 +1171,7 @@ img {
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
-	justify-content: space-between;
+	/*justify-content: space-between;*/
 	padding: 0;
 }
 
@@ -1198,6 +1198,7 @@ img {
 .manage-table__cell_header-name {
 	border-left: none;
 }
+
 
 .manage-table__cell_name {
 	flex-grow: 1;
@@ -1236,6 +1237,39 @@ img {
 	flex-basis: 150px;
 	text-align: center;
 }
+
+/*Администрирование юзерами { */
+
+.manage-table__cell_login{
+	width: 166px;
+
+}
+.manage-table__cell_name1{
+	width: 165px;
+
+}
+.manage-table__cell_surname{
+	width: 178px;
+
+}
+.manage-table__cell_email{
+	width: 250px;
+
+}
+.manage-table__cell_date1{
+	width: 115.6px;
+	
+}
+.manage-table__cell_lvl{
+	width: 118.6px;
+	
+}
+.manage-table__cell_admintools{
+	width: 146.6px;
+	
+}
+
+/* } */
 
 .manage-table__action-link {
 	font-size: 12px;

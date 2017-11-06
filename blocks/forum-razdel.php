@@ -20,7 +20,7 @@
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
 				<?php if($_SESSION['userlevel']==1){ ?>
-				<div class="forum-table__cell forum-table__cell_messages">Действия</div>
+					<div class="forum-table__cell forum-table__cell_messages">Действия</div>
 				<? } ?>
 			</div>
 		</div>
