@@ -1239,6 +1239,10 @@ img {
 }
 
 /*Администрирование юзерами { */
+.manage-table__cell_number{
+	
+
+}
 
 .manage-table__cell_login{
 	width: 166px;
