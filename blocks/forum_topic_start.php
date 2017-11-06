@@ -79,16 +79,21 @@
 				<p class="new-material__title">Создние темы</p>
 				<label>
 					<p class="form-new-material__label">Название темы</p>
-					<input class="form-new-material__label" name="subject" placeholder="Название темы" type="text" />
+					<input class="form-new-material__textfield" name="subject" placeholder="Название темы" type="text" />
 				</label>
 				<label>
 					<p class="form-new-material__label">Сообщение</p>
 					<textarea  class="form-new-material__textarea" name="topic" placeholder="Ваше сообщение"></textarea>
 				</label>
 
-				<div"><br/>
-					<button class="button button_article" name="new_topic">Добавить тему</button>
-					
+				<div>
+					<div class="form-new-material__row form-new-material__row_buttons">
+							<a href="/manage-articles.php">
+								<button class="button button_cancel">Отмена
+								</button>
+							</a>
+							<button class="button button_article" name="new_topic">Добавить тему</button>
+						</div>
 				</div>
 			</form>
 		</div>
