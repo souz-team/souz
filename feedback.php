@@ -62,14 +62,10 @@
 				exit;
 			}
 
-			//подключения модуля отправки email с кодом подтверждения
-			require '/mailto.php';
-			//перенаправление на страницу проверки кода
-			header('Location: reg.php');
-
-		} else {
-			echo '<div style="color: red; text-align: center;">'.array_shift($errors).'</div><hr>';
-		}
+		} 
+		//else {
+		//	echo '<div style="color: red; text-align: center;">'.array_shift($errors).'</div><hr>';
+		//}
 
 	}
 
@@ -82,7 +78,10 @@
 				<div class="section-2">
 					<div class="section-2__wrap">
 						<p class="section-2__title">Если у Вас возникли проблемы, пожалуйста заполните форму обратной связи
-						</p>
+						</p> <br>
+						<?php if(!empty($errors)) { ?>
+						<div style="color: red; text-align:center;"><?=$all?></div>
+						<?php } ?>
 						<div class="section-2__form-auth">
 
 							<form action="feedback.php" method="POST" class="table-input-info">
@@ -133,7 +132,7 @@
 
 								<div class="form-auth__buttons">
 									<a href="/feedback.php"><img src="/capcha/captcha.php"></a>
-									<input style="width: 200px; height: 25px;" type="text" name="capcha" placeholder="Введите текст с картинки"/>
+									<input style="width: 200px; height: 25px;" type="text" name="capcha" placeholder="Введите текст с картинки"/> 
 									<button class="button button_form-auth" name="do_feedback">Отправить</button>
 								</div>
 

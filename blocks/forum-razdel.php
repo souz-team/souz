@@ -60,7 +60,7 @@
 				{
 					
 				echo '	<div class="forum-table__row forum-table__row_body">
-						<div class="forum-table__cell forum-table__cell_sections"><a  href="forum-topic.php?id='.$section[$i]['section_id'].'">'.$section[$i]['name'].'</a></div>
+						<div class="forum-table__cell forum-table__cell_sections"><a  href="forum-topic.php?id='.$section[$i]['section_id'].'"><img src="/images/razdel.png" width = "15" height = "15"> '.$section[$i]['name'].'</a></div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
 						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
@@ -74,8 +74,8 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
 						</div>
 						';
@@ -83,16 +83,16 @@
 				}
 				elseif(($section[$i]['close']==1) and ($_SESSION['userlevel']==1))
 				{
-					echo '	<div class="forum-table__row forum-table__row_body" href="forum-topic.php?id='.$section[$i]['section_id'].'">
-							<div class="forum-table__cell forum-table__cell_sections">[ЗАКРЫТЫЙ РАЗДЕЛ] '.$section[$i]['name'].'</div>
-							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
-							<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
-							<div class="forum-table__cell forum-table__cell_messages">'.$date_post.'</div>
+					echo '	<div class="forum-table__row forum-table__row_body">
+						<div class="forum-table__cell forum-table__cell_sections"><a  href="forum-topic.php?id='.$section[$i]['section_id'].'"><img src="/images/lock.png" width = "15" height = "15">  '.$section[$i]['name'].'</a></div>
+						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_theme.'</div>
+						<div class="forum-table__cell forum-table__cell_topics">'.$num_rows_post.'</div>
+						<div class="forum-table__cell forum-table__cell_messages">'.$maxdate.'</div>
 							
 						
 					<div class="forum-table__cell forum-table__cell_messages">
-						<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 					</div>
 					</div>
 					';
