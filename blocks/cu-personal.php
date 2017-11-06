@@ -7,6 +7,8 @@ require_once '/action/showusers.php';
 	<div class="manage-table__header">
 		<div class="manage-table__row manage-table__row_header">
 			<!-- <th rowspan="2">№</th> -->
+			<div class="manage-table__cell manage-table__cell_header manage-table__cell_num">№
+			</div>
 			<div class="manage-table__cell manage-table__cell_header manage-table__cell_login">
 				<a href='<?= $_SERVER[PHP_SELF]?>?sort=1' title = 'Сортировка по логину'><img src='/images/<?=$dir[login]?>' alt=''> Логин</a>
 			</div>
@@ -38,8 +40,8 @@ require_once '/action/showusers.php';
 			<?php $bgcolor="#E3EBF2"?>
 		<?php } ?>
 		<div class="manage-table__row manage-table__row_body" entity-id='<?= $id ?>'>
-			<!-- <tr bgcolor='<?=$bgcolor?>' align="center"> -->
-				<!-- <td><?=$a?></td> -->
+
+				<div class="manage-table__cell manage-table__cell_header manage-table__cell_num"><?=$a?></div>
 				<div class="manage-table__cell manage-table__cell_login">
 					<?=$array[$i]['login']?>
 						
