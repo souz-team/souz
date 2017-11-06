@@ -21,6 +21,11 @@
 				<div class="forum-table__cell forum-table__cell_topics">Автор темы:</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата создания темы:</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения:</div>
+				<?php if(!($_SESSION['userlevel']==1)): ?>
+				
+				<?php else: ?>
+					<div class="forum-table__cell forum-table__cell_messages">Действия</div>
+				<?php endif ?>
 			</div>
 		</div>
 		<div class="forum-table__body">
@@ -32,8 +37,8 @@
 				$row_date = mysqli_fetch_array($date);
 				$date_post = $row_date[0];
 				
-				echo '	<a class="forum-table__row forum-table__row_body" href="./topic-view.php?id='.$row_t[theme_id].'">
-						<div class="forum-table__cell forum-table__cell_sections">'.$row_t[subject].'</div>
+				echo '	<div class="forum-table__row forum-table__row_body">
+						<div class="forum-table__cell forum-table__cell_sections"><a href="./topic-view.php?id='.$row_t[theme_id].'">'.$row_t[subject].'</a></div>
 						<div class="forum-table__cell forum-table__cell_topics">
 						'.$row_t[author].'</div>
 						<div class="forum-table__cell forum-table__cell_topics">
@@ -42,9 +47,21 @@
 						<div class="forum-table__cell forum-table__cell_topics">
 						'.$date_post.'
 						</div>
-						<!-- <div class="forum-table__cell forum-table__cell_messages">500</div> -->
-					</a>
-								';
+					
+					';
+					if(!($_SESSION['userlevel']==1))
+					{
+						echo '</div>';
+					}
+					else{	
+						echo '
+						<div class="forum-table__cell forum-table__cell_messages">
+							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						</div>
+						</div>
+						';
+					}
 			} 
 //<a href='/blocks/forum_topic_start.php'>
 			?>
