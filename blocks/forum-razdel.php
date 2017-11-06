@@ -15,7 +15,7 @@
 	<div class="forum-table">
 		<div class="forum-table__header">
 			<div class="forum-table__row forum-table__row_header">
-				<div class="forum-table__cell forum-table__cell_sections">Раздел</div>
+				<div class="forum-table__cell forum-table__cell_sections">Разделы</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество тем</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
@@ -79,8 +79,8 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'" title = "Удалить"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
 						</div>
 						';
@@ -96,8 +96,8 @@
 							
 						
 					<div class="forum-table__cell forum-table__cell_messages">
-						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'" title = "Удалить"><img src="/images/delete.png" width = "20" height = "20"></a>
 					</div>
 					</div>
 					';

@@ -1,0 +1,19 @@
+forum.php -> /blocks/forum-razdel.php(страница разделов)
+				|
+				|_/forum-topic.php -> /blocks/forum-topics.php	(страница тем)		
+									|
+									|_ /topic-view.php (страница ответов)
+
+
+Создание раздела на форуме:
+
+forum.php -> /blocks/forum-razdel.php -> forum-new-section.php -> blocks/forum_section_start.php
+											|
+											|_ /action/create_section.php
+
+Создание темы на форуме:
+
+forum.php -> /blocks/forum-razdel.php(страница разделов)
+				|
+				|_/forum-topic.php -> /blocks/forum-topics.php -> /blocks/forum_topic_start.php
+											
