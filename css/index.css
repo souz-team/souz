@@ -1192,6 +1192,15 @@ img {
 }
 
 .manage-table__cell_header {
+	align-items: center;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.manage-table__cell_header:not(:first-child) {
 	border-left: 1px solid #bebfb9;
 }
 
@@ -1199,6 +1208,9 @@ img {
 	border-left: none;
 }
 
+.manage-table__cell_body {
+	
+}
 
 .manage-table__cell_name {
 	flex-grow: 1;
@@ -1221,59 +1233,68 @@ img {
 .manage-table__cell_author {
 	flex-basis: 150px;
 	text-align: center;
+	justify-content: center;
 }
 
 .manage-table__cell_date {
 	flex-basis: 150px;
 	text-align: center;
+	justify-content: center;
 }
 
 .manage-table__cell_actions {
 	flex-basis: 150px;
 	text-align: center;
+	justify-content: center;
 }
 
 .manage-table__cell_count-articles {
 	flex-basis: 150px;
 	text-align: center;
+	justify-content: center;
 }
 
-/*Администрирование юзерами { */
-.manage-table__cell_number{
-	
-
+.manage-table__title-column {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
 }
 
-.manage-table__cell_login{
-	width: 166px;
-
+.manage-table__sort-image {
+	margin-left: 10px;
 }
-.manage-table__cell_name1{
-	width: 165px;
 
+/*Администрирование юзерами */
+.manage-table__cell_number {
+	flex-basis: 40px;
+	text-align: center;
+	justify-content: center;
 }
-.manage-table__cell_surname{
-	width: 178px;
 
+.manage-table__cell_login,
+.manage-table__cell_username,
+.manage-table__cell_surname {
+	flex-basis: 130px;
 }
+
 .manage-table__cell_email{
-	width: 250px;
-
-}
-.manage-table__cell_date1{
-	width: 115.6px;
-	
-}
-.manage-table__cell_lvl{
-	width: 118.6px;
-	
-}
-.manage-table__cell_admintools{
-	width: 146.6px;
-	
+	flex-grow: 1;
 }
 
-/* } */
+.manage-table__cell_lvl {
+	flex-basis: 155px;
+	text-align: center;
+	justify-content: center;
+}
+
+.manage-table__cell_admintools {
+	flex-basis: 110px;
+	text-align: center;
+	justify-content: center;
+}
 
 .manage-table__action-link {
 	font-size: 12px;
@@ -1291,6 +1312,23 @@ img {
 .manage-sections__title {
 	font-size: 24px;
 	font-weight: 500;
+}
+
+.control-user {
+
+}
+
+.control-user__wrap {
+	
+}
+
+.control-user__title {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.control-user__manage-table {
+	margin-top: 20px;
 }
 
 .new-material {
