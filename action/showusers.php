@@ -1,6 +1,6 @@
 <?php
 	$sort_id = array ('login','name','surname','email','reg_date','level_id');
-
+	$user_level = array('root', 'admin', 'user');
 	$dir = array('login'=>'arrow.png', 'name'=>'arrow.png', 'surname'=>'arrow.png', 'email'=>'arrow.png', 'reg_date'=>'arrow.png', 'level_id'=>'arrow.png');
 
 	if(isset($_GET['sort'])) {
@@ -24,6 +24,6 @@
 		
 	}
 
-	// возвращение многомерного массива по всем строкам найденного в функции Search_id отдела.
+	// возвращение многомерного массива по всем строкам найденного.
 	$users = Show_Users ($link, $sort_key, $direct); 
 ?>

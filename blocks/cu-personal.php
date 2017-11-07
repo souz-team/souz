@@ -79,7 +79,7 @@
 								<?= $user['reg_date'] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_lvl">
-								<?= $user['level_id'] ?>
+								<?= $user_level[$user['level_id']-1] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_admintools">
 								<a href='edit_expenses.php?id=<?= $user['id'] ?>'>
