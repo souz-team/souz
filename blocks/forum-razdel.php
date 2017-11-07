@@ -1,6 +1,6 @@
 <?php 
 	require_once 'config.php';?>
-						
+
 	<?php if(isset($_SESSION['login']) AND ($_SESSION['userlevel']==1)){?>
 
 		<div class='article__button article__button_new'>
@@ -15,7 +15,7 @@
 	<div class="forum-table">
 		<div class="forum-table__header">
 			<div class="forum-table__row forum-table__row_header">
-				<div class="forum-table__cell forum-table__cell_sections">Раздел</div>
+				<div class="forum-table__cell forum-table__cell_sections">Разделы</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество тем</div>
 				<div class="forum-table__cell forum-table__cell_topics">Количество сообщений</div>
 				<div class="forum-table__cell forum-table__cell_messages">Дата последнего сообщения</div>
@@ -28,7 +28,7 @@
 			<?php 
 			$id = $_GET['id'];
 			//require_once 'config.php';
-			$section = Show_Razdel($link); // Находим все разделы
+			$section = Show_Razdel($link, NULL); // Находим все разделы
 			$tempo = array();
           
             for ($i=0; $i<count($section); $i++)
@@ -39,21 +39,26 @@
 				//Подсчет количества тем в разделе
 					$num_rows_theme = Topic_Amount($link, $section_id);
                     $num_rows_post = 0;
-                    $tempdate = NULL;
+                    
+					$tempdate = NULL;
                     for ($j=0; $j<count($theme); $j++) {
+                       
                         $theme_id = $theme[$j]['theme_id'];
 			//Подсчет количества сообщений в разделе
                         $num_rows_post += Post_Amount($link, $theme_id);
 			//Определение даты последнего сообщения
                         $date =  Last_Date($link, $theme_id);
                         $date_post = $date[0]; // Вернуть строку с датой последнего сообщения
-                        if ($date_post)
+                    if ($date)
                         {
                             $maxdate = max($date_post, $tempdate);
                             $tempdate = $maxdate;
+                           // if ($maxdate == '0000-00-00') $maxdate = NULL;
                         }
-                        else 
-                            $maxdate = NULL;
+						else 
+						{
+							$maxdate = NULL;
+						}
                     }
 				
 				if ($section[$i]['close']!=1)
@@ -74,8 +79,8 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'" title = "Удалить"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
 						</div>
 						';
@@ -91,8 +96,8 @@
 							
 						
 					<div class="forum-table__cell forum-table__cell_messages">
-						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+						<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'" title = "Удалить"><img src="/images/delete.png" width = "20" height = "20"></a>
 					</div>
 					</div>
 					';

@@ -38,15 +38,10 @@
 				$date_post = $row_date[0];
 				
 				echo '	<div class="forum-table__row forum-table__row_body">
-						<div class="forum-table__cell forum-table__cell_sections"><a href="./topic-view.php?id='.$row_t[theme_id].'">'.$row_t[subject].'</a></div>
-						<div class="forum-table__cell forum-table__cell_topics">
-						'.$row_t[author].'</div>
-						<div class="forum-table__cell forum-table__cell_topics">
-						'.$row_t[create_date].'
-						</div>
-						<div class="forum-table__cell forum-table__cell_topics">
-						'.$date_post.'
-						</div>
+						<div class="forum-table__cell forum-table__cell_sections"><a href="./topic-view.php?id='.$row_t[theme_id].'"><img src="/images/folder_yellow.png" width = "15" height = "15"> '.$row_t[subject].'</a></div>
+						<div class="forum-table__cell forum-table__cell_topics">'.$row_t[author].'</div>
+						<div class="forum-table__cell forum-table__cell_topics">'.$row_t[create_date].'</div>
+						<div class="forum-table__cell forum-table__cell_topics">'.$date_post.'</div>
 					
 					';
 					if(!($_SESSION['userlevel']==1))
@@ -56,8 +51,8 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
 						</div>
 						';

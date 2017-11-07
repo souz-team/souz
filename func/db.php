@@ -396,9 +396,14 @@ function get_articles($ids){
 
 // Показ РАЗДЕЛОВ ФОРУМА
  
-function Show_Razdel ($connection) // Принимает подключение и id, возвращает массив пользователей
+function Show_Razdel ($connection, $id) // Принимает подключение и id, возвращает массив пользователей
 {
-    $search = "SELECT * FROM boardsection ORDER BY close";
+	if(isset($id)){
+		$search = "SELECT * FROM boardsection WHERE section_id = '$id'";
+	}
+	else {
+		$search = "SELECT * FROM boardsection ORDER BY close";
+	}
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;
@@ -513,6 +518,16 @@ function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
 function update_user ($connection, $login, $password, $email, $name, $surname, $level_id)
 {
     $update = "UPDATE Users SET pass='$password', email='$email', name='$name', surname='$surname', level_id='$level_id'  WHERE login='$login'";
+    $result = $connection->query ($update);
+    if ($result) return true;
+    else
+        die ($connect->error);
+	mysqli_close($link);
+}
+
+function update_section ($connection, $id, $name, $close)
+{
+    $update = "UPDATE boardsection SET name='$name', close='$close' WHERE section_id='$id'";
     $result = $connection->query ($update);
     if ($result) return true;
     else
