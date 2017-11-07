@@ -109,6 +109,15 @@ img {
 	font-size: 12px;
 	font-weight: 500;
 }
+.sections-union{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
 .section__wrap {
 	max-width: 1140px;
 	margin: 0 auto;
@@ -748,7 +757,7 @@ img {
 }
 
 .list-sections {
-	/* padding: 20px 0px; */
+
 	min-width: 250px;
 	/* background-color: #ffffff; */
 }
@@ -787,7 +796,7 @@ img {
 }
 
 .list-sections__item-title:hover {
-	background-color: #7D7D7D;
+	background-color: #4ebaf6;
 	color: #fff;
 }
 
