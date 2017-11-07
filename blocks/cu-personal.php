@@ -82,10 +82,10 @@
 								<?= $user_level[$user['level_id']-1] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_admintools">
-								<a href='edit_expenses.php?id=<?= $user['id'] ?>'>
+								<a href='/control-user-edit.php?edit=<?= $user['id'] ?>'>
 									<img src='/images/edit.png' width='20' height='20'>
 								</a>
-								<a href='showdelete_expenses.php?id=<?= $user['id'] ?>'>
+								<a href='/control-user-edit.php?delete=<?= $user['id'] ?>'>
 									<img src='/images/delete.png' width='15' height='15'>
 								</a>
 							</div>

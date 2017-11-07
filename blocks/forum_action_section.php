@@ -2,7 +2,7 @@
 if(isset($_GET['edit']) AND ($_SESSION['userlevel']==1)){
 	$data = $_GET['edit'];
 require_once '/action/get-section-by-id.php';
-require_once '/action/forum-change-section.php';
+require_once '/blocks/forum-change-section.php';
 
 }
 
@@ -27,7 +27,7 @@ if(isset($_POST['edit_section']))
 	
 	
 	require_once '/action/get-section-by-id.php';
-	require_once '/action/forum-change-section.php';
+	require_once '/blocks/forum-change-section.php';
 	
 }
 

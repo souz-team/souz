@@ -546,3 +546,13 @@ function create_section($connection, $name, $closed)
 	mysqli_close($link);
 }
 
+function update_user_by_id ($connection, $id, $login, $email, $name, $surname, $level_id)
+{
+    $update = "UPDATE Users SET login='$login', email='$email', name='$name', surname='$surname', level_id='$level_id'  WHERE id='$id'";
+    $result = $connection->query ($update);
+    if ($result) return true;
+    else
+        die ($connect->error);
+	mysqli_close($link);
+}
+
