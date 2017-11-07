@@ -6,13 +6,18 @@ require('config.php');
 		<?php
 			
 		require_once 'blocks/header.php'; ?>
-      	<section class="section section_1">
+      	<section class="section section_1 section-content">
 			<div class="section__wrap">
 				<div class="section-1">
-						<?php
-						$id = $_GET['id'];	
-						$_SESSION['idfont']=$id;
-						require_once "menu.php"; ?>
+					<div class="section-1__menu">
+							<?php
+
+								$id = $_GET['id'];	
+								$_SESSION['idfont']=$id;
+								require_once "menu.php";
+
+							?>
+					</div>
 					<div class="section-1__list-link">
 						<ul class="lu-link">
 							<?php

@@ -73,7 +73,7 @@
 
 	<?php require 'blocks/header.php'; ?>
 
-		<section class="section section_2">
+		<section class="section section_2 section-content">
 			<div class="section__wrap">
 				<div class="section-2">
 					<div class="section-2__wrap">

@@ -61,6 +61,8 @@
         
 <script>
     $(document).ready(function(){
-        $(".list-sections__items").dcAccordion();
+        $(".list-sections__items").dcAccordion({
+          speed: 250
+        });
     });
 </script>     

@@ -15,7 +15,7 @@ if (isset($_GET['id']))
 
 
 
-	<section class="section">
+	<section class="section section-content">
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title"><?php echo $zagolovok?></p>

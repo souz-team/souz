@@ -47,7 +47,7 @@
 
 ?>
 <?php require_once 'blocks/header.php';?>
-<section class="section section_forum">
+<section class="section section_forum section-content">
 	<div class="section__wrap">
 		<div class="view-topic">
 			<div class="view-topic__wrap">
