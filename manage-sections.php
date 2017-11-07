@@ -3,7 +3,7 @@
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-section.php';?>
 
-	<section class="section">
+	<section class="section section-content">
 		<div class="section__wrap">
 			<div class="manage-sections">
 

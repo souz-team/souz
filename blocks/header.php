@@ -14,114 +14,115 @@
 	</head>
 
 	<body>
-		<section class="section section_header">
-			<div class="section__wrap">
-				<header class="section-header">
-					<div class="section-header__logo">
-						<div class="logo">
-							<a href="/" class="logo__link">
-								<img class="logo__image" src="/images/logo.png" alt="" role="presentation">
-							</a>
+		<div class="sections-association">
+			<section class="section section_header">
+				<div class="section__wrap">
+					<header class="section-header">
+						<div class="section-header__logo">
+							<div class="logo">
+								<a href="/" class="logo__link">
+									<img class="logo__image" src="/images/logo.png" alt="" role="presentation">
+								</a>
+							</div>
+						</div>
+						<div class="section-header__service-name">Система Обработки <br>Юзерских Заявок
+						</div>
+						<div class="section-header__form-auth">
+							
+								<?php if($_SESSION['auch']==1){?>
+									<div class="form-auth">
+									Вы авторизованы, <br/>
+									<?=$_SESSION["fio"]?>
+									<br>[<?=$_SESSION["userlevelname"]?>]
+									<br/><br/>
+									<a href="../logout.php">Выйти</a>
+									</div>
+								<?php } ?>
+								
+								<?php
+								if($_SESSION['auch']!=1)
+								{
+									echo	'<form class="form-auth" action="/auth.php" method="POST">
+													<div class="form-auth__textfield-wrap"><input class="form-auth__textfield" placeholder="Введите логин" type="text" name="login"/>
+													</div>
+													<div class="form-auth__textfield-wrap"><input class="form-auth__textfield" type="password" name="password" placeholder="Введите пароль"/>
+													</div>
+													<div class="form-auth__buttons">
+														<button class="button button_form-auth" type="submit" name="do_login">Войти
+														</button>
+														<a class="form-auth__link-signup" href="/singup.php">Регистрация</a>
+														</div>
+												</form>';
+									
+														if($_SESSION['count']!=0){
+															$_SESSION['form']=1;
+														echo '<p class="form-auth__forgot-password"><a class="form-auth__forgot-password-link" href="/remember.php">Забыли пароль?</a></p>'; 	
+														}					
+														
+								}
+							?>
+						</div>
+					</header>
+				</div>
+			</section>
+			<section class="section section_menu">
+				<div class="section__wrap">
+					<div class="section-menu">
+						<div class="section-menu__navigation">
+							<ul id="nav">
+								<nav class="navigation">
+									<li>
+										<div class="navigation__item"><a class="navigation__link" href="/">Статьи</a>
+										</div>
+									</li>
+									<li>
+										<div class="navigation__item"><a class="navigation__link" href="../forum.php">Форум</a>
+										</div>
+									</li>
+									<li>
+										<div class="navigation__item"><a class="navigation__link" href="../feedback.php">Обратная связь</a>
+										</div>
+									</li>
+									<li>
+										<div class="navigation__item"><a class="navigation__link" href="contact.php">Контакты</a>
+										</div>
+									</li>
+									<?php if ($_SESSION['userlevel']==1){ ?>
+										<li>
+											<div class="navigation__item navigation__item_manage"><a class="navigation__link" href="">Управление</a>
+											</div>
+											<ul>
+												<li>
+													<div class="navigation__item"><a class="navigation__link" href="/manage-articles.php">Управление статьями</a>
+													</div>
+												</li>
+												<li>
+													<div class="navigation__item"><a class="navigation__link" href="/manage-sections.php">Управление разделами</a>
+													</div>
+												</li>
+												<li>
+													<div class="navigation__item"><a class="navigation__link" href="forum.php">Управление форумом</a>
+													</div>
+												</li>
+												<li>
+													<div class="navigation__item"><a class="navigation__link" href="control-user.php">Управление юзерами</a>
+													</div>
+												</li>
+											</ul>
+										</li>
+										<?php } ?>
+										<?php if($_SESSION['userlevel'] != 0) { ?>
+										<li>
+											<div class="navigation__item"><a class="navigation__link" href="lk.php">Личный кабинет</a>
+											</div>
+										</li>
+									<?php } ?>
+								</nav>
+							</ul>
 						</div>
 					</div>
-					<div class="section-header__service-name">Система Обработки <br>Юзерских Заявок
-					</div>
-					<div class="section-header__form-auth">
-						
-							<?php if($_SESSION['auch']==1){?>
-								<div class="form-auth">
-								Вы авторизованы, <br/>
-								<?=$_SESSION["fio"]?>
-								<br>[<?=$_SESSION["userlevelname"]?>]
-								<br/><br/>
-								<a href="../logout.php">Выйти</a>
-								</div>
-							<?php } ?>
-							
-							<?php
-							if($_SESSION['auch']!=1)
-							{
-								echo	'<form class="form-auth" action="/auth.php" method="POST">
-												<div class="form-auth__textfield-wrap"><input class="form-auth__textfield" placeholder="Введите логин" type="text" name="login"/>
-												</div>
-												<div class="form-auth__textfield-wrap"><input class="form-auth__textfield" type="password" name="password" placeholder="Введите пароль"/>
-												</div>
-												<div class="form-auth__buttons">
-													<button class="button button_form-auth" type="submit" name="do_login">Войти
-													</button>
-													<a class="form-auth__link-signup" href="/singup.php">Регистрация</a>
-													</div>
-											</form>';
-								
-													if($_SESSION['count']!=0){
-														$_SESSION['form']=1;
-													echo '<p class="form-auth__forgot-password"><a class="form-auth__forgot-password-link" href="/remember.php">Забыли пароль?</a></p>'; 	
-													}					
-													
-							}
-						?>
-					</div>
-				</header>
-			</div>
-		</section>
-		<section class="section section_menu">
-			<div class="section__wrap">
-				<div class="section-menu">
-					<div class="section-menu__navigation">
-						<ul id="nav">
-							<nav class="navigation">
-								<li>
-									<div class="navigation__item"><a class="navigation__link" href="/">Статьи</a>
-									</div>
-								</li>
-								<li>
-									<div class="navigation__item"><a class="navigation__link" href="../forum.php">Форум</a>
-									</div>
-								</li>
-								<li>
-									<div class="navigation__item"><a class="navigation__link" href="../feedback.php">Обратная связь</a>
-									</div>
-								</li>
-								<li>
-									<div class="navigation__item"><a class="navigation__link" href="contact.php">Контакты</a>
-									</div>
-								</li>
-								<?php if ($_SESSION['userlevel']==1){ ?>
-									<li>
-										<div class="navigation__item navigation__item_manage"><a class="navigation__link" href="">Управление</a>
-										</div>
-										<ul>
-											<li>
-												<div class="navigation__item"><a class="navigation__link" href="/manage-articles.php">Управление статьями</a>
-												</div>
-											</li>
-											<li>
-												<div class="navigation__item"><a class="navigation__link" href="/manage-sections.php">Управление разделами</a>
-												</div>
-											</li>
-											<li>
-												<div class="navigation__item"><a class="navigation__link" href="forum.php">Управление форумом</a>
-												</div>
-											</li>
-											<li>
-												<div class="navigation__item"><a class="navigation__link" href="control-user.php">Управление юзерами</a>
-												</div>
-											</li>
-										</ul>
-									</li>
-									<?php } ?>
-									<?php if($_SESSION['userlevel'] != 0) { ?>
-									<li>
-										<div class="navigation__item"><a class="navigation__link" href="lk.php">Личный кабинет</a>
-										</div>
-									</li>
-								<?php } ?>
-							</nav>
-						</ul>
-					</div>
 				</div>
-			</div>
-		</section>
-<?php 
-require_once '/breadcrumbs.php';	
-?>
+			</section>
+	<?php 
+	require_once '/breadcrumbs.php';	
+	?>
