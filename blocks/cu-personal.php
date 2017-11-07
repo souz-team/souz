@@ -2,7 +2,6 @@
 	require_once '/action/showusers.php';
 ?>
 
-
 <div class="control-user">
 	<div class="control-user__wrap">
 
@@ -55,7 +54,6 @@
 							Операции
 						</div>
 					</div>
-
 				</div>
 				
 				<div class="manage-table__body">
