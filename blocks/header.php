@@ -32,8 +32,8 @@
 								<?php if($_SESSION['auch']==1){?>
 									<div class="form-auth">
 									Вы авторизованы, <br/>
-									<?=$_SESSION["fio"]?>
-									<br>[<?=$_SESSION["userlevelname"]?>]
+									<?=$_SESSION["fio"]?>.
+									
 									<br/><br/>
 									<a href="../logout.php">Выйти</a>
 									</div>
