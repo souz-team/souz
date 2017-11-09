@@ -109,7 +109,7 @@
 			<?php if ($i-1 == $page) { ?>
 				<?= $i ?>
 			<?php } else { ?>
-			<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id_topic ?>&page=<?= $i ?>'>[<?= $i ?>]</a>
+			<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?= $i ?>'>[<?= $i ?>]</a>
 			
 			<?php } ?>
 	<?php } ?>	
