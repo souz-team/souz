@@ -8,7 +8,7 @@
 		<p class="control-user__title">Пользователи</p>
 
 		<div class="control-user__manage-table">
-			<div class="manage-table">
+			<div class="manage-table manage-table_control-user">
 				<div class="manage-table__header">
 					<div class="manage-table__row manage-table__row_header">
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_number">
