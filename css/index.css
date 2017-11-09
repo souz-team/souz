@@ -1216,6 +1216,14 @@ img {
 	vertical-align: middle;
 }
 
+.manage-table {
+
+}
+
+.manage-table_control-user {
+	min-width: 1024px;
+}
+
 .manage-table__name-link {
 	color: #0074BD;
 }
@@ -1227,7 +1235,7 @@ img {
 .manage-table {
 	border: 1px solid #bebfb9;
 	box-shadow: 0 3px 4px rgba(0,0,0,0.25);
-	min-width: 1024px;
+	/* min-width: 1024px; */
 }
 
 .manage-table__header {
