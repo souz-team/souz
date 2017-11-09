@@ -1,7 +1,8 @@
 <?php
-	$sort_id = array ('login','name','surname','email','reg_date','level_id');
+	$sort_id = array ('login','name','surname','gender','email','reg_date','level_id');
 	$user_level = array('root', 'admin', 'user');
-	$dir = array('login'=>'arrow.png', 'name'=>'arrow.png', 'surname'=>'arrow.png', 'email'=>'arrow.png', 'reg_date'=>'arrow.png', 'level_id'=>'arrow.png');
+	$user_gender = array('девушка', 'парень');
+	$dir = array('login'=>'arrow.png', 'name'=>'arrow.png', 'surname'=>'arrow.png', 'gender'=>'arrow.png', 'email'=>'arrow.png', 'reg_date'=>'arrow.png', 'level_id'=>'arrow.png');
 
 	if(isset($_GET['sort'])) {
 		$a = $_SESSION['direct'];
@@ -26,7 +27,7 @@
 	
 	
 	//переменная, задающая количество сообщений, выводимых на странице
-	$per_page = 5;
+	$per_page = 10;
 	//вычисляем номер страницы
 	if (isset($_GET['page'])) {
 		$page = ($_GET['page']-1);

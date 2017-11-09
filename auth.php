@@ -25,17 +25,19 @@ if( isset($data['do_login']))
 				$name = $row[4];
 				$surname = $row[5];
 				$userlevel=$row[6];
-				$level= mysqli_query($link, "SELECT * FROM `SOUZ`.`users_level` WHERE `level` = '$userlevel'") or die("Ошибка " . mysqli_error($link));
+				$gender = $row[8];
+/* 				$level= mysqli_query($link, "SELECT * FROM `SOUZ`.`users_level` WHERE `level` = '$userlevel'") or die("Ошибка " . mysqli_error($link));
 				if($level)
 				{
 					$rowlevel = mysqli_fetch_array($level);
 					$userlevelname=$rowlevel['name'];
-				}
+				} */
 				$_SESSION['login'] = $login;
 				$_SESSION['email'] = $email;
 				$_SESSION['fio']=$name." ".$surname;
 				$_SESSION['userlevel']=$userlevel;
-				$_SESSION['userlevelname']=$userlevelname;
+				$_SESSION['gender'] = $gender;
+				//$_SESSION['userlevelname']=$userlevelname;
 			}
 			
 			

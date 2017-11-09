@@ -31,21 +31,28 @@
 								<span class=''>Фамилия</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[surname] ?>' alt=''>
 							</a>
+							
+						</div>
+						<div class="manage-table__cell manage-table__cell_header manage-table__cell_surname">
+							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=4' title='Сортировка по полу' class='manage-table__title-column'>
+								<span class=''>Пол</span>
+								<img class='manage-table__sort-image' src='/images/<?= $dir[gender] ?>' alt=''>
+							</a>
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_email">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=4' title='Сортировка по email' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=5' title='Сортировка по email' class='manage-table__title-column'>
 								<span class=''>Email</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[email] ?>' alt=''>
 							</a>
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_date">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=5' title='Сортировка по дате регистрации' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=6' title='Сортировка по дате регистрации' class='manage-table__title-column'>
 								<span class=''>Дата регистрации</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[reg_date] ?>' alt=''>
 							</a>
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_lvl">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=6' title='Сортировка по уровню' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=7' title='Сортировка по уровню' class='manage-table__title-column'>
 								<span class=''>Роль</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[level_id] ?>' alt=''>
 							</a>
@@ -75,6 +82,9 @@
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_surname">
 								<?= $user['surname'] ?>
+							</div>
+							<div class="manage-table__cell manage-table__cell_body manage-table__cell_surname">
+								<?= $user_gender[$user['gender']] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_email">
 								<?= $user['email'] ?>

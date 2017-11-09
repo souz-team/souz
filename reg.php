@@ -8,6 +8,7 @@
 	$loginuser = $_SESSION['login'];
 	$name = $_SESSION['name'];
 	$surname = $_SESSION['surname'];
+	$gender = $_SESSION['gender'];
 	$password = $_SESSION['password'];
 	$date = date("Y-m-d");
 	if(isset($data['enter_code']))
@@ -18,7 +19,7 @@
 		}
 		else 
 		{
-			$result = Add_User ($link, $loginuser, $name, $surname, $email, $password, $date); // Добавление юзера через пользовательскую функцию
+			$result = Add_User ($link, $loginuser, $name, $surname, $email, $password, $date, $gender); // Добавление юзера через пользовательскую функцию
 			unset($_SESSION['code']);
 			unset($_SESSION['email']);
 			unset($_SESSION['login']);

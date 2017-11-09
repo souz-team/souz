@@ -1,26 +1,12 @@
 <?php
-require_once 'config.php';
-//require_once '/func/db.php';?>
-
-
-
-
-
-
-
-
-
-
-
-
-
+require_once 'config.php';?>
 
 	<?php require_once 'blocks/header.php'; ?>
 	<section class="section section_lk section-content">
 		<div class="section__wrap">
 			<div class="lk">
 				
-				<p class="lk__title">Личный кабинет</p>
+				<p class="lk__title"><img src='/images/lk-image.png' width='40' height='40'>Личный кабинет</p>
 
 				<div class="lk__content">
 					<div class="lk__side-bar lk__side-bar_left">

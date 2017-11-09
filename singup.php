@@ -17,11 +17,16 @@ if( isset($data['do_singup']))
 			$errors[] = 'Введите имя!';
 		}
 		
-		if( trim($data['surname'])=='')//проверка на пустое значение поля ввода фамилии
+		if( trim($data['surname'])=='')//проверка на пустое значение поля ввода gender
 		{
 			$errors[] = 'Введите фамилию!';
 		}
 		
+		
+		if( trim($data['gender'])=='')//проверка на пустое значение поля ввода gender
+		{
+			$errors[] = 'Выберите пол!';
+		}
 		if( trim($data['email'])=='')//проверка на пустое значение поля ввода email
 		{
 			$errors[] = 'Введите email!';
@@ -40,6 +45,7 @@ if( isset($data['do_singup']))
 		$loginuser = htmlentities(mysqli_real_escape_string($link, $data['login']), ENT_QUOTES, 'UTF-8');
 		$name = htmlentities(mysqli_real_escape_string($link, $data['name']), ENT_QUOTES, 'UTF-8');
 		$surname = htmlentities(mysqli_real_escape_string($link, $data['surname']), ENT_QUOTES, 'UTF-8');
+		$gender = htmlentities(mysqli_real_escape_string($link, $data['gender']), ENT_QUOTES, 'UTF-8');
 		$email = htmlentities(mysqli_real_escape_string($link, $data['email']), ENT_QUOTES, 'UTF-8');
 		$password = md5($data['password']);
          
@@ -58,6 +64,7 @@ if( isset($data['do_singup']))
 		$_SESSION['login']=$loginuser;
 		$_SESSION['name']=$name;
 		$_SESSION['surname']=$surname;
+		$_SESSION['gender']=$gender;
 		$_SESSION['password']=$password;
 		//подключения модуля отправки email с кодом подтверждения
 		require '/mailto.php';
@@ -93,6 +100,15 @@ if( isset($data['do_singup']))
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
 							<p class="form-signup__label">Фамилия
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="surname" placeholder="Фамилия" type="text" value="<?php echo @$data['surname'];?>"/>
+						</label>
+						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
+							<p class="form-signup__label">Пол:</p>
+							<select class="form-auth__textfield form-signup__textfield_signup" name = "gender" size="1" required>
+								<option disabled selected>Пол:</option>
+								<option value="1">Парень</option>
+								<option value="0">Девушка</option>
+							</select>
+							<!--</p><input class="form-auth__textfield form-signup__textfield_signup" name="email" placeholder="Email" type="text" value="<?php echo @$data['email'];?>"/> -->
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
 							<p class="form-signup__label">Email

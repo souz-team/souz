@@ -12,6 +12,15 @@
 					<input  class="form-new-material__label" name="user_name" type="text" value = "<?=$user_name?>"/></p>
 					<p class="form-new-material__label">Фамилия:
 					<input  class="form-new-material__label" name="user_surname" type="text" value = "<?=$user_surname?>"/></p>
+					<p class="form-new-material__label">Пол:
+					<select name="user_gender" size="">
+						<option disabled>Выберите значение:</option>
+						<?php for($i = 0; $i < $total_gender; $i++) { ?>
+						<option  value="<?php echo($i); ?>" <?=($i == $user_gender) ? 'selected' : ''?> ><?php echo($gender[$i]); ?></option>
+						<?php } ?>
+					</select></p>
+					
+					
 					<p class="form-new-material__label">Уровень:
 					<!--<input class="form-new-material__label" name="section_name" type="text" value = "<?=$user_level?>"/></p>-->
 					<select name="user_level" size="">
@@ -19,7 +28,7 @@
 						<?php for($i = 1; $i < $total+1; $i++) { ?>
 						<option  value="<?php echo($i); ?>" <?=($i == $user_level_id) ? 'selected' : ''?> ><?php echo($level[$i-1]); ?></option>
 						<?php } ?>
-					</select>
+					</select> </p>
 					<?php if(!empty($errors)){?>
 					<div style="color: red;text-align: left;"><?php echo array_shift($errors);?></div>
 					<?php } ?>

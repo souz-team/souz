@@ -23,6 +23,7 @@ if(isset($_POST['edit_user']))
 	$user_email = $_POST['user_email'];
 	$user_name = $_POST['user_name'];
 	$user_surname = $_POST['user_surname'];
+	$user_gender = $_POST['user_gender'];
 	$user_level = $_POST['user_level'];
 	
 	

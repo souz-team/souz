@@ -117,12 +117,12 @@ function User_Exist ($connection, $var)
         return 0;
 }
 
-function Add_User ($connection, $login, $name, $surname, $email, $password, $reg_date)
+function Add_User ($connection, $login, $name, $surname, $email, $password, $reg_date, $gender)
 {
     // создание строки запроса
 	
 		
-		$add_query ="INSERT INTO Users VALUES(NULL, '$login','$password','$email','$name', '$surname', '3', '$reg_date')";
+		$add_query ="INSERT INTO Users VALUES(NULL, '$login','$password','$email','$name', '$surname', '3', '$reg_date', '$gender')";
 		// выполняем запрос
 		$result = $connection->query($add_query); 
         if ($result) 
@@ -569,9 +569,9 @@ function create_section($connection, $name, $closed)
 	mysqli_close($link);
 }
 
-function update_user_by_id ($connection, $id, $login, $email, $name, $surname, $level_id)
+function update_user_by_id ($connection, $id, $login, $email, $name, $surname, $level_id, $gender)
 {
-    $update = "UPDATE Users SET login='$login', email='$email', name='$name', surname='$surname', level_id='$level_id'  WHERE id='$id'";
+    $update = "UPDATE Users SET login='$login', email='$email', name='$name', surname='$surname', level_id='$level_id', gender='$gender'  WHERE id='$id'";
     $result = $connection->query ($update);
     if ($result) return true;
     else
