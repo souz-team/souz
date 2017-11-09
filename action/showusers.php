@@ -23,7 +23,26 @@
 		$dir[$sort_key] = $asc;
 		
 	}
+	
+	
+	//переменная, задающая количество сообщений, выводимых на странице
+	$per_page = 5;
+	//вычисляем номер страницы
+	if (isset($_GET['page'])) {
+		$page = ($_GET['page']-1);
+	} else { $page = 0; }
+	//вычисляем значение переменной, с которой начнется считывание с бд
+	$start = abs($page*$per_page);
+	
+	
 
 	// возвращение многомерного массива по всем строкам найденного.
-	$users = Show_Users ($link, $sort_key, $direct); 
+	$users = Show_Users ($link, $sort_key, $direct, $start, $per_page); 	
+	
+	
+	if(!$total_rows = Count_Show_Users($link, $sort_key, $direct))
+		echo "jgb";
+	else	
+	//$total_rows = $row['count']; //высчитываем сколько
+	$num_pages = ceil($total_rows/$per_page); // получится страниц
 ?>

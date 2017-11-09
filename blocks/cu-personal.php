@@ -56,6 +56,10 @@
 					</div>
 				</div>
 				
+			
+			
+			
+				
 				<div class="manage-table__body">
 
 					<?php foreach($users as $i => $user) { ?>
@@ -98,4 +102,15 @@
 		</div>
 
 	</div>
+</div>
+
+<div class='pagination'>Страницы: 
+	<?php for($i=1; $i<=$num_pages; $i++) { ?>
+			<?php if ($i-1 == $page) { ?>
+				<?= $i ?>
+			<?php } else { ?>
+			<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id_topic ?>&page=<?= $i ?>'>[<?= $i ?>]</a>
+			
+			<?php } ?>
+	<?php } ?>	
 </div>

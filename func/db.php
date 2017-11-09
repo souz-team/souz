@@ -159,13 +159,13 @@ function Update_Passwort ($connection, $password_, $email_)
 
 // Показ ПОЛЬЗОВАТЕЛЕЙ 
 
-function Show_Users ($connection, $sort, $direct) // Принимает подключение и возвращает массив пользователей
+function Show_Users ($connection, $sort, $direct, $start, $per_page) // Принимает подключение и возвращает массив пользователей
 {
 	if(isset($sort) AND isset($direct)){
-		$search = "SELECT * FROM Users ORDER BY $sort $direct";
+		$search = "SELECT * FROM Users ORDER BY $sort $direct LIMIT $start, $per_page";
 	}
 	else {
-		$search = "SELECT * FROM Users ORDER BY id ASC";
+		$search = "SELECT * FROM Users ORDER BY id ASC LIMIT $start, $per_page";
 	}
     //$search = "SELECT * FROM Users";
     $result = $connection->query ($search);
@@ -183,6 +183,29 @@ function Show_Users ($connection, $sort, $direct) // Принимает подк
         }   
     }
     return $array; 
+}
+
+function Count_Show_Users($connection, $sort, $direct){
+	//считаем сколько у нас записей
+	if(isset($sort) AND isset($direct)){
+		$q = "SELECT * FROM Users ORDER BY $sort $direct";
+	}
+	else {
+		$q = "SELECT * FROM Users ORDER BY id ASC";
+	}	
+	$result = $connection->query ($q);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+	if (!$rows) return false;
+    else
+    {return $rows;}
+	/*//$res = mysql_query($q); 	//которые нужно 
+	$row = mysql_fetch_assoc($result); //разбить по страницам.
+	$total_rows = $row['count'];
+	if (!$total_rows) return false;
+    else
+    {return $total_rows;}
+	//return $total_row;*/
 }
 
 // Удаление ПОЛЬЗОВАТЕЛЯ
