@@ -29,14 +29,8 @@
 						</div>
 						<div class="section-header__form-auth">
 							
-								<?php if($_SESSION['auch']==1){?>
-									<div class="form-auth">
-									Вы авторизованы, <br/>
-									<?=$_SESSION["fio"]?>.
-									
-									<br/><br/>
-									<a href="../logout.php">Выйти</a>
-									</div>
+								<?php if($_SESSION['auch'] == 1){?>
+									<?php require_once('./blocks/user-panel.php') ?>
 								<?php } ?>
 								
 								<?php
@@ -111,12 +105,12 @@
 											</ul>
 										</li>
 										<?php } ?>
-										<?php if($_SESSION['userlevel'] != 0) { ?>
+										<!-- <?php if($_SESSION['userlevel'] != 0) { ?>
 										<li>
 											<div class="navigation__item"><a class="navigation__link" href="lk.php">Личный кабинет</a>
 											</div>
 										</li>
-									<?php } ?>
+									<?php } ?> -->
 								</nav>
 							</ul>
 						</div>
