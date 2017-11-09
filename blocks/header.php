@@ -105,12 +105,12 @@
 											</ul>
 										</li>
 										<?php } ?>
-										<?php if($_SESSION['userlevel'] != 0) { ?>
+										<!-- <?php if($_SESSION['userlevel'] != 0) { ?>
 										<li>
 											<div class="navigation__item"><a class="navigation__link" href="lk.php">Личный кабинет</a>
 											</div>
 										</li>
-									<?php } ?>
+									<?php } ?> -->
 								</nav>
 							</ul>
 						</div>
