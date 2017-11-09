@@ -92,10 +92,10 @@
 											<div class="navigation__item navigation__item_manage"><a class="navigation__link" href="">Управление</a>
 											</div>
 											<ul>
-												<li>
+												<!-- <li>
 													<div class="navigation__item"><a class="navigation__link" href="/manage-articles.php">Управление статьями</a>
 													</div>
-												</li>
+												</li> -->
 												<li>
 													<div class="navigation__item"><a class="navigation__link" href="/manage-sections.php">Управление разделами</a>
 													</div>
