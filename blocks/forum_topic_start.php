@@ -48,9 +48,7 @@
 				<p class="new-material__title">Создние темы</p>
 								
 					<?php if(!empty($errors)){?>
-					<br/>
-					<div style="text-align: center; color: red;"><?php echo array_shift($errors);?></div>
-					<br/>
+					<div style="color: red;text-align: center; font-weight: 600;"><?php echo array_shift($errors);?></div>
 					<?php } ?>
 				
 				<label>
