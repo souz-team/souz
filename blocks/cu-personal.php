@@ -1,12 +1,11 @@
-<?php
-	require_once '/action/showusers.php';
-?>
-
 <div class="control-user">
 	<div class="control-user__wrap">
 
 		<p class="control-user__title">Пользователи</p>
-
+<?php
+	require_once '/blocks/cu_search.php';
+	require_once '/action/showusers.php';
+?>
 		<div class="control-user__manage-table">
 			<div class="manage-table manage-table_control-user">
 				<div class="manage-table__header">
@@ -62,11 +61,7 @@
 						</div>
 					</div>
 				</div>
-				
-			
-			
-			
-				
+
 				<div class="manage-table__body">
 
 					<?php foreach($users as $i => $user) { ?>
@@ -113,7 +108,7 @@
 
 	</div>
 </div>
-
+<?php if($show_pag!=0){ ?>
 <div class='pagination'>Страницы: 
 	<?php for($i=1; $i<=$num_pages; $i++) { ?>
 			<?php if ($i-1 == $page) { ?>
@@ -123,4 +118,5 @@
 			
 			<?php } ?>
 	<?php } ?>	
+<?php }?>
 </div>

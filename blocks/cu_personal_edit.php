@@ -31,7 +31,13 @@ if(isset($_POST['edit_user']))
 	require_once '/blocks/cu_personal_change.php';
 	
 }
+if(isset($_POST['edit_user_back']))
+{
 
+	
+	header('Location:/control-user-edit.php');
+	
+}
 
 
 ?>
