@@ -35,11 +35,19 @@
 	//вычисляем значение переменной, с которой начнется считывание с бд
 	$start = abs($page*$per_page);
 	
-	
-
+	if(isset($_POST['search']))
+	{
+		$search_clear = htmlentities(mysql_real_escape_string($_POST['search']), ENT_QUOTES, 'UTF-8');
+		$search = $search_clear;
+		
+		$users = search_user($link, $search);
+		$show_pag = 0;
+	}
+	else{
 	// возвращение многомерного массива по всем строкам найденного.
-	$users = Show_Users ($link, $sort_key, $direct, $start, $per_page); 	
-	
+	$users = Show_Users ($link, $sort_key, $direct, $start, $per_page); 
+	$show_pag = 1;	
+	}
 	
 	if(!$total_rows = Count_Show_Users($link, $sort_key, $direct))
 		echo "jgb";

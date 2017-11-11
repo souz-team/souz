@@ -591,3 +591,26 @@ function update_user_by_id ($connection, $id, $login, $email, $name, $surname, $
 	mysqli_close($link);
 }
 
+function search_user($connection, $search)
+{
+	$query="SELECT * FROM `Users` WHERE `login` LIKE '%$search%' OR `email` LIKE '%$search%' OR `name` LIKE '%$search%' 
+	OR `surname` LIKE '%$search%'";
+	 $result = $connection->query ($query);
+    //if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    //if (!$rows) return false;
+   // else
+    //{
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+   // }
+   
+    return $array; 
+}
+
+
