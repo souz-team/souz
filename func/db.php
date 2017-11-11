@@ -293,6 +293,18 @@ function Show_Last ($connection)
     return $array; 
 }
 
+//Количество статей в подразделе
+
+function Articles_Amount ($connection, $var)
+{
+    $search = "SELECT * FROM Articles WHERE id_Podrazdel='$var'";
+    $result = $connection->query ($search);
+     if (!$result) die ($connect->error);
+    $sum = $result->num_rows;
+    return $sum; 
+}
+
+
 // Добавление СТАТЬИ
 
 function Add_Article ($connection, $id_Podrazdel, $Name, $Author, $Text, $Date)

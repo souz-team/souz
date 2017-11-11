@@ -19,11 +19,13 @@
 							</div>
 						</div>
 						<div class="manage-table__body">
-							<?php for($j=1; $j<rand(3,10); $j++) { ?>
-								<?php $id = rand(1,99); ?>
+							<?php 
+							$razdel = Menu($link, 0); // Передаём нуль для поиска всех корневых разделов
+								for ($i=0; $i<count($razdel); $i++) { 
+									$id = $razdel[$i]['id'];?>
 								<div class="manage-table__row manage-table__row_body" entity-id='<?= $id ?>'>
 									<div class="manage-table__cell manage-table__cell_name manage-table__cell_section-name">
-										<a href='#' class='manage-table__name-link'>Раздел <?= $j ?></a>
+										<a href='#' class='manage-table__name-link'><?php echo $razdel[$i]['Name']?></a>
 									</div>
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
@@ -32,12 +34,15 @@
 										<a href="/section.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>
-								<?php for($i=1; $i<rand(2,5); $i++) { ?>
+								<?php 
+            						$podrazdel = Menu($link, $id); // Передаём id раздела для поиска всех подразделов. P_id == id
+           						    for ($j=0; $j<count($podrazdel); $j++) { 
+           						    	$id = $podrazdel[$j]['id']?>
 									<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id='<?= $id ?>'>
 										<div class="manage-table__cell manage-table__cell_name">
-											<a href='manage-articles.php' class='manage-table__name-link'>Подраздел <?= $id ?></a>
+											<a href='manage-articles.php' class='manage-table__name-link'> <?echo $podrazdel[$j]['Name']?></a>
 										</div>
-										<div class="manage-table__cell manage-table__cell_count-articles"><?= $id ?></div>
+										<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $id) ?></div>
 										<div class="manage-table__cell manage-table__cell_actions">
 											<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
@@ -50,7 +55,7 @@
 				</div>
 				
 				<div class="manage-sections__wrap-button">
-					<a href="/section.php" class="manage-sections__link-new-section">
+					<a href="/section.php?id=<?= 0 ?>" class="manage-sections__link-new-section">
 						<button class="button button_default">Создать раздел</button>
 					</a>
 				</div>

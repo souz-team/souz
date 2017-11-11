@@ -2,14 +2,15 @@
 <?php require_once 'blocks/header.php';?>
 
 <?php 
-if (isset($_GET['id']))
+if (isset($_GET['id']) && $_GET['id'] != 0)
 {
 	$sectionid = $_GET['id'];
 	$zagolovok = "Изменение раздела";
 }	
-	else {
-		$zagolovok = "Создание раздела";
-	}
+else if ($_GET['sectionParent'] != 0) {
+	$zagolovok = "Создание подраздела";}
+else {
+	$zagolovok = "Создание раздела";}
 ?>
 
 
