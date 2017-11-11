@@ -2,10 +2,10 @@
 	<div class="control-user__wrap">
 
 		<p class="control-user__title">Пользователи</p>
-<?php
-	require_once '/blocks/cu_search.php';
-	require_once '/action/showusers.php';
-?>
+		<?php
+			require_once '/blocks/cu_search.php';
+			require_once '/action/showusers.php';
+		?>
 		<div class="control-user__manage-table">
 			<div class="manage-table manage-table_control-user">
 				<div class="manage-table__header">
@@ -114,7 +114,7 @@
 			<?php if ($i-1 == $page) { ?>
 				<?= $i ?>
 			<?php } else { ?>
-			<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?= $i ?>'>[<?= $i ?>]</a>
+			<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?= $i ?>'>[<?= $i?>]</a>
 			
 			<?php } ?>
 	<?php } ?>	

@@ -35,7 +35,7 @@
 	//вычисляем значение переменной, с которой начнется считывание с бд
 	$start = abs($page*$per_page);
 	
-	if(isset($_POST['search']))
+	if(isset($_POST['search']) AND !empty($_POST['search']))
 	{
 		$search_clear = htmlentities(mysql_real_escape_string($_POST['search']), ENT_QUOTES, 'UTF-8');
 		$search = $search_clear;

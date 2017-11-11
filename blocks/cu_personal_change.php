@@ -35,9 +35,9 @@
 				</label>
 				<div><br/>
 					<button class="button button_article" name="edit_user">Изменить</button>
-						
-						<a href='/control-user.php' ><div class="button button_article">Назад</div></a>
-						
+				
+						<a href='/control-user.php' ><div class='button button_cancel'>Назад</div></a>
+					
 				</div>
 			</form>
 		</div>

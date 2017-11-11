@@ -1,0 +1,20 @@
+<?php
+
+if(empty($errors)){
+	if($edit == 1){
+			//function update_topic ($connection, $id_topic, $id_section, $topic, $subject)
+		$edit_topic = update_topic($link, $id_topic, $section_id, $topic_msg, $topic_subject);
+		if($edit_topic){
+			$errors[] = 'Тема изменена!';
+		}
+	}
+}
+$topic = Show_Topic($link, NULL, $id_topic);
+$topic_msg = $topic[0]['topic'];
+$topic_subject = $topic[0]['subject'];
+$topic_section_id = $topic[0]['id_section'];
+$razdel = Show_Razdel($link, $topic_section_id);
+$topic_section_name = $razdel[0]['name'];
+$all_razdel = Show_Razdel($link, NULL);
+$count_razdel = count($all_razdel);
+?>

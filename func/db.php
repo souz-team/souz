@@ -469,9 +469,15 @@ function Topic_Amount ($connection, $var)
 
 // Возврат массива тем
 
-function Show_Topic ($connection, $var) // Принимает подключение и id, возвращает массив пользователей
+function Show_Topic ($connection, $var_s, $var_t) // Принимает подключение и id, возвращает массив пользователей
 {
-    $search = "SELECT * FROM boardt WHERE id_section='$var'";
+    if(isset($var_s)){
+	$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
+	}
+	elseif(isset($var_t))
+	{
+		$search = "SELECT * FROM boardt WHERE theme_id='$var_t'";
+	}
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;
@@ -613,4 +619,13 @@ function search_user($connection, $search)
     return $array; 
 }
 
+function update_topic ($connection, $id_topic, $id_section, $topic, $subject)
+{
+    $update = "UPDATE boardt SET subject='$subject', id_section='$id_section', topic='$topic' WHERE theme_id='$id_topic'";
+    $result = $connection->query ($update);
+    if ($result) return true;
+    else
+        die ($connect->error);
+	mysqli_close($link);
+}
 

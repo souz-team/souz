@@ -12,7 +12,7 @@
 	else {
 		$section_closed= 0;
 	}
-	$section_name = htmlentities(mysqli_real_escape_string($link, $data['section_name']), ENT_QUOTES, 'UTF-8');
+	$section_name = htmlentities(mysql_real_escape_string($data['section_name']), ENT_QUOTES, 'UTF-8');
 
 	
 	if(empty($errors)){

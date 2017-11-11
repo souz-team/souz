@@ -5,7 +5,7 @@
 	echo "	
 
 		<div class='article__button article__button_new'>
-				<a href='../blocks/forum_topic_start.php?id={$id}'>
+				<a href='/forum-new-topic.php?id={$id}'>
 				
 					<button class='button button_article'>Создать тему</button>
 				</a>
@@ -51,7 +51,7 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a  href="/forum-action-topic.php?edit='.$row_t[theme_id].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
 							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
 						</div>
 						</div>

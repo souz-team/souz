@@ -35,7 +35,7 @@
 		    {
 					$section_id = $section[$i]['section_id'];
 				//Определение названия раздела
-					$theme = Show_Topic ($link, $section_id); 
+					$theme = Show_Topic ($link, $section_id, NULL); 
 				//Подсчет количества тем в разделе
 					$num_rows_theme = Topic_Amount($link, $section_id);
                     $num_rows_post = 0;
