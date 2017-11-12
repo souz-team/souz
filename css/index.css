@@ -198,25 +198,25 @@ img {
 	padding-left: 0;
 }
 .section-1__articles {
-	display: -webkit-box;
+	/* display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
-	display: flex;
+	display: flex; */
 	width: 100%;
-	flex-wrap: wrap;
-	margin: -10px;
+	/* flex-wrap: wrap; */
+	/* margin: -10px; */
 }
 
 .section-1__article {
-	width: 50%;
-	padding: 10px;
+	/* width: 50%; */
+	/* padding: 10px; */
 	/* display: inline-block; */
 	/* width: 50%; */
 }
-/* 
+
 .section-1__article:not(:first-child) {
 	margin-top: 20px;
-} */
+}
 
 .view-topic__wrap{
 	margin: 20px 0;
