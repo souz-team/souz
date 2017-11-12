@@ -67,7 +67,7 @@
 					<?php foreach($users as $i => $user) { ?>
 						<div class="manage-table__row manage-table__row_body">
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_number">
-								<?= $i+1 ?>
+								<?= $start+$i+1 ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_login">
 								<?= $user['login'] ?>
