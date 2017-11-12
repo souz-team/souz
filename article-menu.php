@@ -6,7 +6,7 @@
 			<div class="section__wrap">
 				<div class="section-1">
 					<div class="section-1__menu">
-						
+						<?php require_once "menu.php"; ?>
 					</div>
 					<?php require_once "blocks/articles.php"; ?>
 				</div>
