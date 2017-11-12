@@ -1,8 +1,8 @@
 <div class='section-1__article'>
 	<article class='article'>
-		<div class='article__image-wrap'>
+		<!-- <div class='article__image-wrap'>
 			<img class='article__image' src='images/315x230.png' alt='' role='presentation'/>
-		</div>
+		</div> -->
 		<div class='article__content-wrap'>
 			<div class='article__content'>
 				<p class='article__title'><?= $title ?></p>
