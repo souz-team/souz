@@ -549,8 +549,12 @@ function Add_feedback ($connection, $name, $email, $subject, $topic, $date)
 		$add_query ="INSERT INTO boardt VALUES(NULL, 4, '$topic','$name','$subject', '$date', '$email')";
 		// выполняем запрос
 		$result = $connection->query($add_query);
-        if ($result) 
-            return true;
+		$id = mysqli_insert_id($connection);
+        if ($result) {
+			$feedback = array(true, $id);
+            return $feedback;
+			mysqli_close($connection);
+		}
         else
             die ($connection->error);
 }
@@ -573,7 +577,7 @@ function update_section ($connection, $id, $name, $close)
     if ($result) return true;
     else
         die ($connect->error);
-	mysqli_close($link);
+	
 }
 function create_section($connection, $name, $closed)
 {
