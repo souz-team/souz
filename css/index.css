@@ -1140,6 +1140,10 @@ img {
 	margin-top: 20px;
 }
 
+.section-index__products-grid {
+	margin: 0 -40px -40px -40px;
+}
+
 .section-index__title {
 	line-height: 1;
 }

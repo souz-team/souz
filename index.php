@@ -24,51 +24,52 @@
 
 				<div class="section-index__body">
 					
-					<div class="products-grid">
-						<div class="products-grid__item products-grid__item_1">
-							<div class="products-grid__content">
-								<p class="products-grid__title">Функциональная сервисная платформа корпоративного уровня</p>
-								<p class="products-grid__description">Позволяет легко интегрироваться со всеми современыми системами и сервисами (1C, JIRA, Google Maps, SAP и т.д.)</p>
+					<div class="section-index__products-grid">
+						<div class="products-grid">
+							<div class="products-grid__item products-grid__item_1">
+								<div class="products-grid__content">
+									<p class="products-grid__title">Функциональная сервисная платформа корпоративного уровня</p>
+									<p class="products-grid__description">Позволяет легко интегрироваться со всеми современыми системами и сервисами (1C, JIRA, Google Maps, SAP и т.д.)</p>
+								</div>
 							</div>
-						</div>
 
-						<div class="products-grid__item products-grid__item_2">
-							<div class="products-grid__content">
-								<p class="products-grid__title">Легкая и быстрая адаптация своими силами. Без кодирования</p>
-								<p class="products-grid__description">Позволяет автоматизировать ИТ и бизнес процессы любых подразделений</p>
+							<div class="products-grid__item products-grid__item_2">
+								<div class="products-grid__content">
+									<p class="products-grid__title">Легкая и быстрая адаптация своими силами. Без кодирования</p>
+									<p class="products-grid__description">Позволяет автоматизировать ИТ и бизнес процессы любых подразделений</p>
+								</div>
 							</div>
-						</div>
 
-						<div class="products-grid__item products-grid__item_3">
-							<div class="products-grid__content">
-								<p class="products-grid__title">Оптимальное ТСО среди решений корпоративного уровня</p>
-								<p class="products-grid__description">Позволяет создавать и автоматизировать бизнес процессы простыми кликами мыши</p>
+							<div class="products-grid__item products-grid__item_3">
+								<div class="products-grid__content">
+									<p class="products-grid__title">Оптимальное ТСО среди решений корпоративного уровня</p>
+									<p class="products-grid__description">Позволяет создавать и автоматизировать бизнес процессы простыми кликами мыши</p>
+								</div>
 							</div>
-						</div>
 
-						<div class="products-grid__item products-grid__item_4">
-							<div class="products-grid__content">
-								<p class="products-grid__title">Выбор 500 компаний</p>
-								<p class="products-grid__description">Помогает создать персонифицированное и максимально удобное рабочее место для каждого пользователя</p>
+							<div class="products-grid__item products-grid__item_4">
+								<div class="products-grid__content">
+									<p class="products-grid__title">Выбор 500 компаний</p>
+									<p class="products-grid__description">Помогает создать персонифицированное и максимально удобное рабочее место для каждого пользователя</p>
+								</div>
 							</div>
-						</div>
 
-						<div class="products-grid__item products-grid__item_5">
-							<div class="products-grid__content">
-								<p class="products-grid__title">Соответствие передовому мировому уровню</p>
-								<p class="products-grid__description">Naumen Service Desk является обладателем международного сертификата соответствия ITIL® v2011 по 9-ти процессам</p>
+							<div class="products-grid__item products-grid__item_5">
+								<div class="products-grid__content">
+									<p class="products-grid__title">Соответствие передовому мировому уровню</p>
+									<p class="products-grid__description">Naumen Service Desk является обладателем международного сертификата соответствия ITIL® v2011 по 9-ти процессам</p>
+								</div>
 							</div>
-						</div>
 
-						<div class="products-grid__item products-grid__item_6">
-							<div class="products-grid__content">
-								<p class="products-grid__title">Подтвержденная замена западным «слонам»</p>
-								<p class="products-grid__description">Среди всех ITSM-решений в корпоративном сегменте</p>
+							<div class="products-grid__item products-grid__item_6">
+								<div class="products-grid__content">
+									<p class="products-grid__title">Подтвержденная замена западным «слонам»</p>
+									<p class="products-grid__description">Среди всех ITSM-решений в корпоративном сегменте</p>
+								</div>
 							</div>
-						</div>
 
+						</div>
 					</div>
-
 				</div>
 
 			</div>
