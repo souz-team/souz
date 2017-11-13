@@ -4,7 +4,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=1024, initial-scale=1">
-		<link rel="stylesheet" href="../css/index.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 		<link rel="shortcut icon" href="/images/favicon.ico" type="image/ico">
@@ -12,6 +11,13 @@
 		</title>
 		<script type="text/javascript" src='/js/jquery.min.js'></script>
 		<script type="text/javascript" src='/js/index.js'></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js'></script>
+		
+		<link rel="stylesheet" href="../css/index.css">
+
 	</head>
 	<body>
 		<div class="sections-association">

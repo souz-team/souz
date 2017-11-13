@@ -2,6 +2,10 @@
 
 <?php require_once 'blocks/header.php';?>
 
+<section class="section section_main-slider">
+	<?php include_once 'blocks/main-slider.php';?>
+</section>
+
 <section class="section section_index section-content">
 	<div class="section__wrap">
 		<div class="section-index">
