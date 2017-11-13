@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=1024, initial-scale=1">
 		<link rel="stylesheet" href="../css/index.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 		<link rel="shortcut icon" href="/images/favicon.ico" type="image/ico">
 		<title>Союз
 		</title>
