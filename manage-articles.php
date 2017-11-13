@@ -7,7 +7,13 @@
 		<div class="section__wrap">
 			<div class="manage-articles">
 
-				<p class="manage-articles__title">Статьи раздела <span class="manage-articles__name">Название</span></p>
+				<?php
+					$podrazdelId = $_GET['articleId'];
+					$podrazdelName = mysql_query ("SELECT Name FROM Razdel WHERE id = '$podrazdelId'");
+					$row = mysql_fetch_row($podrazdelName);
+					
+				?>
+				<p class="manage-articles__title">Статьи подраздела <span class="manage-articles__name"><?= $row[0] ?></span></p>
 				
 				<div class="manage-articles__manage-table">
 					<div class="manage-table">
@@ -21,20 +27,31 @@
 							</div>
 						</div>
 						<div class="manage-table__body">
-							<?php for($i=1; $i<20; $i++) { ?>
-								<div class="manage-table__row manage-table__row_body" entity-id='<?= $i ?>'>
-									<div class="manage-table__cell manage-table__cell_name">
-										<a href='#' class='manage-table__name-link'>Название <?= $i ?></a>
-									</div>
-									<!-- <div class="manage-table__cell manage-table__cell_section">Раздел<?= $i ?>/подраздел<?= $i ?></div> -->
-									<div class="manage-table__cell manage-table__cell_author">Санек</div>
-									<div class="manage-table__cell manage-table__cell_date">10.10.200<?= $i%10 ?></div>
-									<div class="manage-table__cell manage-table__cell_actions">
-										<a href="/new-article.php" class="manage-table__action-link">Изменить</a>
-										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+						<?php
+									$article_item = mysql_query ("SELECT Name, Author, Date FROM Articles WHERE id_Podrazdel = '$podrazdelId'");
+									$counter = 0;
+									while ($row = mysql_fetch_assoc($article_item )) {
+										/*$artName = $row['Name'];
+										$authorName = $row['Author'];
+										$artDate = $row['Date'];*/
+										$counter+=1;
+										//for($i=1; $i<20; $i++) { 
+										?>
+											<div class="manage-table__row manage-table__row_body" entity-id='<?=$counter ?>'>
+											<div class="manage-table__cell manage-table__cell_name">
+											<a href='#' class='manage-table__name-link'> <?echo $row['Name'] ?></a>
+											</div>
+											<!-- <div class="manage-table__cell manage-table__cell_section">Раздел<?= $i ?>/подраздел<?= $i ?></div> -->
+											<div class="manage-table__cell manage-table__cell_author"><?echo $row['Author'] ?></div>
+											<div class="manage-table__cell manage-table__cell_date"><?echo $row['Date'] ?></div>
+											<div class="manage-table__cell manage-table__cell_actions">
+											<a href="/new-article.php" class="manage-table__action-link">Изменить</a>
+											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+											
+									
 									</div>
 								</div>
-							<?php } ?>
+							<?}  ?>
 						</div>
 					</div>
 				</div>

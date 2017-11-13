@@ -40,7 +40,7 @@
            						    	$id = $podrazdel[$j]['id']?>
 									<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id='<?= $id ?>'>
 										<div class="manage-table__cell manage-table__cell_name">
-											<a href='manage-articles.php' class='manage-table__name-link'> <?echo $podrazdel[$j]['Name']?></a>
+											<a href='manage-articles.php?articleId=<?= $podrazdel[$j]['id'] ?>' class='manage-table__name-link'> <?echo $podrazdel[$j]['Name']?></a>
 										</div>
 										<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $id) ?></div>
 										<div class="manage-table__cell manage-table__cell_actions">
