@@ -4,7 +4,7 @@
 		<div class="main-slider__item main-slider__item_1">
 			<div class="main-slider__item-content">
 				<p class="main-slider__title">Умеем покорять самые сложные вершины!</p>
-				<p class="main-slider__description">Проекты на базе Naumen Service Desk и Naumen IT Asset Management стали победителями ежегодного конкурса «Проект года. Выбор ИТ директоров России»</p>
+				<p class="main-slider__description">Проекты на базе СОЮЗ стали победителями ежегодного конкурса «Проект года. Выбор ИТ директоров России»</p>
 			</div>
 		</div>
 		<div class="main-slider__item main-slider__item_2">
