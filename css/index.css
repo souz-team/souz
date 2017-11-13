@@ -1987,3 +1987,45 @@ img {
 .products-grid__item:hover .products-grid__description {
 	display: none;
 }
+
+.products-info {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.products-info__item {
+	width: 33%;
+	flex-grow: 1;
+	text-align: center;
+	padding: 0 30px;
+}
+
+.products-info__image-wrap {
+	display: -webkit-inline-flex;
+	display: -moz-inline-flex;
+	display: -ms-inline-flex;
+	display: -o-inline-flex;
+	display: inline-flex;
+	vertical-align: middle;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 0 6px 0 rgba(0,0,0,.05);
+	align-items: center;
+	justify-content: center;
+}
+
+.products-info__image {
+	height: 56px;
+}
+
+.products-info__content {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.5;
+	margin-top: 20px;
+}

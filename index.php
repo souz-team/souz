@@ -73,6 +73,37 @@
 
 			</div>
 
+			<div class="section-index__section section-index__section_addition">
+				
+				<p class="section-index__title section-index__title_high section-index__title_delimiter">Никаких рисков<br>100% российское решение</p>
+
+				<div class="section-index__body">
+
+					<div class="products-info">
+						<div class="products-info__item">
+							<div class="products-info__image-wrap">
+								<img src="images/products-info/1.webp" alt="Тех. поддержка и документация на русском языке" class="products-info__image">
+							</div>
+							<p class="products-info__content">Тех. поддержка и документация на русском языке</p>
+						</div>
+						<div class="products-info__item">
+							<div class="products-info__image-wrap">
+								<img src="images/products-info/2.png" alt="Команда разработки и внедрения из России" class="products-info__image">
+							</div>
+							<p class="products-info__content">Команда разработки и внедрения из России</p>
+						</div>
+						<div class="products-info__item">
+							<div class="products-info__image-wrap">
+								<img src="images/products-info/3.webp" alt="Подтвержденная работа на бесплатных СУБД и ОС" class="products-info__image">
+							</div>
+							<p class="products-info__content">Подтвержденная работа на бесплатных СУБД и ОС</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 </section>
