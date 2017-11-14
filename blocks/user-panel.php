@@ -1,17 +1,32 @@
 <div class="user-panel">
 
 	<div class="user-panel__avatar">
-	<?php if($_SESSION['gender']==0){ ?>
-		<a href="lk.php" class="user-panel__link"><img src="images/avatars/user-women.png" alt="<?= $_SESSION["fio"] ?>" class="user-panel__avatar-image">
-	<?php } elseif ($_SESSION['gender']==1){ ?>
-		<a href="lk.php" class="user-panel__link"><img src="images/avatars/user-man.png" alt="<?= $_SESSION["fio"] ?>" class="user-panel__avatar-image">
-	<?php }?>
+		<a href="lk.php" class="user-panel__link">
+			<?php
+				
+				switch ($_SESSION['gender']) {
+					case 0:
+						$imageName = 'user-women.png';
+						break;
+					
+					case 1:
+						$imageName = 'user-man.png';
+						break;
+					
+					default:
+						$imageName = 'user-man.png';
+						break;
+				}
+			?>
+			<img src="images/avatars/<?= $imageName ?>" alt="<?= $_SESSION["fio"] ?>" class="user-panel__avatar-image">
+		</a>
 	
 	</div>
 
 	<p class="user-panel__name"><?= $_SESSION["fio"] ?></p></a>
 	<p class="user-panel__link-wrap">
-		<a href="lk.php" class="user-panel__link"><img src='/images/lk-image.png' width='20' height='20'>Личный кабинет</a>
+		<img src='/images/lk-image.png' width='20' height='20'>
+		<a href="lk.php" class="user-panel__link">Личный кабинет</a>
 	</p>
 
 	<div class="user-panel__footer">
