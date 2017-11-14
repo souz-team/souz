@@ -24,7 +24,7 @@ require('config.php');
 							$id = $_GET['id'];
 							
 							$n=0;
-							$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
+							//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
 							$result = Show_Articles ($link, $id);
 									if ($result==0)
 										{

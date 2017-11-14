@@ -8,12 +8,14 @@
 			<div class="manage-articles">
 
 				<?php
-					$podrazdelId = $_GET['articleId'];
-					$podrazdelName = mysql_query ("SELECT Name FROM Razdel WHERE id = '$podrazdelId'");
-					$row = mysql_fetch_row($podrazdelName);
+                if (isset($_GET['podrazId']))
+					$podrazdelId = $_GET['podrazId'];
+					//$podrazdelName = mysql_query ("SELECT Name FROM Razdel WHERE id = '$podrazdelId'");
+					//$row = mysql_fetch_row($podrazdelName);
+                   // $row = Name_Podrazdel($link, $podrazdelId);
 					
 				?>
-				<p class="manage-articles__title">Статьи подраздела <span class="manage-articles__name"><?= $row[0] ?></span></p>
+				<p class="manage-articles__title">Статьи подраздела <span class="manage-articles__name"><?= Name_Podrazdel($link, $podrazdelId) ?></span></p>
 				
 				<div class="manage-articles__manage-table">
 					<div class="manage-table">
@@ -28,22 +30,16 @@
 						</div>
 						<div class="manage-table__body">
 						<?php
-									$article_item = mysql_query ("SELECT Name, Author, Date FROM Articles WHERE id_Podrazdel = '$podrazdelId'");
+									$array = Show_Articles($link, $podrazdelId);
 									$counter = 0;
-									while ($row = mysql_fetch_assoc($article_item )) {
-										/*$artName = $row['Name'];
-										$authorName = $row['Author'];
-										$artDate = $row['Date'];*/
-										$counter+=1;
-										//for($i=1; $i<20; $i++) { 
+									for  ($i=0; $i<count($array); $i++) {
 										?>
-											<div class="manage-table__row manage-table__row_body" entity-id='<?=$counter ?>'>
+											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>'> 
 											<div class="manage-table__cell manage-table__cell_name">
-											<a href='#' class='manage-table__name-link'> <?echo $row['Name'] ?></a>
+                                        <a href='#' class='manage-table__name-link'> <?echo $array[$i]['Name'] ?></a>
 											</div>
-											<!-- <div class="manage-table__cell manage-table__cell_section">Раздел<?= $i ?>/подраздел<?= $i ?></div> -->
-											<div class="manage-table__cell manage-table__cell_author"><?echo $row['Author'] ?></div>
-											<div class="manage-table__cell manage-table__cell_date"><?echo $row['Date'] ?></div>
+											<div class="manage-table__cell manage-table__cell_author"><?echo $array[$i]['Author'] ?></div>
+											<div class="manage-table__cell manage-table__cell_date"><?echo $array[$i]['Date'] ?></div>
 											<div class="manage-table__cell manage-table__cell_actions">
 											<a href="/new-article.php" class="manage-table__action-link">Изменить</a>
 											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
@@ -60,6 +56,7 @@
 					<a href="/new-article.php" class="manage-articles__link-new-article">
 						<button class="button button_default">Создать статью</button>
 					</a>
+                    <a href='/manage-sections.php' ><div class="button button_cancel">Назад</div></a>
 				</div>
 
 			</div>

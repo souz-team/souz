@@ -83,6 +83,15 @@ function Delete_Podrazdel ($connection, $var)
     }
     */
 }
+function Name_Podrazdel ($connection, $var)
+{
+    $name_query = "SELECT Name FROM Razdel WHERE id = '$var'";
+    $result = $connection->query ($name_query);
+    if (!$result) die ($connect->error);
+    else
+    $value = $result->fetch_array(MYSQLI_NUM);
+    return is_array($value) ? $value[0] : "";
+}
 
 // Добаление ПОЛЬЗОВАТЕЛЯ
 
