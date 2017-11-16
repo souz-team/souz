@@ -9,12 +9,12 @@ $connect = @mysql_connect ("$host", "$login", "$pswrd");
 //Если подключение не открылось на удалённый сервер, то используем локальный
 if (!$connect) {
 	$host = "127.0.0.1";
-    $connect = mysql_connect ("$host", "$login", "$pswrd");
-	mysql_set_charset("utf8");
+    $connect = @mysql_connect ("$host", "$login", "$pswrd");
+	@mysql_set_charset("utf8");
 }
 if(!$connect) {
 	echo "Удалённый сервер баз данных недоступен, а локальный не отвечает";
-	exit (mysql_error ());
+	//exit (mysql_error ());
 }  
 else {
 	
