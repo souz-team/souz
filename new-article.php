@@ -18,6 +18,7 @@
 								<p class="form-new-material__label">Подраздел</p>
 								<select class='form-new-material__select' name="id_Podrazdel">
 								<?
+									$podrazdelId = $_GET['podrazId'];
 									$optionList = "";
 									$lastParentId = "THIS_PARAM_MUST_BE_INTEGER";
 									$razdel_query = mysql_query ("SELECT a.id as parentId, a.Name as parentName, b.id as childId, b.Name as childName FROM Razdel a, Razdel b WHERE b.P_id=a.id and a.P_id=0 ORDER BY a.Name, a.id");

@@ -2,8 +2,12 @@
 	require 'config.php';
 	
 	$authorName = $_SESSION['fio'];
-	$idPodRazdel = $_POST['id_Podrazdel'];
-	//$podrazdelId = $_GET['podrazId'];
+	if (isset($_GET['podRazId'])){
+			$idPodRazdel = $_GET['podRazId'];
+		}
+	if (isset($_GET['artID'])){
+				$artId = $_GET['artID'];
+			}
 	
 	if (isset($_POST["articleName"]))
 	{
@@ -16,6 +20,11 @@
 	if (strlen ($artName) > 200)
 	{
 		$err_str.= 'Поле "Название" слишком длинное <br>';
+	}
+		
+	if (isset($_POST["id_Podrazdel"]))
+	{
+		$id_Podrazdel1 = $_POST["id_Podrazdel"];
 	}
 		
 		
@@ -48,11 +57,13 @@
 			
 			$artName = htmlentities($str1, ENT_QUOTES);
 			$artText = htmlentities($str2, ENT_QUOTES);
+			//var_dump($idPodRazdel);	
 				
-			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Text`, `Date`) VALUES( $idPodRazdel, '$artName', '$authorName', '$artText', Now() )";
-			mysql_query($strSQL) or die (mysql_error());
-	
+				
 		}
+	$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel1', Name = '$artName', Author = '$authorName', Text = '$artText', Date = Now() WHERE id = '$artId'")
+					or die ("Error in query: $sql. ".mysql_error());	
 
 	header("Location: http://souz/manage-articles.php?podrazId=$idPodRazdel");
+	
 ?>

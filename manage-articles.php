@@ -36,16 +36,18 @@
 										?>
 											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>'> 
 											<div class="manage-table__cell manage-table__cell_name">
-                                        <a href='#' class='manage-table__name-link'> <?echo $array[$i]['Name'] ?></a>
+                                        
+											<?echo $array[$i]['Name'] ?></a>
 											</div>
 											<div class="manage-table__cell manage-table__cell_author"><?echo $array[$i]['Author'] ?></div>
 											<div class="manage-table__cell manage-table__cell_date"><?echo $array[$i]['Date'] ?></div>
 											<div class="manage-table__cell manage-table__cell_actions">
-											<a href="/new-article.php" class="manage-table__action-link">Изменить</a>
-											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+											<a href="/article-edit.php?artId=<?=$array[$i]['id']?>&podrazId=<?=$podrazdelId?>" class="manage-table__action-link">Изменить</a>
+											<a href="/article-delete.php?del_id=<?=$array[$i]['id']?>&podrazId=<?=$podrazdelId?>" onclick="return confirm('Подтвердите удаление')? true : false;" class="manage-table__action-link manage-table__action-link_remove" >Удалить</a>
 											
 									
 									</div>
+									
 								</div>
 							<?}  ?>
 						</div>
