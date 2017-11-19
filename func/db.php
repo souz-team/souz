@@ -156,6 +156,27 @@ function Edit_User ($connection, $var) // Принимает подключен�
     else return 0;
 }
 
+// Показ пользователей по правам доступа 
+function Show_Admin ($connection) // Принимает подключение и id
+{
+    $search = "SELECT * FROM Users WHERE level_id = '1' OR level_id = '2'";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+      $rows = $result->num_rows;
+     if (!$rows) return 0;
+       else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+}
+
 // Редактирование ПАРОЛЯ
 function Update_Passwort ($connection, $password_, $email_)
 {
@@ -648,5 +669,13 @@ function update_topic ($connection, $id_topic, $id_section, $topic, $subject)
     else
         die ($connect->error);
 	mysqli_close($link);
+}
+
+function DoctorString ($var)
+{
+    $var = trim (stripslashes ($var));    //избавление от нежелательных слеш-символов, например, вставленных с помощью устаревшей директории magic_quotes_gpc
+    //$var = strip_tags ($var); // очистка введенных данных от HTML
+    $var = htmlentities ($var, ENT_QUOTES, "UTF-8"); //заменяет все угловые скобки, используемые в качестве составляющих HTML-тегов
+    return $var;
 }
 
