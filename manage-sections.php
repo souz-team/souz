@@ -31,9 +31,9 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 									</div>
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
-										<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
+										<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
-										<a href="/section.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
+										<a href="/section-create.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>
 								<?php 
@@ -46,7 +46,7 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 										</div>
 										<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $id) ?></div>
 										<div class="manage-table__cell manage-table__cell_actions">
-											<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
+											<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										</div>
 									</div>
@@ -57,7 +57,7 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 				</div>
 				
 				<div class="manage-sections__wrap-button">
-					<a href="/section.php?id=<?= 0 ?>" class="manage-sections__link-new-section">
+					<a href="/section-create.php?id=<?= 0 ?>" class="manage-sections__link-new-section">
 						<button class="button button_default">Создать раздел</button>
 					</a>
 				</div>
