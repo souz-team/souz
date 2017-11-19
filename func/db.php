@@ -21,6 +21,19 @@ function Menu ($connection, $var)
     }
     return $array; 
 }
+
+// Возврат одного подраздела
+function Show_Podrazdel ($connection, $var) // Принимает подключение и id
+{
+    $search = "SELECT * FROM Razdel WHERE id = '$var'";
+    $result = $connection->query ($search);
+    if ($result)
+    {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows) return $rows;
+    else return 0;
+}
 // Добаление РАЗДЕЛА
 
 function Add_Razdel ($connection, $Name)
@@ -61,6 +74,19 @@ function Add_Podrazdel ($connection, $P_id, $Name)
         else
             die ($connect->error);
 }
+
+// Добаление РАЗДЕЛА
+
+function Change_Razdel ($connection, $id, $P_id, $Name)
+{
+		$change_query ="UPDATE Razdel SET P_id = '$P_id', Name = '$Name' WHERE id = '$id'";
+		$result = $connection->query($change_query); 
+        if ($result) 
+            return true;
+        else
+            die ($connect->error);
+} 
+
 
 // Удаление ПОДРАЗДЕЛА
 
@@ -300,7 +326,7 @@ function Show_One_Article ($connection, $var) // Принимает подклю
     }
     if ($rows) return $rows;
     else return 0;
-	mysql_close();
+	mysql_close(); // Зачем mysql_close()?
 }
 
 function Show_Last ($connection)
