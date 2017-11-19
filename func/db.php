@@ -83,7 +83,7 @@ function Delete_Podrazdel ($connection, $var)
     }
     */
 }
-function Name_Podrazdel ($connection, $var)
+function Name_Podrazdel ($connection, $var) // Поиск имени раздела || подраздела по id
 {
     $name_query = "SELECT Name FROM Razdel WHERE id = '$var'";
     $result = $connection->query ($name_query);
