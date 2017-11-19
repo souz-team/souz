@@ -1,10 +1,7 @@
-<?php require 'config.php';?>
-
+<?php require 'config.php';
+if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-section.php';?>
-
-<?php
-if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 	<section class="section section-content">
 		<div class="section__wrap">
 			<div class="manage-sections">
@@ -65,7 +62,7 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 			</div>
 		</div>
 	</section>
-<?php } 
-else 
-    echo "<br>"."You don't have rights to be here."; ?>
-<?php require_once 'blocks/footer.php'; ?>
+<?php require_once 'blocks/footer.php';}
+header ("location: index.php");
+exit;
+?>
