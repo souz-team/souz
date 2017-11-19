@@ -8,8 +8,12 @@ require_once '/blocks/cu_personal_change.php';
 }
 
 if(isset($_GET['delete']) AND ($_SESSION['userlevel']==1)){
-	
-	echo 'УДАЛИТЬ РАЗДЕЛ!';
+	$id_user = $_GET['delete'];
+	require_once '/action/get-user-by-id.php';
+	$query ="DELETE FROM Users WHERE id = '$id_user'";
+	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+	mysqli_close($link);
+	echo 'Пользователь удален!';
 }
 
 if(isset($_POST['edit_user']))

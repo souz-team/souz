@@ -7,8 +7,10 @@ require_once '/blocks/forum-change-section.php';
 }
 
 if(isset($_GET['delete']) AND ($_SESSION['userlevel']==1)){
+	$data = $_GET['delete'];
+	require_once '/action/get-section-by-id.php';
+	require_once '/blocks/delete/forum-delete-section.php';
 	
-	echo 'УДАЛИТЬ РАЗДЕЛ!';
 }
 
 if(isset($_POST['edit_section']))

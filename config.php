@@ -13,18 +13,21 @@ if (!$connect) {
 	@mysql_set_charset("utf8");
 }
 if(!$connect) {
-	echo "Удалённый сервер баз данных недоступен, а локальный не отвечает";
+	header('Location: /errors/404.htm');
+	
+	
 	//exit (mysql_error ());
 }  
 else {
 	
     mysql_select_db ("$db_name", $connect);
 	mysql_set_charset("utf8");
+	global $connect; 
+	mysql_query ("SET NAMES 'UTF-8'");
+	$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
+	include '/func/db.php';
 	  
 }
 	
-	global $connect; 
-mysql_query ("SET NAMES 'UTF-8'");
-$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
-include '/func/db.php';
+
 ?>
