@@ -352,6 +352,14 @@ function Cut ($string, $length)
 	return $string;
 }
 
+function queryNameRazdel($id, $table, $atributWhere, $connection){
+	$sql = "SELECT * FROM $table WHERE $atributWhere = $id";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$row =$result->fetch_array (MYSQLI_ASSOC);
+	return $row;
+}
+
 //Хлебные крошки
 function breadcrumbs($array,$id) {
 	if(!$id) return false;
