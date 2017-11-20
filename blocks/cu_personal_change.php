@@ -99,6 +99,7 @@
 				<div class="table-input-info__row table-input-info__row_buttons">
 
 					<button class="button button_article" name="edit_user">Изменить</button>
+					<button onclick='return confirm("Вы уверены?")' class="button button_cancel" name="delete_user">Удалить пользователя</button>
 					<a href='/control-user.php' class='button button_cancel'>Назад</a>
 
 				</div>
