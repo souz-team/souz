@@ -6,23 +6,23 @@
 	$flag=1;
 	$num_razd=0;
 	do{
-		if($cur_url == "/"){
+		if($cur_url == "/index.php" || $cur_url == "/"){
 			$flag = 0;
-		} else if($page1 == "/"){
+		} else if($page1 == "/index.php"){
 			array_unshift($crumbs, array('text' => "Главная", 'url' => "/"));
 			$flag = 0;
 		} else if($page1 == "/article-menu.php"){
 			array_unshift($crumbs, array('text' => "Статьи", 'url' => "article-menu.php"));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if($page1 == "/forum.php"){
 			array_unshift($crumbs, array('text' => "Форум", 'url' => 'forum.php'));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if($page1 == "/feedback.php"){
 			array_unshift($crumbs, array('text' => "Обратная связь", 'url' => "feedback.php"));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if($page1 == "/contact.php"){
 			array_unshift($crumbs, array('text' => "Контакты", 'url' => "contact.php"));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if($page1 == "/forum-topic.php"){
 			$row = queryNameRazdel($id1, 'boardsection', 'section_id', $link);
 			$name = $row['name'];
@@ -53,13 +53,13 @@
 			$id1 = $row['id_Podrazdel'];
 		} else if ($page1 == "/lk.php"){
 			array_unshift($crumbs, array('text' => "Личный кабинет", 'url' => "lk.php"));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if ($page1 == "/manage-sections.php"){
 			array_unshift($crumbs, array('text' => "Управление подразделами", 'url' => "manage-sections.php"));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if ($page1 == "/control-user.php"){
 			array_unshift($crumbs, array('text' => "Управление юзерами", 'url' => "control-user.php"));
-			$page1 = "/";
+			$page1 = "/index.php";
 		} else if($page1 == "/forum-new-section.php"){
 			array_unshift($crumbs, array('text' => "Создание раздела", 'url' => "forum-new-section.php"));
 			$page1 = "/forum.php";
@@ -68,7 +68,7 @@
 			$id1 = filter_input(INPUT_GET, 'id');
 			$page1 = "/forum-topic.php";
 		} else{
-			$page1 = "/";
+			$page1 = "/index.php";
 		}
 	}while($flag!=0);
 ?>
