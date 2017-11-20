@@ -955,9 +955,9 @@ img {
 }
 
 .user-panel__name {
-	color: #333333;
-	font-weight: 300;
-	font-size: 22px;
+	color: #0072bc;
+	font-weight: 500;
+	font-size: 16px;
 	line-height: 1.5;
 }
 
