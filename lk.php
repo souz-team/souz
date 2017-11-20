@@ -2,7 +2,7 @@
 require_once 'config.php';?>
 
 	<?php require_once 'blocks/header.php'; ?>
-	<section class="section section_lk section-content">
+	<section class="section section_lk section_content">
 		<div class="section__wrap">
 			<div class="lk">
 				

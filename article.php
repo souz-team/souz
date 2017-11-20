@@ -1,7 +1,7 @@
 <?php require 'config.php'; ?>
 <?php require_once 'blocks/header.php'; ?>
 
-      	<section class="section section_article section-content">
+      	<section class="section section_article section_content">
       		<div class="section__wrap">
       			<div class="section-article">
 					<?php

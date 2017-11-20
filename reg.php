@@ -37,7 +37,7 @@
 	}
 ?>
 <?php require_once 'blocks/header.php'; ?>
-<div class="section section sectin_1 section-content">
+<div class="section section sectin_1 section_content">
 	<div class="section-confirm__wrap-main">
 		<div class="section-confirm">
 			<div class="section-corfim__wrap">

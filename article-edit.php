@@ -2,7 +2,7 @@
 require_once 'blocks/header.php'; 
 ?>
 
-	<section class="section section-content">
+	<section class="section section_content">
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title">Редактирование статьи</p>
