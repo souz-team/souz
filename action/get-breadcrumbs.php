@@ -55,14 +55,23 @@
 			array_unshift($crumbs, array('text' => "Личный кабинет", 'url' => "lk.php"));
 			$page1 = "/index.php";
 		} else if ($page1 == "/manage-sections.php"){
-			array_unshift($crumbs, array('text' => "Управление подразделами", 'url' => "manage-sections.php"));
+			array_unshift($crumbs, array('text' => "Управление статьями", 'url' => "manage-sections.php"));
 			$page1 = "/index.php";
+		} else if ($page1 == "/manage-articles.php"){			
+			$row = queryNameRazdel($id1, 'Razdel', 'id', $link);
+			$name = $row['Name'];
+			array_unshift($crumbs, array('text' => $name, 'url' => "manage-articles.php"));
+			$page1 = "/manage-sections.php";
 		} else if ($page1 == "/control-user.php"){
-			array_unshift($crumbs, array('text' => "Управление юзерами", 'url' => "control-user.php"));
+			array_unshift($crumbs, array('text' => "Управление пользователями", 'url' => "control-user.php"));
 			$page1 = "/index.php";
 		} else if($page1 == "/forum-new-section.php"){
 			array_unshift($crumbs, array('text' => "Создание раздела", 'url' => "forum-new-section.php"));
 			$page1 = "/forum.php";
+		} else if($page1 == "/control-user-edit.php"){
+			array_unshift($crumbs, array('text' => "Редактирование данных пользователя", 'url' => "control-user-edit.php"));
+			$id1 = filter_input(INPUT_GET, 'id');
+			$page1 = "/control-user.php";
 		} else if($page1 == "/forum-new-topic.php"){
 			array_unshift($crumbs, array('text' => "Создание темы", 'url' => "forum-new-topic.php"));
 			$id1 = filter_input(INPUT_GET, 'id');

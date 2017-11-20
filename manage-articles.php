@@ -3,13 +3,13 @@
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-article.php';?>
 
-	<section class="section section_1 section_content">
+	<section class="section section_1 section-content">
 		<div class="section__wrap">
 			<div class="manage-articles">
 
 				<?php
-                if (isset($_GET['podrazId']))
-					$podrazdelId = $_GET['podrazId'];
+                if (isset($_GET['id']))
+					$podrazdelId = $_GET['id'];
 					//$podrazdelName = mysql_query ("SELECT Name FROM Razdel WHERE id = '$podrazdelId'");
 					//$row = mysql_fetch_row($podrazdelName);
                    // $row = Name_Podrazdel($link, $podrazdelId);

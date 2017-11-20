@@ -1,12 +1,8 @@
 <?php require 'config.php';
-if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2){ 
-	header("Location: /");
-	exit;
-	}
-?>
+if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-section.php';?>
-	<section class="section section_content">
+	<section class="section section-content">
 		<div class="section__wrap">
 			<div class="manage-sections">
 
@@ -33,26 +29,25 @@ if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2){
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
 										<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
-										<a href="/manage-delete-razdel.php?id=<?= $id ?>" class="manage-table__action-link">Удалить</a>
+										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										<a href="/section-create.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>
 								<?php 
             						$podrazdel = Menu($link, $id); // Передаём id раздела для поиска всех подразделов. P_id == id
-                                    $j = 0;
-                                    while ($podrazdel!=0 && $j < count($podrazdel)) { 
-           						    	$id = $podrazdel[$j]['id'];?>
+           						    for ($j=0; $j<count($podrazdel); $j++) { 
+           						    	$id = $podrazdel[$j]['id']?>
 									<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id='<?= $id ?>'>
 										<div class="manage-table__cell manage-table__cell_name">
-											<a href='manage-articles.php?podrazId=<?= $podrazdel[$j]['id'] ?>' class='manage-table__name-link'> <?echo $podrazdel[$j]['Name']?></a>
+											<a href='manage-articles.php?id=<?= $podrazdel[$j]['id'] ?>' class='manage-table__name-link'> <?echo $podrazdel[$j]['Name']?></a>
 										</div>
 										<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $id) ?></div>
 										<div class="manage-table__cell manage-table__cell_actions">
 											<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
-											<a href="/manage-delete-section.php?id=<?= $id ?>" class="manage-table__action-link">Удалить</a>
+											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										</div>
 									</div>
-								<?php $j++; } ?>
+								<?php } ?>
 							<?php } ?>
 						</div>
 					</div>
@@ -67,4 +62,9 @@ if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2){
 			</div>
 		</div>
 	</section>
-<?php require_once 'blocks/footer.php';?>
+<?php require_once 'blocks/footer.php';}
+else{
+header ("location: index.php");
+exit;
+}
+?>
