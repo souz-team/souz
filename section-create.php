@@ -2,6 +2,7 @@
 <?php require_once 'blocks/header.php';?>
 
 <?php 
+if (($_SESSION['userlevel']==1) || ($_SESSION['userlevel']==2)) {
 if (isset($_GET['id']) && $_GET['id'] != 0)
 {
 	$sectionid = $_GET['id'];
@@ -15,7 +16,7 @@ else {
 	$zagolovok = "Создание раздела";}
 ?>
 
-	<section class="section section-content">
+	<section class="section section_content">
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title"><?php echo $zagolovok?></p>
@@ -32,7 +33,7 @@ else {
 
 								<div class="table-input-info__wrap-textfield">
 									<input type="text" name = "name" class="table-input-info__textfield">
-                                    <input type="hidden" name = "id" value = "<?php echo $sectionid ?>" class="table-input-info__textfield">
+                                    <input class="table-input-info__textfield" type="hidden" name = "id" value = "<?=$sectionid ?>">
 								</div>
 
 							</label>
@@ -45,16 +46,15 @@ else {
 								<div class="table-input-info__wrap-text">
 									<span class="table-input-info__text">Администратор</span>
 								</div>
-
-								<div class="table-input-info__wrap-textfield">
+                                <div class="table-input-info__wrap-textfield">
+                                        <?php $admin = Show_Admin($link);?>
+                                        
 									<select class='table-input-info__select'>
-										<option value="">[Волк]</option>
-										<option value="">Анка</option>
-										<option value="">Саша</option>
-										<option value="">Дмитрий</option>
-										<option value="">Анна</option>
-										<option value="">Мария</option>
+                                    <?php for ($i = 0; $i < count($admin); $i++) { ?>
+										<option value="<?=$admin[$i]['id']?>"><?=$admin[$i]['login']?></option>
+                                         <?php  }?>
 									</select>
+                                   
 								</div>
 
 							</label>
@@ -73,5 +73,7 @@ else {
 	</section>
 
 
-	
+<?php } 
+else 
+    echo "<br>"."You don't have rights to be here."; ?>	
 <?php require_once 'blocks/footer.php'; ?>

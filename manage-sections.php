@@ -1,11 +1,12 @@
-<?php require 'config.php';?>
-
+<?php require 'config.php';
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2){ 
+	header("Location: /");
+	exit;
+	}
+?>
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-section.php';?>
-
-<?php
-if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
-	<section class="section section-content">
+	<section class="section section_content">
 		<div class="section__wrap">
 			<div class="manage-sections">
 
@@ -31,9 +32,9 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 									</div>
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
-										<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
+										<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
-										<a href="/section.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
+										<a href="/section-create.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>
 								<?php 
@@ -46,7 +47,7 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 										</div>
 										<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $id) ?></div>
 										<div class="manage-table__cell manage-table__cell_actions">
-											<a href="/section.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
+											<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
 											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										</div>
 									</div>
@@ -57,7 +58,7 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 				</div>
 				
 				<div class="manage-sections__wrap-button">
-					<a href="/section.php?id=<?= 0 ?>" class="manage-sections__link-new-section">
+					<a href="/section-create.php?id=<?= 0 ?>" class="manage-sections__link-new-section">
 						<button class="button button_default">Создать раздел</button>
 					</a>
 				</div>
@@ -65,7 +66,4 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 			</div>
 		</div>
 	</section>
-<?php } 
-else 
-    echo "<br>"."You don't have rights to be here."; ?>
-<?php require_once 'blocks/footer.php'; ?>
+<?php require_once 'blocks/footer.php';?>

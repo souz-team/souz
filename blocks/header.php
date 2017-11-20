@@ -87,7 +87,7 @@
 										<div class="navigation__item"><a class="navigation__link" href="contact.php">Контакты</a>
 										</div>
 									</li>
-									<?php if ($_SESSION['userlevel']==1){ ?>
+									<?php if ($_SESSION['userlevel']==1 OR $_SESSION['userlevel']==2){ ?>
 										<li>
 											<div class="navigation__item navigation__item_manage"><a class="navigation__link" href="">Управление</a>
 											</div>
@@ -97,17 +97,20 @@
 													</div>
 												</li> -->
 												<li>
-													<div class="navigation__item"><a class="navigation__link" href="/manage-sections.php">Управление разделами</a>
+													<div class="navigation__item"><a class="navigation__link" href="/manage-sections.php">Управление статьями</a>
 													</div>
 												</li>
-												<li>
+												<!--<li>
 													<div class="navigation__item"><a class="navigation__link" href="forum.php">Управление форумом</a>
 													</div>
-												</li>
+												</li>-->
+												
+												<?php if ($_SESSION['userlevel']==1){ ?>
 												<li>
 													<div class="navigation__item"><a class="navigation__link" href="control-user.php">Управление юзерами</a>
 													</div>
 												</li>
+												<?php } ?>
 											</ul>
 										</li>
 										<?php } ?>
