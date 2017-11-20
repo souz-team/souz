@@ -2203,3 +2203,51 @@ img {
 .main-slider__arrow_next {
 
 }
+
+.sign-up-success {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background-color: #fff;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+	/* justify-content: center; */
+	flex-direction: column;
+	padding-top: 100px;
+}
+
+.sign-up-success__image-success-wrap {
+
+}
+
+.sign-up-success__image-success {
+	width: 200px;
+}
+
+.sign-up-success__content {
+	margin-top: 50px;
+}
+
+.sign-up-success__text {
+	font-size: 50px;
+	font-weight: 100;
+}
+
+.sign-up-success__second-text {
+	margin-top: 20px;
+}
+
+.sign-up-success__link {
+	color: #0052cc;
+}
+
+.sign-up-success__link:hover {
+	text-decoration: underline;
+}

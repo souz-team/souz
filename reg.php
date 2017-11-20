@@ -29,8 +29,7 @@
 			if($result)
 			{
 				mysqli_close($link);
-				header('Refresh: 2; URL=/index.php');
-				echo '<div class="section-corfim__wrap"> Спасибо за регистрацию на нашем сайте!</div>';
+				header('location: /sign-up-success.php');
 				exit;
 			}
 		}
