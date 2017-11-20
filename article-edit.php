@@ -56,9 +56,11 @@ require_once 'blocks/header.php';
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Текст статьи</p>
 							<textarea name="articleText" class="form-new-material__textarea"><?echo $row['Text']?></textarea>
-						</label>
+						</label><br>
+						Выберите файл для загрузки: 
+							<input type="file" name="userfile">
 						
-										
+						
 						<div class="form-new-material__row form-new-material__row_buttons">
 							<a href="/manage-articles.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>">
 								<button class="button button_cancel">Отмена

@@ -1,7 +1,7 @@
 <div class='section-1__article'>
 	<article class='article'>
 		<div class='article__image-wrap'>
-			<img class='article__image' src='images/315x230.png' alt='' role='presentation'/>
+			<img class='article__image' src =<?= $articleImage?>  alt='' role='presentation'/>
 		</div>
 		<div class='article__content-wrap'>
 			<div class='article__content'>

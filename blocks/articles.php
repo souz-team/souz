@@ -24,6 +24,7 @@
 
 			$acrtcleId = $article['id'];
 			$authorName = $article['Author'];
+			$articleImage = $article['Image_url'];
 			$authorDate = $article['Date'];
 			$title = $article['Name'];
 

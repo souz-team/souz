@@ -7,7 +7,7 @@
 			<div class="new-material">
 				<p class="new-material__title">Создание статьи</p>
 				<div class="new-material__form">
-					<form action="create-article.php" method="post" class="form-new-material">
+					<form action="create-article.php" method="post" class="form-new-material" ENCTYPE="multipart/form-data">
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
 							<input type="text" name="articleName" class="form-new-material__textfield">
@@ -38,10 +38,16 @@
 								</select>
 							</div>
 						</div>
+						
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Текст статьи</p>
 							<textarea class="form-new-material__textarea"name= "articleText"></textarea>
 						</label>
+						
+						<br>
+						
+							Выберите файл для загрузки: 
+							<input type="file" name="userfile">
 						<div class="form-new-material__row form-new-material__row_buttons">
 							<a href="/manage-articles.php">
 								<button class="button button_cancel">Отмена
