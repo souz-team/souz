@@ -94,7 +94,7 @@
 								<a href='/control-user-edit.php?edit=<?= $user['id'] ?>'>
 									<img src='/images/edit.png' width='20' height='20'>
 								</a>&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href='/control-user-edit.php?delete=<?= $user['id'] ?>'>
+								<a href='/control-user-edit.php?delete=<?= $user['id'] ?>' OnClick='return confirm("Вы уверены?")'>
 									<img src='/images/delete.png' width='15' height='15'>
 								</a>
 							</div>
