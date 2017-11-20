@@ -774,7 +774,18 @@ img {
 	background-color: rgba(0,0,0,0);
 }
 
+.button_delete_user {
+	padding: 10px;
+	color: rgba(220,0,0,1);
+	background-color: rgba(0,0,0,0);
+}
+
 .button_cancel:hover {
+	color: #fff;
+	background-color: rgba(220,0,0,1.0);
+}
+
+.button_delete_user:hover {
 	color: #fff;
 	background-color: rgba(220,0,0,1.0);
 }
