@@ -6,20 +6,21 @@ function Menu ($connection, $var)
 {
 	  $menu = "SELECT * FROM Razdel WHERE P_id = '$var'";
       $result = $connection->query ($menu);
-      if (!$result) die ($connect->error);
+      if ($result)
+      {
       $rows = $result->num_rows;
-     if (!$rows) return 0;
-       else
-    {
+      if ($rows==0) return $rows; 
+      else {
         $array = array ();
-        for ($i=0; $i<$rows; $i++)
-        {
+        for ($i=0; $i<$rows; $i++) {
             $result->data_seek ($i);
             $row =$result->fetch_array (MYSQLI_ASSOC);
             $array["$i"] = $row;
         }   
-    }
-    return $array; 
+            return $array;
+      }
+      }
+      else return 0;
 }
 
 // Возврат одного подраздела
@@ -92,22 +93,16 @@ function Change_Razdel ($connection, $id, $P_id, $Name)
 
 function Delete_Podrazdel ($connection, $var) 
 {
-    $delete = "DELETE FROM Articles FROM Razdel WHERE Articles.id_Podrazdel = '$var' and Razdel.id = '$var'";
-    $result = $connection->query ($delete);
-        if ($result) return true;
-        else
-            die ($connect->error);
-   /* $delete = "DELETE FROM Articles WHERE id_Podrazdel = '$var'"; // Удаляются все статьи подраздела
-    $bet_result = $connection->query ($delete);
-    if (!$bet_result) die ($connect->error);
-    else {
-        $delete_query = "DELETE FROM Razdel WHERE id = '$var'";
-        $result = $connection->query ($delete_query);
-        if ($result) return true;
-        else
-            die ($connect->error);
+    $all_articles = Show_Articles ($connection, $var);
+    for ($i = 0; $i < count($all_articles); $i++) {
+        $article_id = $all_articles[$i]['id'];
+        $delete_article = Delete_Article($connection, $article_id);
     }
-    */
+    $delete = "DELETE FROM Razdel WHERE id = '$var'";
+    $result = $connection->query ($delete);
+    if ($result) return true;
+    else
+        die ($connect->error);
 }
 function Name_Podrazdel ($connection, $var) // Поиск имени раздела || подраздела по id
 {
