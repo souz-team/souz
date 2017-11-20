@@ -1,7 +1,7 @@
 <?php require 'config.php'; ?>
 <?php require_once 'blocks/header.php'; ?>
 
-      	<section class="section section_article section-content">
+      	<section class="section section_article section_content">
       		<div class="section__wrap">
       			<div class="section-article">
 					<?php
@@ -11,14 +11,14 @@
 						$row= Show_One_Article($link, $id);
 						$name = $row['Name'];
 					 	$author = $row['Author'];
+						$image = $row['Image_url'];
 					 	$text = $row['Text'];
 					 	$date = $row['Date'];
-					 	//$image = 'Stat.png';
-						
+					 	
 					?>
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">
-						
+						<img src="<?= $image ?>">
 						<p class="section-article__text"><?= $text ?></p>
 					</div>
 					<div class="section-article__footer">

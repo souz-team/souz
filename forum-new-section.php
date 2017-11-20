@@ -11,7 +11,7 @@
 
 <?php require_once 'blocks/header.php'; ?>
 
-<section class="section section_forum section-content">
+<section class="section section_forum section_content">
 	<div class="section__wrap">
 		<?php require_once 'blocks/forum_section_start.php'; ?>
 	</div>

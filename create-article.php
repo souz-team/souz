@@ -3,7 +3,35 @@
 	
 	$authorName = $_SESSION['fio'];
 	$idPodRazdel = $_POST['id_Podrazdel'];
-	//$podrazdelId = $_GET['podrazId'];
+	
+	
+	$uploaddir = 'images/article_images/';
+	$apend=date('YmdHis').rand(100,1000).'.jpg'; 
+	$uploadfile = "$uploaddir$apend"; 
+	
+	if(($_FILES['userfile']['type'] == 'image/gif' || $_FILES['userfile']['type'] == 'image/jpeg' || $_FILES['userfile']['type'] == 'image/png') && ($_FILES['userfile']['size'] != 0 and $_FILES['userfile']['size']<=512000)) 
+	{ 
+	//  до 512 Кб 
+		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) 
+		{ 
+			$size = getimagesize($uploadfile); 
+			if ($size[0] < 501 && $size[1]<1501) 
+			{ 
+				echo "Файл загружен. Путь к файлу: <b>http://souz/manage-articles.php/".$uploadfile."</b>"; 
+			}
+			else {
+				echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
+				unlink($uploadfile); 
+			} 
+		} 
+		else{
+			echo "Файл не загружен, вернитеcь и попробуйте еще раз";
+		} 
+	} 
+	else{ 
+		echo "Размер файла не должен превышать 512Кб";
+	} 
+	var_dump($uploadfile);
 	
 	if (isset($_POST["articleName"]))
 	{
@@ -46,13 +74,13 @@
 			$str1 = cheсk_post($link, 'articleName');
 			$str2 = cheсk_post($link, 'articleText');
 			
-			$artName = htmlentities($str1, ENT_QUOTES);
-			$artText = htmlentities($str2, ENT_QUOTES);
+			$artName = htmlentities($str1, ENT_QUOTES, 'UTF-8');
+			$artText = htmlentities($str2, ENT_QUOTES, 'UTF-8');
 				
-			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Text`, `Date`) VALUES( $idPodRazdel, '$artName', '$authorName', '$artText', Now() )";
+			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`) VALUES( $idPodRazdel, '$artName', '$authorName', '$uploadfile', '$artText', Now() )";
 			mysql_query($strSQL) or die (mysql_error());
 	
 		}
-
+//var_dump($artText);
 	header("Location: http://souz/manage-articles.php?podrazId=$idPodRazdel");
 ?>

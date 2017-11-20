@@ -3,7 +3,7 @@ require_once 'config.php';
 require_once '/func/db.php';
 ?>
 		<?php require_once 'blocks/header.php'; ?>
-		<section class="section section-content">
+		<section class="section section_content">
 			<div class="section__wrap">
 				<div class="section-contacts">
 					<p class="section-contacts__title">Творческое объединение "СОЮЗ"</p>
