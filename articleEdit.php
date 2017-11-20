@@ -9,6 +9,37 @@
 				$artId = $_GET['artID'];
 			}
 	
+	
+	$uploaddir = 'images/article_images/';
+	$apend=date('YmdHis').rand(100,1000).'.jpg'; 
+	$uploadfile = "$uploaddir$apend"; 
+	
+	
+
+	if(($_FILES['userfile']['type'] == 'image/gif' || $_FILES['userfile']['type'] == 'image/jpeg' || $_FILES['userfile']['type'] == 'image/png') && ($_FILES['userfile']['size'] != 0 and $_FILES['userfile']['size']<=512000)) 
+	{ 
+	
+		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) 
+		{ 
+			$size = getimagesize($uploadfile); 
+			if ($size[0] < 501 && $size[1]<1501) 
+			{ 
+				echo "Файл загружен. Путь к файлу: <b>http://souz/manage-articles.php/".$uploadfile."</b>"; 
+			}
+			else {
+				echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
+				unlink($uploadfile); 
+			} 
+		} 
+		else{
+			echo "Файл не загружен, вернитеcь и попробуйте еще раз";
+		} 
+	}
+	else{ 
+		echo "Размер файла не должен превышать 512Кб";
+	} 
+	//var_dump($uploadfile);
+	
 	if (isset($_POST["articleName"]))
 	{
 		$artName = $_POST["articleName"];
@@ -61,7 +92,7 @@
 				
 				
 		}
-	$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel1', Name = '$artName', Author = '$authorName', Text = '$artText', Date = Now() WHERE id = '$artId'")
+	$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel1', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now() WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());	
 
 	header("Location: http://souz/manage-articles.php?podrazId=$idPodRazdel");

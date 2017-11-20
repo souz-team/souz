@@ -10,7 +10,7 @@ if (isset($_GET['id']) && $_GET['id'] != 0)
 }	
 ?>
 
-	<section class="section section-content">
+	<section class="section section_content">
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title"><?php echo $zagolovok?></p>
