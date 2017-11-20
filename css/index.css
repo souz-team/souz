@@ -136,6 +136,35 @@ img {
 	-webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
 	box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
 }
+
+.section-table-input {
+}
+
+.section-table-input__title {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.section-table-input__content {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 50px 0;
+}
+
+.section-table-input__messages {
+	font-size: 14px;
+	font-style: italic;
+}
+
+.section-table-input__message {
+
+}
+
+.section-table-input__table {
+	margin-top: 20px;
+}
+
 .section__wrap-signup{
 	max-width: 600px;
 	margin: 0 auto;
@@ -1120,6 +1149,10 @@ img {
 	padding: 20px 0;
 	flex-grow: 1;
 }
+.section_content {
+	flex-grow: 1;
+}
+
 .section-content{
 	flex-grow: 1;
 }
@@ -1747,6 +1780,10 @@ img {
 .table-input-info__row_delimiter {
 	border-top: 1px dashed rgba(106,121,137,0.5);
 	margin: 15px 0;
+}
+
+.table-input-info__row_buttons {
+	margin-top: 20px;
 }
 
 .table-input-info__label {
