@@ -1,7 +1,17 @@
 <?php
 
 // ВЫВОД МЕНЮ
- 
+
+function Is_Razdel ($connection, $var)
+{
+    $search = "SELECT * FROM Razdel WHERE id = '$var'";
+    $result = $connection->query ($search);
+    if ($result) {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows ['P_id'] == 0) return true;
+    else return false;
+}
 function Menu ($connection, $var) 
 {
 	  $menu = "SELECT * FROM Razdel WHERE P_id = '$var'";
@@ -52,9 +62,8 @@ function Add_Razdel ($connection, $Name)
 function Delete_Razdel ($connection, $var) 
 {
     $all_podrazdels = Menu ($connection, $var);
-    for ($i = 0; $i < count($all_podrazdels); $i++)
-    {
-        $podrazdel = $all_podrazdels[$i]['id'];
+    foreach ($all_podrazdels as $all_podrazdels) {
+        $podrazdel = $all_podrazdels['id'];
         $delete_podrazdel = Delete_Podrazdel($connection, $podrazdel);
     }
     $delete = "DELETE FROM Razdel WHERE id = '$var'";

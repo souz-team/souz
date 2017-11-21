@@ -1,6 +1,6 @@
 <div class="popup popup_remove-arcticle">
 	<div class="popup__form">
-		<form action="/article-delete.php" class="form-remove" method='POST'>
+		<form action="C:\OpenServer\domains\souz\action\manage-delete-section.php" class="form-remove" method='POST'>
 			<input type="hidden" name='del_id' value=''>
 			<input type="hidden" name='podrazdelId' value=''>
 			<p class='form-remove__text'>
