@@ -21,18 +21,18 @@
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_username">
 							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=2' title='Сортировка по имени' class='manage-table__title-column'>
-								<span class=''>Имя</span>
+								<span class=''>Имя Фамилия</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[name] ?>' alt=''>
 							</a>
 						</div>
-						<div class="manage-table__cell manage-table__cell_header manage-table__cell_surname">
+						<!-- <div class="manage-table__cell manage-table__cell_header manage-table__cell_surname">
 							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=3' title='Сортировка по фамилии' class='manage-table__title-column'>
-								<span class=''>Фамилия</span>
+								<span class=''></span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[surname] ?>' alt=''>
 							</a>
 							
-						</div>
-						<div class="manage-table__cell manage-table__cell_header manage-table__cell_surname">
+						</div> -->
+						<div class="manage-table__cell manage-table__cell_header manage-table__cell_gender">
 							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=4' title='Сортировка по полу' class='manage-table__title-column'>
 								<span class=''>Пол</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[gender] ?>' alt=''>
@@ -73,19 +73,22 @@
 								<?= $user['login'] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_username">
-								<?= $user['name'] ?>
+								<?= $user['name'] ?> <?= $user['surname'] ?>
 							</div>
-							<div class="manage-table__cell manage-table__cell_body manage-table__cell_surname">
-								<?= $user['surname'] ?>
-							</div>
-							<div class="manage-table__cell manage-table__cell_body manage-table__cell_surname">
+							<!-- <div class="manage-table__cell manage-table__cell_body manage-table__cell_surname">
+								
+							</div> -->
+							<div class="manage-table__cell manage-table__cell_body manage-table__cell_gender">
 								<?= $user_gender[$user['gender']] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_email">
 								<?= $user['email'] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_date">
-								<?= $user['reg_date'] ?>
+								<?php
+									$date = date_create( $user['reg_date'] );
+									echo date_format($date, 'd.m.Y');
+								?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_lvl">
 								<?= $user_level[$user['level_id']-1] ?>

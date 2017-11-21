@@ -1544,14 +1544,21 @@ img {
 	justify-content: center;
 }
 
-.manage-table__cell_login,
-.manage-table__cell_username,
-.manage-table__cell_surname {
+.manage-table__cell_username {
+	flex-basis: 250px;
+}
+
+.manage-table__cell_login {
 	flex-basis: 130px;
 }
 
 .manage-table__cell_email{
 	flex-grow: 1;
+}
+
+.manage-table__cell_gender {
+	flex-basis: 100px;
+	text-align: center;
 }
 
 .manage-table__cell_lvl {
