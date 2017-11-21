@@ -14,15 +14,15 @@
 	//  до 512 Кб 
 		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) 
 		{ 
-			$size = getimagesize($uploadfile); 
+			/*$size = getimagesize($uploadfile); 
 			if ($size[0] < 501 && $size[1]<1501) 
-			{ 
+			{ */
 				echo "Файл загружен. Путь к файлу: <b>http://souz/manage-articles.php/".$uploadfile."</b>"; 
-			}
+			/*}
 			else {
 				echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
 				unlink($uploadfile); 
-			} 
+			} */
 		} 
 		else{
 			echo "Файл не загружен, вернитеcь и попробуйте еще раз";
