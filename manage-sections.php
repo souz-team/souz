@@ -33,7 +33,8 @@ if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2){
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
 									<div class="manage-table__cell manage-table__cell_actions">
 										<a href="/section-change.php?id=<?= $id ?>" class="manage-table__action-link">Изменить</a>
-										<a href="/manage-delete-razdel.php?id=<?= $id ?>" class="manage-table__action-link">Удалить</a>
+										<?//<a href="/manage-delete-razdel.php?id=<?= $id ?><?//" class="manage-table__action-link">Удалить</a>?>
+                                        <a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										<a href="/section-create.php?sectionParent=<?= $id ?>" class="manage-table__action-link">Создать подраздел</a>
 									</div>
 								</div>

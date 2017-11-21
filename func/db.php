@@ -377,6 +377,13 @@ function Add_Article ($connection, $id_Podrazdel, $Name, $Author, $Text, $Date)
 
 function Delete_Article ($connection, $var) // Принимает подключение и id
 {
+    $search = "SELECT * FROM Articles WHERE id ='$var'";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $row =$result->fetch_array (MYSQLI_ASSOC);
+    if ($row['Image_url']) {
+        unlink($row['Image_url']);  
+    }
     $delete_query = "DELETE FROM Articles WHERE id = '$var'";
     $result = $connection->query ($delete_query);
     if ($result) return true;
