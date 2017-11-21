@@ -1,8 +1,10 @@
 <div class='section-1__article'>
 	<article class='article'>
+	<?php if(!empty($articleImage)){ ?>
 		<div class='article__image-wrap'>
 			<img class='article__image' src =<?= $articleImage?>  alt='' role='presentation'/>
 		</div>
+	<?php } ?>
 		<div class='article__content-wrap'>
 			<div class='article__content'>
 				<p class='article__title'><?= $title ?></p>
