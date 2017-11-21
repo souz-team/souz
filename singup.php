@@ -99,8 +99,8 @@ if( isset($doSingup))
 		//подключения модуля отправки email с кодом подтверждения
 		require '/mailto.php';
 		//перенаправление на страницу проверки кода
-		//header('Location: reg.php');
-		require "/reg.php";
+		header('Location: reg.php');
+		
     }
 	else
 		{
