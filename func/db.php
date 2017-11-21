@@ -62,9 +62,11 @@ function Add_Razdel ($connection, $Name)
 function Delete_Razdel ($connection, $var) 
 {
     $all_podrazdels = Menu ($connection, $var);
+    if ($all_podrazdels) {
     foreach ($all_podrazdels as $all_podrazdels) {
         $podrazdel = $all_podrazdels['id'];
         $delete_podrazdel = Delete_Podrazdel($connection, $podrazdel);
+    }
     }
     $delete = "DELETE FROM Razdel WHERE id = '$var'";
     $result = $connection->query ($delete);
