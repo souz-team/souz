@@ -11,4 +11,6 @@
 		
 		header("Location: /manage-articles.php?id=$podrazdelId");
 
+
 	}
+	?>

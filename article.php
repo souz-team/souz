@@ -15,6 +15,7 @@
 					 	$text = $row['Text'];
 					 	$date = $row['Date'];
 					 	
+						
 					?>
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">
