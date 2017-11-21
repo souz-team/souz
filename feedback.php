@@ -58,6 +58,7 @@
 		if(empty($errors)) {
 
 			// Добавление юзера через пользовательскую функцию
+			$topic = $topic." <br> Email: ".$email;
 			$result = Add_feedback($link, $name, $email, $subject, $topic, $date);
 
 			if($result[0]==TRUE) {

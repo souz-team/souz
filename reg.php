@@ -1,7 +1,7 @@
 <?php
 	require '/config.php';
 	//require '/func/db.php';
-	$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link)); 
+	//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link)); 
 	$data = $_POST;
 	$code = $_SESSION['code'];
 	$email = $_SESSION['email'];
