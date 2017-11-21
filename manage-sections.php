@@ -47,20 +47,22 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 
 								?>
 
-								<?php foreach ($subsections as $subsection) { ?>
+								<?php if ($subsections) { ?>
+									<?php foreach ($subsections as $subsection) { ?>
 
-									<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id="<?= $subsection['id'] ?>">
-										<div class="manage-table__cell manage-table__cell_name">
-											<a href='manage-articles.php?id=<?= $subsection['id'] ?>' class='manage-table__name-link'><?= $subsection['Name'] ?></a>
+										<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id="<?= $subsection['id'] ?>">
+											<div class="manage-table__cell manage-table__cell_name">
+												<a href='manage-articles.php?id=<?= $subsection['id'] ?>' class='manage-table__name-link'><?= $subsection['Name'] ?></a>
+											</div>
+											<div class="manage-table__cell manage-table__cell_moderator">moderator</div>
+											<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $subsection['id']) ?></div>
+											<div class="manage-table__cell manage-table__cell_actions">
+												<a href="/section-change.php?id=<?= $subsection['id'] ?>" class="manage-table__action-link">Изменить</a>
+												<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+											</div>
 										</div>
-										<div class="manage-table__cell manage-table__cell_moderator">moderator</div>
-										<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $subsection['id']) ?></div>
-										<div class="manage-table__cell manage-table__cell_actions">
-											<a href="/section-change.php?id=<?= $subsection['id'] ?>" class="manage-table__action-link">Изменить</a>
-											<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
-										</div>
-									</div>
 
+									<?php } ?>
 								<?php } ?>
 
 							<?php } ?>
