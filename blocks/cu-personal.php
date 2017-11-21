@@ -32,12 +32,12 @@
 							</a>
 							
 						</div> -->
-						<div class="manage-table__cell manage-table__cell_header manage-table__cell_gender">
+						<!-- <div class="manage-table__cell manage-table__cell_header manage-table__cell_gender">
 							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=4' title='Сортировка по полу' class='manage-table__title-column'>
 								<span class=''>Пол</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[gender] ?>' alt=''>
 							</a>
-						</div>
+						</div> -->
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_email">
 							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=5' title='Сортировка по email' class='manage-table__title-column'>
 								<span class=''>Email</span>
@@ -73,14 +73,28 @@
 								<?= $user['login'] ?>
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_username">
+								<?php
+									if ($user['gender'] == 0) {
+
+										$genderImageName = 'user-women.png';
+										$titleText = 'Девушка';
+
+									} else {
+
+										$genderImageName = 'user-man.png';
+										$titleText = 'Парень';
+
+									}
+								?>
+								<img src="images/avatars/<?= $genderImageName ?>" alt="<?= $titleText ?>" title="<?= $titleText ?>" class="user-avatar user-avatar_icon">
 								<?= $user['name'] ?> <?= $user['surname'] ?>
 							</div>
 							<!-- <div class="manage-table__cell manage-table__cell_body manage-table__cell_surname">
 								
 							</div> -->
-							<div class="manage-table__cell manage-table__cell_body manage-table__cell_gender">
+							<!-- <div class="manage-table__cell manage-table__cell_body manage-table__cell_gender">
 								<?= $user_gender[$user['gender']] ?>
-							</div>
+							</div> -->
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_email">
 								<?= $user['email'] ?>
 							</div>
