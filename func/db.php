@@ -337,7 +337,7 @@ function Show_One_Article ($connection, $var) // Принимает подклю
 
 function Show_Last ($connection)
 {
-    $search = "SELECT * FROM Articles ORDER BY id DESC LIMIT 3";
+    $search = "SELECT * FROM Articles ORDER BY id DESC LIMIT 5";
     $result = $connection->query ($search);
      if (!$result) die ($connect->error);
     $rows = $result->num_rows;
