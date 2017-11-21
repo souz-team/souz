@@ -574,9 +574,11 @@ img {
 }
 .section-contacts__about{
 	padding-right: 10px;
+	width: 50%;
 }
 .section-contacts__contacts{
 	padding-left: 10px;
+	width: 50%;
 }
 .section-contacts__footer{
 	margin-top: 20px;
@@ -741,6 +743,12 @@ img {
 	-o-transition: all 300ms;
 	transition: all 300ms;
 	white-space: nowrap;
+}
+
+.button_cu-search{
+	padding: 10px 20px;
+	margin-left: 10px;
+	transform: translateY(-5%);
 }
 
 .button:hover {
@@ -1852,6 +1860,13 @@ img {
 	transition: all 250ms;
 	background-color: rgba(0,0,0,0);
 	background-color: rgba(106, 121, 137, 0.05);
+}
+
+.table-input-info__textfield_cusearch{
+	max-width: 300px;
+	background-color: #fff;
+	margin-top: 10px;
+
 }
 
 .table-input-info__textfield:focus {
