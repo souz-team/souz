@@ -1500,6 +1500,17 @@ img {
 	flex-basis: 300px;
 }
 
+.manage-table__cell_moderator {
+	flex-basis: 150px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .manage-table__cell_author {
 	flex-basis: 150px;
 	text-align: center;
