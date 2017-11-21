@@ -19,12 +19,19 @@ $(function() {
 		var row = $(this).parents('.manage-table__row');
 
 		var id = row.attr('entity-id');
-		var name = row.find('.manage-table__name-link').text();
+		var podrazdelId = row.attr('podrazdel-id');
+		var name = row.find('.manage-table__cell_name').text();
 
 		if (!id) {
 			console.error('id не определен');
 			return;
 		}
+		
+		if (!name) {
+			console.error('name не определен');
+			return;
+		}
+
 		if (!name) {
 			console.error('name не определен');
 			return;
@@ -32,25 +39,11 @@ $(function() {
 
 		var popup = $('.form-remove').parents('.popup');
 		popup.find('.form-remove__name').text(name);
+		popup.find('input[name="del_id"]').val(id);
+		popup.find('input[name="podrazdelId"]').val(podrazdelId);
 
 		popup.fadeIn();
 
-		popup.find('.button_default').click(function() {
-		
-			$.ajax({
-				method: 'GET',
-				url: '', // blocks/file-code.php
-				data: {
-					id: id
-				}
-			}).then(function() {
-			
-				popup.fadeOut();
-			
-			});
-		
-		});
-	
 	});
 
 

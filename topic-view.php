@@ -112,7 +112,7 @@
 			$num_pages = ceil($total_rows/$per_page); // получится страниц
 
 		?>
-
+<!-- 
 		<div class='pagination'>Страницы: 
 			<?php for($i=1; $i<=$num_pages; $i++) { ?>
 					<?php if ($i-1 == $page) { ?>
@@ -124,7 +124,31 @@
 					<?php } ?>
 			<?php } ?>
 			
+		</div> -->
+
+
+		<div class="section__pagination">
+			<div class='pagination'>
+
+				<div class="pagination__content">
+					<span class="pagination__arrow pagination__arrow_prev pagination__item"><a href='<?= $_SERVER['PHP_SELF'] ?>?id=<?= $id_topic ?>&page=<?= ($page < 2 ? 1 : $page) ?>' class='pagination__link'>&#10094;</a></span>
+
+					<ul class="pagination__pages">
+						<?php for($i=1; $i<=$num_pages; $i++) { ?>
+							<li class="pagination__item <?= $i-1 == $page ? 'pagination__item_current' : '' ?>">
+								<a href='<?= $_SERVER['PHP_SELF'] . "?id=$id_topic&page=$i" ?>' class='pagination__link'><?= $i ?></a>
+							</li>
+						<?php } ?>
+					</ul>
+
+					<span class="pagination__arrow pagination__arrow_prev pagination__item"><a href='<?= $_SERVER['PHP_SELF'] ?>?id=<?= $id_topic ?>&page=<?= ($page+1 >= $num_pages ? $num_pages : $page+2) ?>' class='pagination__link'>&#10095;</a></span>
+				</div>
+
+			</div>
 		</div>
+
+
+
 		<br>
 		<?php
 

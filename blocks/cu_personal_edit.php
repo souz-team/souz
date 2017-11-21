@@ -8,13 +8,14 @@
 
 	}
 
-	if(isset($_GET['delete']) AND ($_SESSION['userlevel']==1)){
-		$id_user = $_GET['delete'];
+	if(isset($_POST['delete_user']) AND ($_SESSION['userlevel']==1)){
+		$id_user = $_POST['user_id'];
 		require_once '/action/get-user-by-id.php';
 		$query ="DELETE FROM Users WHERE id = '$id_user'";
 		$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 		mysqli_close($link);
-		echo 'Пользователь удален!';
+		echo 'Пользователь удален!\n';
+		echo "<a href='/control-user.php' class='button button_cancel'>Назад</a>";
 	}
 
 	if(isset($_POST['edit_user'])) {
