@@ -233,6 +233,7 @@ img {
 .lu-link{
 	margin-left: 0; 
 	padding-left: 0;
+	flex-grow: 1;
 }
 .section-1__articles {
 	/* display: -webkit-box;
@@ -689,6 +690,7 @@ img {
 }
 
 .article__content-wrap {
+	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -1268,6 +1270,11 @@ img {
 	-webkit-box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
 	box-shadow: 3px 3px 5px rgba(0,0,0,0.15);
 	padding: 20px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-direction: column;
 }
 
 .section-1__menu {

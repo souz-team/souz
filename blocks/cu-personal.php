@@ -3,8 +3,10 @@
 
 		<p class="control-user__title">Пользователи</p>
 		<?php
+		
 			require_once '/blocks/cu_search.php';
 			require_once '/action/showusers.php';
+			
 		?>
 		<div class="control-user__manage-table">
 			<div class="manage-table manage-table_control-user">
@@ -14,13 +16,13 @@
 							№
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_login">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=1' title='Сортировка по логину' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?=$page+1?>&sort=1' title='Сортировка по логину' class='manage-table__title-column'>
 								<span class=''>Логин</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[login] ?>' alt=''> 
 							</a>
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_username">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=2' title='Сортировка по имени' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?=$page+1?>&sort=2' title='Сортировка по имени' class='manage-table__title-column'>
 								<span class=''>Имя Фамилия</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[name] ?>' alt=''>
 							</a>
@@ -39,19 +41,19 @@
 							</a>
 						</div> -->
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_email">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=5' title='Сортировка по email' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?=$page+1?>&sort=5' title='Сортировка по email' class='manage-table__title-column'>
 								<span class=''>Email</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[email] ?>' alt=''>
 							</a>
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_date">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=6' title='Сортировка по дате регистрации' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?=$page+1?>&sort=6' title='Сортировка по дате регистрации' class='manage-table__title-column'>
 								<span class=''>Дата регистрации</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[reg_date] ?>' alt=''>
 							</a>
 						</div>
 						<div class="manage-table__cell manage-table__cell_header manage-table__cell_lvl">
-							<a href='<?= $_SERVER[PHP_SELF] ?>?sort=7' title='Сортировка по уровню' class='manage-table__title-column'>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?=$page+1?>&sort=7' title='Сортировка по уровню' class='manage-table__title-column'>
 								<span class=''>Роль</span>
 								<img class='manage-table__sort-image' src='/images/<?= $dir[level_id] ?>' alt=''>
 							</a>
@@ -138,7 +140,7 @@
 				<ul class="pagination__pages">
 					<?php for($i=1; $i<=$num_pages; $i++) { ?>
 						<li class="pagination__item <?= $i-1 == $page ? 'pagination__item_current' : '' ?>">
-							<a href='<?= $_SERVER['PHP_SELF'] . "?page=$i" ?>' class='pagination__link'><?= $i ?></a>
+							<a href='<?= $_SERVER['PHP_SELF'] . "?page=$i&sort=$get_sort" ?>' class='pagination__link'><?= $i ?></a>
 						</li>
 					<?php } ?>
 				</ul>
