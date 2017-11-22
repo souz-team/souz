@@ -27,12 +27,12 @@
 						<div class="section-header__logo">
 							<div class="logo">
 								<a href="/" class="logo__link">
-									<img class="logo__image" src="/images/logo.png" alt="" role="presentation">
+									<img class="logo__image" src="/images/logo.svg" alt="" role="presentation">
 								</a>
 							</div>
 						</div>
-						<div class="section-header__service-name">Система Обработки <br>Юзерских Заявок
-						</div>
+<!-- 						<div class="section-header__service-name">Если у вас есть проблема, <br>мы поможем её решить.
+						</div> -->
 						<div class="section-header__form-auth">
 							
 								<?php if($_SESSION['auch'] == 1)
