@@ -30,7 +30,7 @@ require('config.php');
 						$start = abs($page*$per_page);	
 						$n=$start;
 						//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
-						$result = Show_Articles_Limit($link, $id, $start, $per_page);
+						$result = Show_Subsection_Limit($link, $id, $start, $per_page);
 						//print_r($result);
 						if ($result==0){
 							echo "В этом подразделе нет статей!";
@@ -39,10 +39,10 @@ require('config.php');
 						} else {
 							for ($i=0; $i<count($result); $i++) {
 								++$n;
-								echo "<li class='li-link'>$n. <a  class='form-auth__link-signup' href='article.php?id={$result[$i]['id']}'>".$result[$i]['Name']."</a></li>";
+								echo "<li class='li-link'>$n. <a  class='form-auth__link-signup' href='view.php?id={$result[$i]['id']}'>".$result[$i]['Name']."</a></li>";
 							}
 						}							
-						$total_rows = Count_Articles($link, $id);
+						$total_rows = countSubsection($link, $id);
 						$num_pages = ceil($total_rows/$per_page); // получится страниц
 					?>
 					</ul>

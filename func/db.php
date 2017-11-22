@@ -469,6 +469,38 @@ function queryNameRazdel($id, $table, $atributWhere, $connection){
 	return $row;
 }
 
+function Show_Subsection_Limit($connection, $id, $start, $per_page){
+	$search = "SELECT * FROM Razdel WHERE P_id = $id LIMIT $start, $per_page";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) {
+		return 0;
+	}
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array;
+}
+
+function countSubsection($connection, $id){
+	$q = "SELECT * FROM Razdel WHERE P_id = $id";
+	$result = $connection->query ($q);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+	if (!$rows){ return false;
+		print ("dfghenen");}
+    else
+    {return $rows;}
+}
+
 //Хлебные крошки
 function breadcrumbs($array,$id) {
 	if(!$id) return false;
