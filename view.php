@@ -30,7 +30,7 @@ require('config.php');
 						$start = abs($page*$per_page);	
 						$n=$start;
 						//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
-						$result = Show_Articles ($link, $id, $start, $per_page);
+						$result = Show_Articles_Limit($link, $id, $start, $per_page);
 						//print_r($result);
 						if ($result==0){
 							echo "В этом подразделе нет статей!";

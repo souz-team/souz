@@ -45,7 +45,7 @@
 									$id = $_GET['id'];
 									$n=0;
 									//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
-									$array = Show_Articles ($link, $id, $start, $per_page);
+									$array = Show_Articles_Limit($link, $id, $start, $per_page);
 									
 									if ($array) {
 									for  ($i=0; $i<count($array); $i++) {

@@ -296,7 +296,29 @@ function Show_All_Articles ($connection) // Принимает подключе�
     return $array; 
 } 
 
-function Show_Articles ($connection, $var, $start, $per_page) // Принимает подключение и id, возвращает массив пользователей
+function Show_Articles ($connection, $var) // Принимает подключение и id, возвращает массив пользователей
+{
+    $search = "SELECT * FROM Articles WHERE id_Podrazdel = $var";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) {
+		return 0;
+	}
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+}
+
+function Show_Articles_Limit($connection, $var, $start, $per_page) // Принимает подключение и id, возвращает массив пользователей
 {
     $search = "SELECT * FROM Articles WHERE id_Podrazdel = $var LIMIT $start, $per_page";
     $result = $connection->query ($search);
