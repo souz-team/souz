@@ -41,6 +41,9 @@
 	$num_rows_post = mysqli_num_rows($posts);
 	//$reg_info_post = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM Users WHERE login='$topic_author'"));
 	//$row_posts = mysqli_fetch_array($posts);
+	
+	$num_author_message = countAuthorMess($link, $row_topic['author']);
+	//echo $num_author_message;
 
 ?>
 <?php require_once 'blocks/header.php';?>
@@ -51,7 +54,7 @@
 				<div class="topic_author">
 					<p class="author-name">Написал: <?= $row_topic['author'] ?></p>
 					<div class="author-inf">
-						<p class="value-message">Сообщений: 12</p>
+						<p class="value-message">Сообщений: <?= $num_author_message ?></p>
 						<p class="date">Дата регистрации: <?= $reg_info_topic['reg_date'] ?></p>
 					</div>
 				</div>
@@ -95,6 +98,7 @@
 				$res1 = mysqli_query($link, $sql1);
 				$reg_info_post = mysqli_fetch_assoc($res1);
 				++$start;
+				$num_author_message = countAuthorMess($link, $post_author);
 				include './blocks/topic-view-message.php';
 			}
 			/*небольшой код вывода номеров страничек*/

@@ -2,7 +2,7 @@
 	<div class="topic_author">
 		<p class="author-name">Автор: <?= $row_posts['login'] ?></p>
 		<div class="author-inf">
-			<p class="value-message">Сообщений: 1 000 123</p>
+			<p class="value-message">Сообщений: <?= $num_author_message ?></p>
 			<p class="date">Дата регистрации: <?= $reg_info_post['reg_date'] ?></p>
 		</div>
 	</div>

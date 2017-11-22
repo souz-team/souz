@@ -264,6 +264,22 @@ function Count_Show_Users($connection, $sort, $direct){
     {return $rows;}
 }
 
+function countAuthorMess($connection, $login){
+	$sql = "SELECT * FROM boardp WHERE login = '$login'";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$rowsComm = $result->num_rows;
+	
+	$sql = "SELECT * FROM boardt WHERE author = '$login'";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$rowsTheam = $result->num_rows;
+	
+	if (!$rowsComm) $rowsComm = 0;
+	if (!$rowsTheam) $rowsComm = 0;
+    return ($rowsComm + $rowsTheam);
+}
+
 // Удаление ПОЛЬЗОВАТЕЛЯ
 
 function Delete_User ($connection, $var) // Принимает подключение и id
@@ -295,6 +311,8 @@ function Show_All_Articles ($connection) // Принимает подключе�
     }
     return $array; 
 } 
+
+
 
 function Show_Articles ($connection, $var) // Принимает подключение и id, возвращает массив пользователей
 {
@@ -350,6 +368,8 @@ function Count_Articles($connection, $var){
     else
     {return $rows;}
 }
+
+
 
 function Show_One_Article ($connection, $var) // Принимает подключение и id
 {
