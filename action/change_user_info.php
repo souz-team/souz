@@ -2,27 +2,38 @@
 	$auth_login = $_SESSION['login'];
 	$reg_info = Login_Exist($link, $auth_login);
 	$errors=array();//массив сообшений ошибок
-	if(empty($data['username'])) //проверка на пустое значение поля ввода логина
+	$username = trim(filter_input(INPUT_POST, 'username'));
+	$usersurname = trim(filter_input(INPUT_POST, 'usersurname'));
+	$useremail = trim(filter_input(INPUT_POST, 'useremail'));
+	$userpasswordold =  trim(filter_input(INPUT_POST, 'userpasswordold'));
+	$userpasswordnew = trim(filter_input(INPUT_POST, 'userpasswordnew'));
+	$userpasswordnew2 =  trim(filter_input(INPUT_POST, 'userpasswordnew2'));
+	if(empty($username)) //проверка на пустое значение поля ввода логина
 	{
 		$errors[] = 'Введите имя!';
 	}
 	
-	if(empty($data['usersurname']))//проверка на пустое значение поля ввода имени
+	if(empty($usersurname))//проверка на пустое значение поля ввода имени
 	{
 		$errors[] = 'Введите фамилию!';
 	}
 	
-	if(empty($data['useremail']))//проверка на пустое значение поля ввода email
+	if(empty($useremail))//проверка на пустое значение поля ввода email
 	{
 	$errors[] = 'Введите email!';
 	}
-	if(empty($data['userpasswordold']) AND ((!empty($data['userpasswordnew'])) OR (!empty($data['userpasswordnew2']))))
+	if(empty($userpasswordold) AND ((!empty($userpasswordnew)) OR (!empty($userpasswordnew2))))
 	{
 		$errors[] = 'Введите текущий пароль!';
 	}
 	
 	if(!empty($data['userpasswordold']) AND (empty($data['userpasswordnew'])))
 	{
+		$userpasswordold = md5($userpasswordold);
+		if($userpasswordold != $reg_info['pass'])
+		{
+			$errors[] = 'Текущий пароль введен неверно!';
+		}
 		$errors[] = 'Введите новый пароль!';
 	}
 	
@@ -35,12 +46,8 @@
 	{
 		$no_change_pass = 1;
 	}
+
 	
-	$username = htmlentities(mysqli_real_escape_string($link, $data['username']), ENT_QUOTES, 'UTF-8');
-	$usersurname = htmlentities(mysqli_real_escape_string($link, $data['usersurname']), ENT_QUOTES, 'UTF-8');
-	$useremail = htmlentities(mysqli_real_escape_string($link, $data['useremail']), ENT_QUOTES, 'UTF-8');
-	$userpasswordnew = htmlentities(mysqli_real_escape_string($link, $data['userpasswordnew']), ENT_QUOTES, 'UTF-8');
-	$userpasswordold =  htmlentities(mysqli_real_escape_string($link, $data['userpasswordold']), ENT_QUOTES, 'UTF-8');
 	$userpasswordold = md5($userpasswordold);
 	$userpasswordnew = md5($userpasswordnew);
 	if($no_change_pass!=1 AND (empty($errors)))
@@ -49,7 +56,7 @@
 			$errors[] = 'Текущий пароль введен неверно!';
 		}
 	}
-	if($username==$reg_info['name'] AND $usersurname = $reg_info['surname'] AND  $useremail = $reg_info['email'] AND $no_change_pass==1){
+	if($username == $reg_info['name'] AND $usersurname == $reg_info['surname'] AND  $useremail == $reg_info['email'] AND $no_change_pass==1){
 		$errors[] = $reg_info['name'].', хватит тыкать на кнопки! Меняй что-нибудь!';
 	}
 		
