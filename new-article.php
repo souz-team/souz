@@ -6,6 +6,7 @@ if (isset($_POST['do_create_article']))
 	require "create-article.php";
 
 }
+$idPodRazdel = $_GET['idPodRazdel'];
 
 
 ?>
@@ -29,7 +30,6 @@ if (isset($_POST['do_create_article']))
 								<p class="form-new-material__label">Подраздел</p>
 								<select class='form-new-material__select' name="id_Podrazdel">
 								<?
-									$podrazdelId = $_GET['podrazId'];
 									$optionList = "";
 									$lastParentId = "THIS_PARAM_MUST_BE_INTEGER";
 									$razdel_query = mysql_query ("SELECT a.id as parentId, a.Name as parentName, b.id as childId, b.Name as childName FROM Razdel a, Razdel b WHERE b.P_id=a.id and a.P_id=0 ORDER BY a.Name, a.id");
@@ -42,7 +42,8 @@ if (isset($_POST['do_create_article']))
 											$lastParentId = $parentId;
 											$optionList .= "<option disabled>$parentName</option>";
 										}
-										$optionList .= "<option value=\"$childId\">&nbsp;&nbsp;&nbsp;&nbsp;$childName</option>";
+										$isSelected = ($childId ==$idPodRazdel  )?'selected':'';
+										$optionList .= "<option $isSelected value=\"$childId\">&nbsp;&nbsp;&nbsp;&nbsp;$childName</option>";
 									}
 									echo $optionList;
 								?>
