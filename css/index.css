@@ -179,6 +179,7 @@ img {
 .section_menu {
 	background-color: #0072bc;
 	height: 50px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 
@@ -389,7 +390,7 @@ img {
 
 .section-2__title {
 	text-align: center;
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: 500;
 }
 
@@ -480,9 +481,13 @@ img {
 	align-items: center;
 	padding: 10px 0;
 }
-
+.section_header{
+	background-image: url(../images/bg.jpg);
+	background-size: cover;
+	
+}
 .section-header__logo {
-	width: 200px;
+	width: 300px;
 }
 
 .section-header__service-name {
@@ -491,6 +496,7 @@ img {
 	color: #079fd1;
 	text-align: center;
 	font-weight: 500;
+
 }
 
 .section-menu {
@@ -979,10 +985,12 @@ img {
 }
 
 .user-panel__name {
-	color: #0072bc;
+	color: #000;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 1.5;
+	text-shadow: -1px 0 1px white, 0 -1px 1px white, 0 1px 1px white, 1px 0 1px white, 0 0 8px white, 0 0 8px white, 0 0 8px white, 2px 2px 3px black;
+
 }
 
 .user-panel__link-wrap {
@@ -993,6 +1001,8 @@ img {
 	font-size: 12px;
 	border-bottom: 1px dashed rgba(51,51,51,0);
 	transition: border-color 250ms;
+	text-shadow: -1px 0 1px white, 0 -1px 1px white, 0 1px 1px white, 1px 0 1px white, 0 0 8px white, 0 0 8px white, 0 0 8px white, 2px 2px 3px black;
+}
 }
 
 .user-panel__link:hover {
@@ -1008,8 +1018,9 @@ img {
 	width: 100%;
 	padding: 5px 0;
 	transition: all 250ms;
-	color: #888888;
 	opacity: 0.8;
+	text-shadow: -1px 0 1px white, 0 -1px 1px white, 0 1px 1px white, 1px 0 1px white, 0 0 8px white, 0 0 8px white, 0 0 8px white, 2px 2px 3px black;
+
 }
 
 .user-panel__button-exit:hover {
@@ -1156,8 +1167,7 @@ img {
 }
 
 .logo__image {
-	max-width: 100%;
-	
+	width: 300px;
 }
 .navigation {
 	display: -webkit-box;
