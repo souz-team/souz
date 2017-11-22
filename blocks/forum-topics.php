@@ -28,6 +28,11 @@
 				<?php endif ?>
 			</div>
 		</div>
+		
+		<?php 
+			
+		?>
+		
 		<div class="forum-table__body">
 			<?php
 			$theme = mysqli_query($link, "SELECT * FROM boardt WHERE id_section='$id'");
@@ -37,8 +42,15 @@
 				$row_date = mysqli_fetch_array($date);
 				$date_post = $row_date[0];
 				
+				$per_page = 10;
+				$q = "SELECT count(*) as count FROM boardp WHERE theme_id='$row_t[theme_id]'"; //считаем сколько у нас записей,
+				$res = mysql_query($q); 	//которые нужно 
+				$row = mysql_fetch_assoc($res); //разбить по страницам.
+				$total_rows = $row['count']; //высчитываем сколько
+				$num_pages = ceil($total_rows/$per_page); // получится страниц
+				
 				echo '	<div class="forum-table__row forum-table__row_body">
-						<div class="forum-table__cell forum-table__cell_sections"><a href="./topic-view.php?id='.$row_t[theme_id].'"><img src="/images/folder_yellow.png" width = "15" height = "15"> '.$row_t[subject].'</a></div>
+						<div class="forum-table__cell forum-table__cell_sections"><a href="./topic-view.php?id='.$row_t[theme_id].'&page='.$num_pages.'"><img src="/images/folder_yellow.png" width = "15" height = "15"> '.$row_t[subject].'</a></div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$row_t[author].'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$row_t[create_date].'</div>
 						<div class="forum-table__cell forum-table__cell_topics">'.$date_post.'</div>

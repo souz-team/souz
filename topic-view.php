@@ -105,6 +105,7 @@
 			$num_pages = ceil($total_rows/$per_page); // получится страниц
 		?>
 
+		<?php if($num_pages != 0){?>
 		<div class="section__pagination">
 			<div class='pagination'>
 
@@ -126,6 +127,7 @@
 		</div>
 
 		<br>
+		<?}?>
 		<?php
 
 /* 			$comment = htmlentities(mysqli_real_escape_string($link, $data['comment']), ENT_QUOTES, 'UTF-8');
