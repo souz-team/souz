@@ -8,6 +8,7 @@
 	$userpasswordold =  trim(filter_input(INPUT_POST, 'userpasswordold'));
 	$userpasswordnew = trim(filter_input(INPUT_POST, 'userpasswordnew'));
 	$userpasswordnew2 =  trim(filter_input(INPUT_POST, 'userpasswordnew2'));
+	$is_email = Email_Exist($link, $useremail);
 	if(empty($username)) //проверка на пустое значение поля ввода логина
 	{
 		$errors[] = 'Введите имя!';
@@ -18,9 +19,20 @@
 		$errors[] = 'Введите фамилию!';
 	}
 	
+
+	
 	if(empty($useremail))//проверка на пустое значение поля ввода email
 	{
-	$errors[] = 'Введите email!';
+		$errors[] = 'Введите email!';
+	}
+	
+	
+	if($useremail != $reg_info['email'])
+	{
+		if ($is_email == true)
+		{
+			$errors[] = 'Такой email ('.$useremail.') уже существует!';
+		}
 	}
 	if(empty($userpasswordold) AND ((!empty($userpasswordnew)) OR (!empty($userpasswordnew2))))
 	{
@@ -50,6 +62,7 @@
 	
 	$userpasswordold = md5($userpasswordold);
 	$userpasswordnew = md5($userpasswordnew);
+	
 	if($no_change_pass!=1 AND (empty($errors)))
 	{
 		if($userpasswordold != $reg_info['pass']){
