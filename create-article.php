@@ -1,86 +1,107 @@
 <?php
-	require 'config.php';
-	
 	$authorName = $_SESSION['fio'];
 	$idPodRazdel = $_POST['id_Podrazdel'];
-	
-	
+	$artName = trim(filter_input(INPUT_POST, 'articleName'));
+	$artText = trim(filter_input(INPUT_POST, 'articleText'));
+	$msg = array();
+	$error_file = array();
 	$uploaddir = 'images/article_images/';
 	$apend=date('YmdHis').rand(100,1000).'.jpg'; 
-	$uploadfile = "$uploaddir$apend"; 
+	//$uploadfile = "$uploaddir$apend"; 
+	$uploadfile = $uploaddir.$apend; 
+	$successfulUppload = 0;
 	
-	if(($_FILES['userfile']['type'] == 'image/gif' || $_FILES['userfile']['type'] == 'image/jpeg' || $_FILES['userfile']['type'] == 'image/png') && ($_FILES['userfile']['size'] != 0 and $_FILES['userfile']['size']<=512000)) 
-	{ 
-	//  до 512 Кб 
-		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) 
+	if(isset($_FILES['userfile']))
+	{
+		if(($_FILES['userfile']['type'] == 'image/gif' || $_FILES['userfile']['type'] == 'image/jpeg' || $_FILES['userfile']['type'] == 'image/png') && ($_FILES['userfile']['size'] != 0 and $_FILES['userfile']['size']<=1024000)) 
 		{ 
-			/*$size = getimagesize($uploadfile); 
-			if ($size[0] < 501 && $size[1]<1501) 
-			{ */
-				echo "Файл загружен. Путь к файлу: <b>http://souz/manage-articles.php/".$uploadfile."</b>"; 
-			/*}
-			else {
-				echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
-				unlink($uploadfile); 
-			} */
+		 
+			if(move_uploaded_file($_FILES["userfile"]["tmp_name"], $uploadfile))
+			{
+				$successfulUppload = 1;
+			}
+			 
+				/*$size = getimagesize($uploadfile); 
+				if ($size[0] < 501 && $size[1]<1501) 
+				{ */
+				//	echo "Файл загружен. Путь к файлу: <b>http://souz/manage-articles.php/".$uploadfile."</b>"; 
+				/*}
+				else {
+					echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
+					unlink($uploadfile); 
+				} */
+				
+			//$successfulUppload = 1;
 		} 
-		else{
-			echo "Файл не загружен, вернитеcь и попробуйте еще раз";
-		} 
-	} 
-	else{ 
-		echo "Размер файла не должен превышать 512Кб";
-	} 
-	var_dump($uploadfile);
-	
-	if (isset($_POST["articleName"]))
+		else{ 
+			if ($_FILES['userfile']['size']!= 0){
+			
+			$error_file[] = "Размер файла не должен превышать 1Мб или формат файла не jpeg/png/gif!";
+			}
+			else 
+			$successfulUppload = 2;
+		}
+	}	
+	//var_dump($successfulUppload);
+	$err_f = array_shift($error_file);
+
+		
+	//if (isset($_POST["articleName"]))
+	//{
+	//	$artName = $_POST["articleName"];
+	//}
+	if (empty($artName))
 	{
-		$artName = $_POST["articleName"];
+		$msg[] = "Введите название статьи!";
 	}
-	if ($artName == "")
+	if (mb_strlen ($artName) > 150)
 	{
-		$err_str.='Поле "Название" пустое <br>';
-	}
-	if (strlen ($artName) > 200)
-	{
-		$err_str.= 'Поле "Название" слишком длинное <br>';
+		$msg[] = "Название статьи не должно содержать более 150 символов!";
 	}
 		
 		
-	if (isset($_POST["articleText"]))
+	//if (isset($_POST["articleText"]))
+	//{
+	//	$artText = $_POST["articleText"];
+	//}
+	if (empty($artText))
 	{
-		$artText = $_POST["articleText"];
-	}
-	if ($artText == "")
-	{
-		$err_str.='Поле "Текст статьи" пустое <br>';
+		//$err_str.='Поле "Текст статьи" пустое <br>';
+		$msg[] = "Вы забыли написать статью!";
 	}
 	
+	/*
 	if( isset($_POST["articleName"])
 	 && isset($_POST["articleText"]))
 		{
 		echo $err_str;
 		}
-	
+	*/
 	function cheсk_post($link, $var)
 			{
 				return mysqli_real_escape_string( $link,  $_POST[$var] );
 			}
 	
-	if( isset($_POST["articleName"])
-	 && isset($_POST["articleText"])
-	 && $err_str == null )
+	if( isset($_POST["articleName"]) && isset($_POST["articleText"])  && $all == null )
 		{
 			$str1 = cheсk_post($link, 'articleName');
 			$str2 = cheсk_post($link, 'articleText');
 			
-			$artName = htmlentities($str1, ENT_QUOTES, 'UTF-8');
-			$artText = htmlentities($str2, ENT_QUOTES, 'UTF-8');
+			//$artName = htmlentities($str1, ENT_QUOTES, 'UTF-8');
+			//$artText = htmlentities($str2, ENT_QUOTES, 'UTF-8');
+			
+			if($successfulUppload == 1){
 				
 			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`) VALUES( $idPodRazdel, '$artName', '$authorName', '$uploadfile', '$artText', Now() )";
-			mysql_query($strSQL) or die (mysql_error());
-	
+			mysql_query($strSQL) or die (mysql_error());}
+			
+			else{
+				if($successfulUppload == 2){
+				$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`) VALUES( $idPodRazdel, '$artName', '$authorName', '', '$artText', Now() )";
+				mysql_query($strSQL) or die (mysql_error());}
+			}
+			$msg[] = "Статья добавлена!";
 		}
-//var_dump($artText);
-	header("Location: http://souz/manage-articles.php?podrazId=$idPodRazdel");
+	$all = array_shift($msg);
+	//header("Location: /manage-articles.php?id=$idPodRazdel");
 ?>

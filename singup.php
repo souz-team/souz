@@ -14,33 +14,36 @@ if( isset($doSingup))
 		$surname = trim(filter_input(INPUT_POST, 'surname'));
 		$gender = trim(filter_input(INPUT_POST, 'gender'));
 		$email = trim(filter_input(INPUT_POST, 'email'));
+		//$email = htmlentities(mysql_real_escape_string($data['email']), ENT_QUOTES, 'UTF-8');
 		$password = trim(filter_input(INPUT_POST, 'password'));
 		$password_2 = trim(filter_input(INPUT_POST, 'password_2'));
 		if(empty($loginuser)) //проверка на пустое значение поля ввода логина
 		{
 			$errors[] = 'Введите логин!';
 		}
-		if(mb_strlen($loginuser)>15 or mb_strlen($loginuser)<3) //проверка на пустое значение поля ввода логина
+		if(mb_strlen($loginuser)>20 or mb_strlen($loginuser)<3) //проверка на пустое значение поля ввода логина
 		{
-			$errors[] = 'Логин должен содержать не менее 3 и не более 15 символов!';
+			
+			$errors[] = 'Логин должен содержать не менее 3 и не более 20 символов! ';
 		}
 		
 		if(empty($name))//проверка на пустое значение поля ввода имени
 		{
 			$errors[] = 'Введите имя!';
 		}
-		if( mb_strlen($name)>15 or mb_strlen($name)<3) //проверка на пустое значение поля ввода логина
+		if( mb_strlen($name)>20 or mb_strlen($name)<3) //проверка на пустое значение поля ввода логина
 		{
-			$errors[] = 'Имя должно содержать не менее 3 и не более 15 символов!';
+			echo mb_strlen($name);
+			$errors[] = 'Имя должно содержать не менее 3 и не более 20 символов!';
 		}
 		
 		if(empty($surname))//проверка на пустое значение поля ввода gender
 		{
 			$errors[] = 'Введите фамилию!';
 		}
-		if( mb_strlen($surname)>15 or mb_strlen($surname)<2) //проверка на пустое значение поля ввода логина
+		if( mb_strlen($surname)>20 or mb_strlen($surname)<2) //проверка на пустое значение поля ввода логина
 		{
-			$errors[] = 'Фамилия должна содержать не менее 2 и не более 15 символов!';
+			$errors[] = 'Фамилия должна содержать не менее 2 и не более 20 символов!';
 		}
 		
 		
@@ -52,16 +55,16 @@ if( isset($doSingup))
 		{
 			$errors[] = 'Введите email!';
 		}
-		if( mb_strlen($email)>20 or mb_strlen($email)<5) //проверка на пустое значение поля ввода логина
+		if( mb_strlen($email)>50 or mb_strlen($email)<5) //проверка на пустое значение поля ввода логина
 		{
-			$errors[] = 'Адрес почты должен содержать не менее 5 и не более 20 символов!';
+			$errors[] = 'Адрес почты должен содержать не менее 5 и не более 50 символов!';
 		}		
 		
 		if( empty($password))//проверка на пустое значение поля ввода пароля
 		{
 			$errors[] = 'Введите пароль!';
 		}
-		if( strlen($password)>30 or strlen($password)<6) //проверка на пустое значение поля ввода логина
+		if( mb_strlen($password)>30 or mb_strlen($password)<6) //проверка на пустое значение поля ввода логина
 		{
 			$errors[] = 'Пароль должен содержать не менее 6 и не более 30 символов!';
 		}
@@ -99,8 +102,8 @@ if( isset($doSingup))
 		//подключения модуля отправки email с кодом подтверждения
 		require '/mailto.php';
 		//перенаправление на страницу проверки кода
-		//header('Location: reg.php');
-		require "/reg.php";
+		header('Location: reg.php');
+		
     }
 	else
 		{
