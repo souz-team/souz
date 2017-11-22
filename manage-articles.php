@@ -83,7 +83,7 @@
 					</div>
 				
 				<div class="manage-articles__wrap-button">
-					<a href="/new-article.php" class="manage-articles__link-new-article">
+					<a href="/new-article.php?idPodRazdel=<?= $podrazdelId ?>" class="manage-articles__link-new-article">
 						<button class="button button_default">Создать статью</button>
 					</a>
                     <a href='/manage-sections.php' ><div class="button button_cancel">Назад</div></a>

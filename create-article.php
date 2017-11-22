@@ -21,18 +21,7 @@
 				$successfulUppload = 1;
 			}
 			 
-				/*$size = getimagesize($uploadfile); 
-				if ($size[0] < 501 && $size[1]<1501) 
-				{ */
-				//	echo "Файл загружен. Путь к файлу: <b>http://souz/manage-articles.php/".$uploadfile."</b>"; 
-				/*}
-				else {
-					echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
-					unlink($uploadfile); 
-				} */
-				
-			//$successfulUppload = 1;
-		} 
+		}	 
 		else{ 
 			if ($_FILES['userfile']['size']!= 0){
 			
@@ -42,14 +31,9 @@
 			$successfulUppload = 2;
 		}
 	}	
-	//var_dump($successfulUppload);
+	
 	$err_f = array_shift($error_file);
 
-		
-	//if (isset($_POST["articleName"]))
-	//{
-	//	$artName = $_POST["articleName"];
-	//}
 	if (empty($artName))
 	{
 		$msg[] = "Введите название статьи!";
@@ -58,25 +42,13 @@
 	{
 		$msg[] = "Название статьи не должно содержать более 150 символов!";
 	}
-		
-		
-	//if (isset($_POST["articleText"]))
-	//{
-	//	$artText = $_POST["articleText"];
-	//}
+			
+	
 	if (empty($artText))
 	{
-		//$err_str.='Поле "Текст статьи" пустое <br>';
 		$msg[] = "Вы забыли написать статью!";
 	}
 	
-	/*
-	if( isset($_POST["articleName"])
-	 && isset($_POST["articleText"]))
-		{
-		echo $err_str;
-		}
-	*/
 	function cheсk_post($link, $var)
 			{
 				return mysqli_real_escape_string( $link,  $_POST[$var] );
@@ -86,9 +58,6 @@
 		{
 			$str1 = cheсk_post($link, 'articleName');
 			$str2 = cheсk_post($link, 'articleText');
-			
-			//$artName = htmlentities($str1, ENT_QUOTES, 'UTF-8');
-			//$artText = htmlentities($str2, ENT_QUOTES, 'UTF-8');
 			
 			if($successfulUppload == 1){
 				
