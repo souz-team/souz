@@ -32,6 +32,7 @@
 						<?php
 									$array = Show_Articles($link, $podrazdelId);
 									$counter = 0;
+                                    if ($array) {
 									for ($i=0; $i<count($array); $i++) {
 										?>
 											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>' podrazdel-id='<?= $podrazdelId ?>'>
@@ -45,6 +46,7 @@
 									
 								</div>
 							<?}  ?>
+                            <?}  ?>
 						</div>
 					</div>
 				</div>
