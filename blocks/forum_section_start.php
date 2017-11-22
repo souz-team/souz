@@ -1,46 +1,62 @@
 <?php
-$data = $_POST;
 
-if(isset($data['new_section']))
-{
-	require_once '/action/create_section.php';
+	$data = $_POST;
 
-	if(!empty($errors))
-	{ 
-		$er=1;
-		//echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+	if(isset($data['new_section'])) {
+
+		require_once '/action/create_section.php';
+
+		if(!empty($errors)) { 
+			$er=1;
+		}
+
 	}
-}
-//require_once '/action/get_user_info.php';
+
 ?>
 
+<div class="section__wrap">
+	<div class="section-2">
+		<div class="section-2__wrap">
+			<p class="section-2__title">Создание раздела</p>
 
+			<div class="section-2__form-auth">
+				<form action="/forum-new-section.php" method="POST" class='table-input-info'>
 
-	<div class="section__wrap">
-		<div class="new-topic">
-			<form action="/forum-new-section.php" method="POST">
-				<p class="new-material__title">Создание раздела<br/>
-				<?php if(!empty($errors)){?>
-					<div style="color: red;text-align: center; font-weight: 600;"><?php echo array_shift($errors);?></div>
-					<br/>
+					<?php if(!empty($errors)){?>
+						<div style="color: red;text-align: center; font-weight: 600;"><?= array_shift($errors) ?></div>
 					<?php } ?>
-				</p>
-				<label>
-					<p class="form-new-material__label">Название раздела:
-					<input class="form-new-material__label" name="section_name" type="text" /></p>
-					
-					
-					
-					<!--<p class="form-new-material__label">Скрытый раздел</p>-->
-					<!-- <input  class="form-new-material__textarea" name="topic" placeholder="Ваше сообщение"></textarea>-->
-					<p class="form-new-material__label"> Закрытый раздел: <input type='checkbox' name='section_closed' value='1'/> </p>
-					
-				</label>
-				<div><br/>
-					<button class="button button_article" name="new_section">Создать раздел</button>
-					<a href='/forum.php'><div class="button button_cancel">Назад</div></a>
-				</div>
-			</form>
+
+					<div class="table-input-info__row">
+						<label class='table-input-info__label'>
+							<div class="table-input-info__wrap-text">
+								<span class="table-input-info__text">Название раздела</span>
+							</div>
+							<div class="table-input-info__wrap-textfield">
+								<input type="text" class="table-input-info__textfield" name="section_name">
+							</div>
+						</label>
+					</div>
+
+					<div class="table-input-info__row">
+						<label class='table-input-info__label'>
+							<div class="table-input-info__wrap-text table-input-info__wrap-text_top">
+								<span class="table-input-info__text">Закрытый раздел</span>
+							</div>
+							<div class="table-input-info__wrap-textfield">
+								<input type="checkbox" name="section_closed" value="1">
+							</div>
+						</label>
+					</div>
+
+					<div>
+						<button class="button button_article" name="new_section">Создать раздел</button>
+						<a href='/forum.php' class='button button_cancel'>Назад</a>
+					</div>
+
+				</form>
+			</div>
+
 		</div>
 	</div>
+</div>
 
