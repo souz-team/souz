@@ -3,14 +3,29 @@
 					<div class="section-footer">
 						<div class="section-footer__links">
 							<ul class="footer-links">
-								<li class="footer-links__link-wrap"><a class="footer-links__link" href="index.php">Статьи</a>
+								<li class="footer-links__link-wrap"><a class="footer-links__link" href="/">Главная</a>
 								</li>
-								<li class="footer-links__link-wrap"><a class="footer-links__link" href="forum.php">Форум</a>
+								<li class="footer-links__link-wrap"><a class="footer-links__link" href="/article-menu.php">Статьи</a>
 								</li>
-								<li class="footer-links__link-wrap"><a class="footer-links__link" href="feedback.php">Обратная связь</a>
+								<li class="footer-links__link-wrap"><a class="footer-links__link" href="../forum.php">Форум</a>
+								</li>
+								<li class="footer-links__link-wrap"><a class="footer-links__link" href="../feedback.php">Обратная связь</a>
 								</li>
 								<li class="footer-links__link-wrap"><a class="footer-links__link" href="contact.php">Контакты</a>
 								</li>
+								<?php if ($_SESSION['userlevel']==1 OR $_SESSION['userlevel']==2){ ?>
+											<li class="footer-links__link-wrap">
+												<a class="footer-links__link" href="/manage-sections.php">Управление статьями</a>
+												
+											</li>
+											<?php if ($_SESSION['userlevel']==1){ ?>
+											<li class="footer-links__link-wrap">
+												<a class="footer-links__link" href="control-user.php">Управление юзерами</a>
+												
+											</li>
+											<?php } ?>
+										</ul>
+								<?php } ?>
 							</ul>
 						</div>
 						<div class="section-footer__copyright">

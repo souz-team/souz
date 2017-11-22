@@ -1,7 +1,17 @@
 <?php
 
 // ВЫВОД МЕНЮ
- 
+
+function Is_Razdel ($connection, $var)
+{
+    $search = "SELECT * FROM Razdel WHERE id = '$var'";
+    $result = $connection->query ($search);
+    if ($result) {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows ['P_id'] == 0) return true;
+    else return false;
+}
 function Menu ($connection, $var) 
 {
 	  $menu = "SELECT * FROM Razdel WHERE P_id = '$var'";
@@ -52,10 +62,11 @@ function Add_Razdel ($connection, $Name)
 function Delete_Razdel ($connection, $var) 
 {
     $all_podrazdels = Menu ($connection, $var);
-    for ($i = 0; $i < count($all_podrazdels); $i++)
-    {
-        $podrazdel = $all_podrazdels[$i]['id'];
+    if ($all_podrazdels) {
+    foreach ($all_podrazdels as $all_podrazdels) {
+        $podrazdel = $all_podrazdels['id'];
         $delete_podrazdel = Delete_Podrazdel($connection, $podrazdel);
+    }
     }
     $delete = "DELETE FROM Razdel WHERE id = '$var'";
     $result = $connection->query ($delete);
@@ -332,7 +343,7 @@ function Show_One_Article ($connection, $var) // Принимает подклю
 
 function Show_Last ($connection)
 {
-    $search = "SELECT * FROM Articles ORDER BY id DESC LIMIT 3";
+    $search = "SELECT * FROM Articles ORDER BY id DESC LIMIT 5";
     $result = $connection->query ($search);
      if (!$result) die ($connect->error);
     $rows = $result->num_rows;
@@ -383,6 +394,13 @@ function Add_Article ($connection, $id_Podrazdel, $Name, $Author, $Text, $Date)
 
 function Delete_Article ($connection, $var) // Принимает подключение и id
 {
+    $search = "SELECT * FROM Articles WHERE id ='$var'";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $row =$result->fetch_array (MYSQLI_ASSOC);
+    if ($row['Image_url']) {
+        unlink($row['Image_url']);  
+    }
     $delete_query = "DELETE FROM Articles WHERE id = '$var'";
     $result = $connection->query ($delete_query);
     if ($result) return true;

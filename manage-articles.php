@@ -29,8 +29,9 @@
 							</div>
 						</div>
 						<div class="manage-table__body">
+
 						<?php												
-									$per_page = 10;
+									$per_page = 5;
 
 									//вычисляем номер страницы
 									if (isset($_GET['page'])) {
@@ -46,21 +47,16 @@
 									$array = Show_Articles ($link, $id, $start, $per_page);
 									
 									for  ($i=0; $i<count($array); $i++) {
-										++$start;
-										?>
-											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>'> 
-											<div class="manage-table__cell manage-table__cell_name">
-                                        
-											<?echo $array[$i]['Name'] ?></a>
-											</div>
+										++$start;?>
+
+											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>' podrazdel-id='<?= $podrazdelId ?>'>
+											<div class="manage-table__cell manage-table__cell_name"><?= $array[$i]['Name'] ?></div>
 											<div class="manage-table__cell manage-table__cell_author"><?echo $array[$i]['Author'] ?></div>
 											<div class="manage-table__cell manage-table__cell_date"><?echo $array[$i]['Date'] ?></div>
 											<div class="manage-table__cell manage-table__cell_actions">
-											<a href="/article-edit.php?artId=<?=$array[$i]['id']?>&podrazId=<?=$podrazdelId?>" class="manage-table__action-link">Изменить</a>
-											<a href="/article-delete.php?del_id=<?=$array[$i]['id']?>&podrazId=<?=$podrazdelId?>" onclick="return confirm('Подтвердите удаление')? true : false;" class="manage-table__action-link manage-table__action-link_remove" >Удалить</a>
-											
-									
-									</div>
+												<a href="/article-edit.php?artId=<?=$array[$i]['id']?>&podrazId=<?=$podrazdelId?>" class="manage-table__action-link">Изменить</a>
+												<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+											</div>
 									
 								</div>
 							<?}  ?>
@@ -76,7 +72,7 @@
 							<?php if ($i-1 == $page) { ?>
 								<?= $i ?>
 							<?php } else { ?>
-							<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id ?>?page=<?= $i ?>'>[<?= $i?>]</a>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id ?>&page=<?= $i ?>'>[<?= $i?>]</a>
 							<?php } ?>
 						<?php } ?>
 					</div>

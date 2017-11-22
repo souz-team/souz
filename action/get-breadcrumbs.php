@@ -4,7 +4,7 @@
 	//echo $cur_url;
 	$page1 = parse_url($cur_url,  PHP_URL_PATH);
 	//echo $page1;
-	$id1 = substr($_GET['id'], 0, 1);
+	$id1 = $_GET['id'];
 	//echo $id1;
 	$flag=1;
 	$num_razd=0;

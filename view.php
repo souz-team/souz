@@ -10,7 +10,7 @@ require('config.php');
 			<div class="section-1">
 				<div class="section-1__menu">
 					<?php
-						$id = substr($_GET['id'], 0, 1);;	
+						$id = $_GET['id'];	
 						$_SESSION['idfont']=$id;
 						require_once "menu.php";						
 					?>
@@ -21,8 +21,8 @@ require('config.php');
 						//переменная, задающая количество сообщений, выводимых на странице
 						$per_page = 5;
 						//вычисляем номер страницы
-						if (strlen($_GET['id']) > 1) {
-							$page = substr($_GET['id'], 7, 8) -1;
+						if (isset($_GET['page'])) {
+							$page = $_GET['page'] -1;
 						} else {
 							$page = 0;
 						}
@@ -52,7 +52,7 @@ require('config.php');
 							<?php if ($i-1 == $page) { ?>
 								<?= $i ?>
 							<?php } else { ?>
-							<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id ?>?page=<?= $i ?>'>[<?= $i?>]</a>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id ?>&page=<?= $i ?>'>[<?= $i?>]</a>
 							<?php } ?>
 						<?php } ?>
 					</div>

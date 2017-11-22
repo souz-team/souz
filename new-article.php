@@ -1,13 +1,24 @@
 <?php require 'config.php';?>
+<?php require_once 'blocks/header.php';
+if (isset($_POST['do_create_article']))
+{
+	
+	require "create-article.php";
 
-<?php require_once 'blocks/header.php';?>
+}
+
+
+?>
 
 	<section class="section section_content">
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title">Создание статьи</p>
+				
+				<div style="color: red; text-align:center;"><br><?=$all?></div>
 				<div class="new-material__form">
-					<form action="create-article.php" method="post" class="form-new-material" ENCTYPE="multipart/form-data">
+					<!--<form action="create-article.php" method="post" class="form-new-material" ENCTYPE="multipart/form-data"> -->
+					<form action="new-article.php" method="post" class="form-new-material" ENCTYPE="multipart/form-data">
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
 							<input type="text" name="articleName" class="form-new-material__textfield">
@@ -47,13 +58,12 @@
 						<br>
 						
 							Выберите файл для загрузки: 
+							<div style="color: red; text-align:center;"><br><?=$$err_f?></div>
 							<input type="file" name="userfile">
 						<div class="form-new-material__row form-new-material__row_buttons">
-							<a href="/manage-articles.php">
-								<button class="button button_cancel">Отмена
-								</button>
+							<a href="/manage-sections.php"><div class="button button_cancel">Назад</div>
 							</a>
-							<button class="button button_default"input type="submit">Создать</button>
+							<button class="button button_default" name="do_create_article">Создать</button>
 						</div>
 
 					</form>
