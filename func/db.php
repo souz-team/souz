@@ -12,6 +12,7 @@ function Is_Razdel ($connection, $var)
     if ($rows ['P_id'] == 0) return true;
     else return false;
 }
+
 function Menu ($connection, $var) 
 {
 	  $menu = "SELECT * FROM Razdel WHERE P_id = '$var'";

@@ -30,6 +30,7 @@
 						</div>
 						<div class="manage-table__body">
 
+
 						<?php												
 									$per_page = 5;
 
@@ -46,8 +47,11 @@
 									//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
 									$array = Show_Articles ($link, $id, $start, $per_page);
 									
+									if ($array) {
 									for  ($i=0; $i<count($array); $i++) {
-										++$start;?>
+										++$start;
+										?>
+
 
 											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>' podrazdel-id='<?= $podrazdelId ?>'>
 											<div class="manage-table__cell manage-table__cell_name"><?= $array[$i]['Name'] ?></div>
@@ -60,6 +64,7 @@
 									
 								</div>
 							<?}  ?>
+                            <?}  ?>
 						</div>
 					</div>
 				</div>
