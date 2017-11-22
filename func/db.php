@@ -250,13 +250,6 @@ function Count_Show_Users($connection, $sort, $direct){
 	if (!$rows) return false;
     else
     {return $rows;}
-	/*//$res = mysql_query($q); 	//которые нужно 
-	$row = mysql_fetch_assoc($result); //разбить по страницам.
-	$total_rows = $row['count'];
-	if (!$total_rows) return false;
-    else
-    {return $total_rows;}
-	//return $total_row;*/
 }
 
 // Удаление ПОЛЬЗОВАТЕЛЯ
@@ -291,13 +284,15 @@ function Show_All_Articles ($connection) // Принимает подключе�
     return $array; 
 } 
 
-function Show_Articles ($connection, $var) // Принимает подключение и id, возвращает массив пользователей
+function Show_Articles ($connection, $var, $start, $per_page) // Принимает подключение и id, возвращает массив пользователей
 {
-    $search = "SELECT * FROM Articles WHERE id_Podrazdel = '$var'";
+    $search = "SELECT * FROM Articles WHERE id_Podrazdel = $var LIMIT $start, $per_page";
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;
-    if (!$rows) return 0;
+    if (!$rows) {
+		return 0;
+	}
     else
     {
         $array = array ();
@@ -309,6 +304,17 @@ function Show_Articles ($connection, $var) // Принимает подключ�
         }   
     }
     return $array; 
+}
+
+function Count_Articles($connection, $var){
+	$q = "SELECT * FROM Articles WHERE id_Podrazdel = '$var'";
+	$result = $connection->query ($q);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+	if (!$rows){ return false;
+		print ("dfghenen");}
+    else
+    {return $rows;}
 }
 
 function Show_One_Article ($connection, $var) // Принимает подключение и id

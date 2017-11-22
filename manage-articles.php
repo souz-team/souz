@@ -29,10 +29,24 @@
 							</div>
 						</div>
 						<div class="manage-table__body">
-						<?php
-									$array = Show_Articles($link, $podrazdelId);
-									$counter = 0;
+						<?php												
+									$per_page = 10;
+
+									//вычисляем номер страницы
+									if (isset($_GET['page'])) {
+										$page = ($_GET['page']-1);
+									} else {
+										$page = 0;
+									}
+									$start = abs($page*$per_page);						
+						
+									$id = $_GET['id'];
+									$n=0;
+									//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
+									$array = Show_Articles ($link, $id, $start, $per_page);
+									
 									for  ($i=0; $i<count($array); $i++) {
+										++$start;
 										?>
 											<div class="manage-table__row manage-table__row_body" entity-id='<?=$array[$i]['id'] ?>'> 
 											<div class="manage-table__cell manage-table__cell_name">
@@ -54,6 +68,19 @@
 					</div>
 				</div>
 
+				<div class='pagination'> 
+						<?php
+						$total_rows = Count_Articles($link, $id);
+						$num_pages = ceil($total_rows/$per_page);
+						for($i=1; $i<=$num_pages; $i++) { ?>
+							<?php if ($i-1 == $page) { ?>
+								<?= $i ?>
+							<?php } else { ?>
+							<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id ?>?page=<?= $i ?>'>[<?= $i?>]</a>
+							<?php } ?>
+						<?php } ?>
+					</div>
+				
 				<div class="manage-articles__wrap-button">
 					<a href="/new-article.php" class="manage-articles__link-new-article">
 						<button class="button button_default">Создать статью</button>
@@ -64,6 +91,8 @@
 			</div>
 		</div>
 	</section>
+	
+	
 
 	
 <?php require_once 'blocks/footer.php'; ?>

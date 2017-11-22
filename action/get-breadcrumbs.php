@@ -1,8 +1,11 @@
 <?php 
 	$crumbs = array();    
 	$cur_url = $_SERVER['REQUEST_URI'];
+	//echo $cur_url;
 	$page1 = parse_url($cur_url,  PHP_URL_PATH);
-	$id1 = $_GET['id'];
+	//echo $page1;
+	$id1 = substr($_GET['id'], 0, 1);
+	//echo $id1;
 	$flag=1;
 	$num_razd=0;
 	do{

@@ -24,8 +24,6 @@
 		$dir[$sort_key] = $asc;
 		
 	}
-	
-	
 	//переменная, задающая количество сообщений, выводимых на странице
 	$per_page = 10;
 	//вычисляем номер страницы
@@ -39,7 +37,6 @@
 	{
 		$search_clear = htmlentities(mysql_real_escape_string($_POST['search']), ENT_QUOTES, 'UTF-8');
 		$search = $search_clear;
-		
 		$users = search_user($link, $search);
 		$show_pag = 0;
 	}
@@ -48,10 +45,7 @@
 	$users = Show_Users ($link, $sort_key, $direct, $start, $per_page); 
 	$show_pag = 1;	
 	}
-	
-	if(!$total_rows = Count_Show_Users($link, $sort_key, $direct))
-		echo "jgb";
-	else	
+	$total_rows = Count_Show_Users($link, $sort_key, $direct);
 	//$total_rows = $row['count']; //высчитываем сколько
 	$num_pages = ceil($total_rows/$per_page); // получится страниц
 ?>

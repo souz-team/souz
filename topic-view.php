@@ -7,9 +7,6 @@
 		die();
 	}*/
 
-	 
-	
-
 	/*if (!$id_topic) {
 		$id_topic = $_SESSION['idview'];
 	} else {
@@ -93,7 +90,6 @@
 			$res = mysqli_query($link, $sql);	//отправляем запрос
 
 			while ($row_posts = mysqli_fetch_array($res)) {
-
 				$post_author = $row_posts['login'];
 				$sql1 = "SELECT * FROM Users WHERE login='$post_author'";
 				$res1 = mysqli_query($link, $sql1);
@@ -101,29 +97,21 @@
 				++$start;
 				include './blocks/topic-view-message.php';
 			}
-
 			/*небольшой код вывода номеров страничек*/
 			$q = "SELECT count(*) as count FROM boardp WHERE theme_id='$topic_id'"; //считаем сколько у нас записей,
 			$res = mysql_query($q); 	//которые нужно 
 			$row = mysql_fetch_assoc($res); //разбить по страницам.
-
 			$total_rows = $row['count']; //высчитываем сколько
-
 			$num_pages = ceil($total_rows/$per_page); // получится страниц
-
 		?>
-
-		<div class='pagination'>Страницы: 
+		<div class='pagination'> 
 			<?php for($i=1; $i<=$num_pages; $i++) { ?>
 					<?php if ($i-1 == $page) { ?>
 						<?= $i ?>
-					<?php } else { ?>
-					
-					<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id_topic ?>&page=<?= $i ?>'>[<?= $i ?>]</a>
-					
+					<?php } else { ?>					
+					<a href='<?= $_SERVER[PHP_SELF] ?>?id=<?= $id_topic ?>&page=<?= $i ?>'>[<?= $i ?>]</a>					
 					<?php } ?>
-			<?php } ?>
-			
+			<?php } ?>			
 		</div>
 		<br>
 		<?php
@@ -162,7 +150,6 @@
 				}
 			} */
 		?>
-
 		<?php if(isset($_SESSION['login'])) { ?>
 			<form action="./blocks/new_comment.php" method="POST">
 				<input name="id_topic" type="hidden" value='<?= $id_topic ?>'>
@@ -180,5 +167,4 @@
 		<?php } ?>
 	</div>
 </section>
-
 <?php require_once 'blocks/footer.php'; ?>

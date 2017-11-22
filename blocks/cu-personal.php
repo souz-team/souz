@@ -109,13 +109,12 @@
 	</div>
 </div>
 <?php if($show_pag!=0){ ?>
-<div class='pagination'>Страницы: 
+<div class='pagination'>
 	<?php for($i=1; $i<=$num_pages; $i++) { ?>
 			<?php if ($i-1 == $page) { ?>
 				<?= $i ?>
 			<?php } else { ?>
-			<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?= $i ?>'>[<?= $i?>]</a>
-			
+			<a href='<?= $_SERVER[PHP_SELF] ?>?page=<?= $i ?>'>[<?= $i?>]</a>			
 			<?php } ?>
 	<?php } ?>	
 <?php }?>
