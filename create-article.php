@@ -31,7 +31,7 @@
 			$successfulUppload = 2;
 		}
 	}	
-		var_dump($successfulUppload);
+	
 	$err_f = array_shift($error_file);
 
 	if (empty($artName))
