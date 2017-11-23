@@ -114,6 +114,7 @@
 				
 		}
 	}	
-	header("Location: /manage-articles.php?id=$idPodRazdel");
+	
+	header("Location: /manage-articles.php?id=$id_Podrazdel");
 	
 ?>
