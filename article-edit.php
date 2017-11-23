@@ -65,13 +65,13 @@ require_once 'blocks/header.php';
 						<?php
 							if ($row['Image_url'] !=''){
 								echo "Оставьте текущее изображение или";
-							}
-							
 						?>
 						
-						<br>
-						<a href="/image-delete.php?deleteImage=<?= $row['id']?>" ><div class="button button_cancel">Удалите изображение</div></a>
-						<br><br>
+							<br>
+							<a href="/image-delete.php?deleteImage=<?= $row['id']?>" ><div class="button button_cancel">Удалите изображение</div></a>
+							<br><br>
+							
+						<?}?>
 						<img src="<?= $row['Image_url'] ?>" alt='' width='100'/>
 														
 						<div class="form-new-material__row form-new-material__row_buttons">
