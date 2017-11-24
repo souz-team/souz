@@ -15,9 +15,10 @@ require '/action/get-topic-by-user.php';
 	<div class="manage-table__body">
 	<?php if(!empty($topics)){?>
 		<?php foreach($topics as $i => $topic) { ?>
+		<?php $i=$i+1 ?>
 		<div class="manage-table__row manage-table__row_body">
 			<div class="manage-table__cell manage-table__cell_name">
-				<a href='/topic-view.php?id=<?= $topic['theme_id']?>' class='manage-table__name-link'><?=$topic['subject']?></a>
+				<a href='/topic-view.php?id=<?= $topic['theme_id']?>' class='manage-table__name-link'><?=$i.'. '.$topic['subject']?></a>
 			</div>
 			<p class="manage-table__cell manage-table__cell_date"><?=$topic['create_date']?></p>
 		</div>
