@@ -627,14 +627,18 @@ function Topic_Amount ($connection, $var)
 
 // Возврат массива тем
 
-function Show_Topic ($connection, $var_s, $var_t) // Принимает подключение и id, возвращает массив пользователей
+function Show_Topic ($connection, $var_s, $var_t, $var_e) // Принимает подключение и id, возвращает массив пользователей
 {
     if(isset($var_s)){
-	$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
+		$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
 	}
 	elseif(isset($var_t))
 	{
 		$search = "SELECT * FROM boardt WHERE theme_id='$var_t'";
+	}
+	elseif(isset($var_e))
+	{
+		$search = "SELECT * FROM boardt WHERE email='$var_e'";
 	}
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
@@ -798,4 +802,3 @@ function DoctorString ($var)
     $var = htmlentities ($var, ENT_QUOTES, "UTF-8"); //заменяет все угловые скобки, используемые в качестве составляющих HTML-тегов
     return $var;
 }
-

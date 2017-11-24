@@ -26,7 +26,7 @@ else {
 	mysql_query ("SET NAMES 'UTF-8'");
 	$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
 	include '/func/db.php';
-	  
+	
 }
 	
 
