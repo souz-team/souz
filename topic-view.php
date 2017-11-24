@@ -14,9 +14,9 @@
 	}*/
 
 	$data = $_POST;
-	$auth_login = $_SESSION['login'];
-	$auth_email = $_SESSION['email'];
-	$auth_fio = $_SESSION['fio'];
+	//$auth_login = $_SESSION['login'];
+	//$auth_email = $_SESSION['email'];
+	//$auth_fio = $_SESSION['fio'];
 	$date = date("Y-m-d");
 
 	$topic_start = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id=$id_topic") or die("Ошибка " . mysqli_error($link));
@@ -52,10 +52,14 @@
 		<div class="view-topic">
 			<div class="view-topic__wrap">
 				<div class="topic_author">
-					<p class="author-name">Написал: <?= $row_topic['author'] ?></p>
+					<p class="author-name" title='<?php echo "Email: ".$row_topic['email']?>'> Написал: <?= $row_topic['author'] ?></p>
 					<div class="author-inf">
 						<p class="value-message">Сообщений: <?= $num_author_message ?></p>
-						<p class="date">Дата регистрации: <?= $reg_info_topic['reg_date'] ?></p>
+						<?php if(isset($reg_info_post['reg_date'])){ ?>
+							 <p class="date">Дата регистрации: <?= $reg_info_topic['reg_date'] ?></p>
+						<?php } else {?>
+							<p class="date"></p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="topic__content">
