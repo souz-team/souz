@@ -79,8 +79,8 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'" title = "Удалить"><img src="/images/delete.png" width = "20" height = "20"></a>
+							<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>
+							
 						</div>
 						</div>
 						';
@@ -96,8 +96,8 @@
 							
 						
 					<div class="forum-table__cell forum-table__cell_messages">
-						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-						<a  href="/forum-action-section.php?delete='.$section[$i]['section_id'].'" title = "Удалить"><img src="/images/delete.png" width = "20" height = "20"></a>
+						<a  href="/forum-action-section.php?edit='.$section[$i]['section_id'].'" title = "Изменить"><img src="/images/edit.png" width = "20" height = "20"></a>
+						
 					</div>
 					</div>
 					';
