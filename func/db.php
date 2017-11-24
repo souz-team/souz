@@ -264,6 +264,22 @@ function Count_Show_Users($connection, $sort, $direct){
     {return $rows;}
 }
 
+function countAuthorMess($connection, $login){
+	$sql = "SELECT * FROM boardp WHERE login = '$login'";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$rowsComm = $result->num_rows;
+	
+	$sql = "SELECT * FROM boardt WHERE author = '$login'";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$rowsTheam = $result->num_rows;
+	
+	if (!$rowsComm) $rowsComm = 0;
+	if (!$rowsTheam) $rowsComm = 0;
+    return ($rowsComm + $rowsTheam);
+}
+
 // Удаление ПОЛЬЗОВАТЕЛЯ
 
 function Delete_User ($connection, $var) // Принимает подключение и id
@@ -295,6 +311,8 @@ function Show_All_Articles ($connection) // Принимает подключе�
     }
     return $array; 
 } 
+
+
 
 function Show_Articles ($connection, $var) // Принимает подключение и id, возвращает массив пользователей
 {
@@ -350,6 +368,8 @@ function Count_Articles($connection, $var){
     else
     {return $rows;}
 }
+
+
 
 function Show_One_Article ($connection, $var) // Принимает подключение и id
 {
@@ -447,6 +467,38 @@ function queryNameRazdel($id, $table, $atributWhere, $connection){
 	if (!$result) die ($connect->error);
 	$row =$result->fetch_array (MYSQLI_ASSOC);
 	return $row;
+}
+
+function Show_Subsection_Limit($connection, $id, $start, $per_page){
+	$search = "SELECT * FROM Razdel WHERE P_id = $id LIMIT $start, $per_page";
+    $result = $connection->query ($search);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) {
+		return 0;
+	}
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array;
+}
+
+function countSubsection($connection, $id){
+	$q = "SELECT * FROM Razdel WHERE P_id = $id";
+	$result = $connection->query ($q);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+	if (!$rows){ return false;
+		print ("dfghenen");}
+    else
+    {return $rows;}
 }
 
 //Хлебные крошки
@@ -575,14 +627,18 @@ function Topic_Amount ($connection, $var)
 
 // Возврат массива тем
 
-function Show_Topic ($connection, $var_s, $var_t) // Принимает подключение и id, возвращает массив пользователей
+function Show_Topic ($connection, $var_s, $var_t, $var_e) // Принимает подключение и id, возвращает массив пользователей
 {
     if(isset($var_s)){
-	$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
+		$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
 	}
 	elseif(isset($var_t))
 	{
 		$search = "SELECT * FROM boardt WHERE theme_id='$var_t'";
+	}
+	elseif(isset($var_e))
+	{
+		$search = "SELECT * FROM boardt WHERE email='$var_e'";
 	}
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
@@ -746,4 +802,3 @@ function DoctorString ($var)
     $var = htmlentities ($var, ENT_QUOTES, "UTF-8"); //заменяет все угловые скобки, используемые в качестве составляющих HTML-тегов
     return $var;
 }
-

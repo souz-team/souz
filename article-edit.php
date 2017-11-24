@@ -15,12 +15,13 @@ require_once 'blocks/header.php';
 				$podrazdelId = $_GET['podrazId'];
 				}
 				
-				$queryArticle =mysql_query("SELECT Name,id_Podrazdel,Text FROM Articles WHERE id = '$artId'");
+				$queryArticle =mysql_query("SELECT id, id_Podrazdel, Name, Image_url, Text FROM Articles WHERE id = '$artId'");
 				$row = mysql_fetch_assoc($queryArticle);
+				$previousImageUrl = $row['Image_url'];
 				?>
 				
 				<div class="new-material__form">
-					<form action="articleEdit.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>" method="post" class="form-new-material">
+					<form action="articleEdit.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>&previousimageurl=<?=$previousImageUrl?>" method="post" class="form-new-material" ENCTYPE="multipart/form-data">
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
 							<input type="text" name="articleName" value="<?echo $row['Name']?>" class="form-new-material__textfield">
@@ -57,10 +58,22 @@ require_once 'blocks/header.php';
 							<p class="form-new-material__label">Текст статьи</p>
 							<textarea name="articleText" class="form-new-material__textarea"><?echo $row['Text']?></textarea>
 						</label><br>
-						Выберите файл для загрузки: 
-							<input type="file" name="userfile">
 						
+						 Выберите файл для загрузки:
+							<input type="file" name="userfile" /><br><br>
 						
+						<?php
+							if ($row['Image_url'] !=''){
+								echo "Оставьте текущее изображение или";
+						?>
+						
+							<br>
+							<a href="/image-delete.php?deleteImage=<?= $row['id']?>" ><div class="button button_cancel">Удалите изображение</div></a>
+							<br><br>
+							
+						<?}?>
+						<img src="<?= $row['Image_url'] ?>" alt='' width='100'/>
+														
 						<div class="form-new-material__row form-new-material__row_buttons">
 							<a href="/manage-articles.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>">
 								<button class="button button_cancel">Отмена

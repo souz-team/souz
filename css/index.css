@@ -1328,7 +1328,7 @@ img {
 
 .breadcrumbs{
 	list-style-type: none;
-	font-size: 12px;
+	font-size: 14px;
 	color: #666;
 }
 
@@ -1338,9 +1338,11 @@ img {
 }
 
 .breadcrumbs__item:not(:last-child):after{
-	content: ' /';
+	content: '/';
+	margin: 0 5px;
 }
 .breadcrumbs__link:hover{
+	color: #0052CC;
 	text-decoration: underline;
 }
 
@@ -1747,6 +1749,7 @@ img {
 	height: 100%;
 	background-color: rgba(0,0,0,0.75);
 	opacity: 0;
+	z-index: 1000;
 }
 
 .popup__form {

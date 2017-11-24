@@ -107,7 +107,7 @@
 												
 												<?php if ($_SESSION['userlevel']==1){ ?>
 												<li>
-													<div class="navigation__item"><a class="navigation__link" href="control-user.php">Управление юзерами</a>
+													<div class="navigation__item"><a class="navigation__link" href="control-user.php?page=1&sort=0">Управление юзерами</a>
 													</div>
 												</li>
 												<?php } ?>

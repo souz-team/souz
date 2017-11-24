@@ -37,17 +37,18 @@
 			array_unshift($crumbs, array('text' => $name, 'url' => "topic-view.php?id=$id1"));
 			$page1 = "/forum-topic.php";
 			$id1 = $row['id_section'];
-		} else if($page1 == "/view.php" && $id1==0){
-			$row = queryNameRazdel($num_razd, 'Razdel', 'id', $link);
+		} else if($page1 == "/view-subsection.php" ){
+			$row = queryNameRazdel($id1, 'Razdel', 'id', $link);
 			$name = $row['Name'];
-			array_unshift($crumbs, array('text' => $name, 'url' => "view.php?id=$id1"));
+			echo $id1;
+			array_unshift($crumbs, array('text' => $name, 'url' => "view-subsection.php?id=$id1"));
 			$page1 = "/article-menu.php";
-		} else if ($page1 == "/view.php" && $id1>0){
+		} else if ($page1 == "/view.php" ){
 			$row = queryNameRazdel($id1, 'Razdel', 'id', $link);
 			$name = $row['Name'];
 			array_unshift($crumbs, array('text' => $name, 'url' => "view.php?id=$id1"));
-			$num_razd = $row['P_id'];
-			$id1 = 0;
+			$page1 = "/view-subsection.php";
+			$id1 = $row['P_id'];
 		} else if ($page1 == "/article.php"){
 			$row = queryNameRazdel($id1, 'Articles', 'id', $link);
 			$name = $row['Name'];

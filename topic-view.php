@@ -14,9 +14,9 @@
 	}*/
 
 	$data = $_POST;
-	$auth_login = $_SESSION['login'];
-	$auth_email = $_SESSION['email'];
-	$auth_fio = $_SESSION['fio'];
+	//$auth_login = $_SESSION['login'];
+	//$auth_email = $_SESSION['email'];
+	//$auth_fio = $_SESSION['fio'];
 	$date = date("Y-m-d");
 
 	$topic_start = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id=$id_topic") or die("Ошибка " . mysqli_error($link));
@@ -41,6 +41,9 @@
 	$num_rows_post = mysqli_num_rows($posts);
 	//$reg_info_post = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM Users WHERE login='$topic_author'"));
 	//$row_posts = mysqli_fetch_array($posts);
+	
+	$num_author_message = countAuthorMess($link, $row_topic['author']);
+	//echo $num_author_message;
 
 ?>
 <?php require_once 'blocks/header.php';?>
@@ -49,10 +52,14 @@
 		<div class="view-topic">
 			<div class="view-topic__wrap">
 				<div class="topic_author">
-					<p class="author-name">Написал: <?= $row_topic['author'] ?></p>
+					<p class="author-name" title='<?php echo "Email: ".$row_topic['email']?>'> Написал: <?= $row_topic['author'] ?></p>
 					<div class="author-inf">
-						<p class="value-message">Сообщений: 12</p>
-						<p class="date">Дата регистрации: <?= $reg_info_topic['reg_date'] ?></p>
+						<p class="value-message">Сообщений: <?= $num_author_message ?></p>
+						<?php if(isset($reg_info_post['reg_date'])){ ?>
+							 <p class="date">Дата регистрации: <?= $reg_info_topic['reg_date'] ?></p>
+						<?php } else {?>
+							<p class="date"></p>
+						<?php } ?>
 					</div>
 				</div>
 				<div class="topic__content">
@@ -95,6 +102,7 @@
 				$res1 = mysqli_query($link, $sql1);
 				$reg_info_post = mysqli_fetch_assoc($res1);
 				++$start;
+				$num_author_message = countAuthorMess($link, $post_author);
 				include './blocks/topic-view-message.php';
 			}
 			/*небольшой код вывода номеров страничек*/
