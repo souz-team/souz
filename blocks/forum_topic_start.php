@@ -43,7 +43,7 @@
 
 	<div class="section__wrap">
 		<div class="new-topic">
-			<form action="/forum-new-topic.php" method="POST">
+			<form action="/forum-new-topic.php?id=<?= $id ?>" method="POST">
 			<input type = "hidden" name = "id_section" value = <?=$id?>>
 				<p class="new-material__title">Создние темы</p>
 								
