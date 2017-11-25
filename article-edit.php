@@ -6,6 +6,7 @@ require_once 'blocks/header.php';
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title">Редактирование статьи</p>
+				
 				<?php
 				//$authorName = $_SESSION['fio'];
 				if (isset($_GET['artId'])){
@@ -73,13 +74,13 @@ require_once 'blocks/header.php';
 							
 						<?}?>
 						<img src="<?= $row['Image_url'] ?>" alt='' width='100'/>
-														
 						<div class="form-new-material__row form-new-material__row_buttons">
 							<a href="/manage-articles.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>">
 								<button class="button button_cancel">Отмена
 								</button>
 							</a>
 							<button class="button button_default"input type="submit">Изменить</button>
+							
 						</div>
 									
 

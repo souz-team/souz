@@ -1,10 +1,21 @@
 <div class='section-1__article'>
 	<article class='article'>
-	<?php if(!empty($articleImage)){ ?>
+	<?php if($articleImage !=''){ 
+				
+				
+				?>
 		<div class='article__image-wrap'>
-			<img class='article__image' src =<?= $articleImage?>  alt='' role='presentation'/>
+		
+			<img class='article__image' src =<?= $articleImage?> height = '' width='315' role='presentation'/>
 		</div>
-	<?php } ?>
+		<?}
+		
+		else{
+	?>	<div class='article__image-wrap'>
+			<img class='article__image' src ="/images/article_images/No_photo.jpg"  role='presentation'/>
+		</div>	
+	<?	}?>
+	
 		<div class='article__content-wrap'>
 			<div class='article__content'>
 				<p class='article__title'><?= $title ?></p>
