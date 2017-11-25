@@ -39,7 +39,7 @@
 		
 			if($articleImage !=''){
 				$objImageData = AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, '' );
-				var_dump($objImageData);
+				//var_dump($objImageData);
 			}
 		}	
 		
