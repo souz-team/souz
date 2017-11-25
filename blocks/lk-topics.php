@@ -9,6 +9,7 @@ require '/action/get-topic-by-user.php';
 		<div class="manage-table__row manage-table__row_header">
 		
 			<div class="manage-table__cell manage-table__cell_header manage-table__cell_header-name manage-table__cell_name">Название</div>
+			<div class="manage-table__cell manage-table__cell_header manage-table__cell_date">Дата последнего ответа</div>
 			<div class="manage-table__cell manage-table__cell_header manage-table__cell_date">Опубликовано</div>
 		</div>
 	</div>
@@ -20,6 +21,12 @@ require '/action/get-topic-by-user.php';
 			<div class="manage-table__cell manage-table__cell_name">
 				<a href='/topic-view.php?id=<?= $topic['theme_id']?>' class='manage-table__name-link'><?=$i.'. '.$topic['subject']?></a>
 			</div>
+			<?php
+			$date =  mysqli_query ($link, "SELECT MAX(m_date) FROM boardp WHERE theme_id=$topic[theme_id]");
+			$row_date = mysqli_fetch_array($date);
+			$date_post = $row_date[0];
+			?>
+			<p class="manage-table__cell manage-table__cell_date"><?=$date_post?></p>
 			<p class="manage-table__cell manage-table__cell_date"><?=$topic['create_date']?></p>
 		</div>
 		<?php } ?>

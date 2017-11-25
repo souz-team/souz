@@ -16,6 +16,7 @@
 			</label>
 			<div><br/>
 				<button class="button button_article" name="edit_topic">Изменить</button>
+				<button onclick='return confirm("Вы уверены?")' class="button button_cancel" name="delete_topic">Удалить тему</button>
 				<a href='/forum-topic.php?id=<?=$topic_section_id?>'><div class="button button_cancel">Назад</div></a>
 			</div>
 		</form>
