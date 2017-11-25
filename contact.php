@@ -13,8 +13,9 @@ require_once '/func/db.php';
 							Мы молодая перспективная команда с большим опытом работы в разных сферах web-разработки. Проектирование дизайна, написание сайтов "под ключ", SEO-оптимизация, продвижение соц. сетей, разработка логотипа, QA(Тестирование). Персональный подход, профессионализм, ответственность, оперативность, высокое качество, долговечное отношение с клиентом. 
 						</div>
 						<div class="section-contacts__contacts">
-							<p class="section-contacts__small-title">Как нас найти</p>
-							г.Нижний Новгород, ул. Минина, 24
+							<p class="section-contacts__small-title">Как нас найти:</p>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d553.0643039049132!2d44.02797792450077!3d56.32539166941236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4151d45c8f887d6f%3A0x10282eb15ffc1719!2z0YPQuy4g0JzQuNC90LjQvdCwLCAyONCSLCDQndC40LbQvdC40Lkg0J3QvtCy0LPQvtGA0L7QtCwg0J3QuNC20LXQs9C-0YDQvtC00YHQutCw0Y8g0L7QsdC7LiwgNjAzMTU1!5e0!3m2!1sru!2sru!4v1511653331039" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+							
 							<p><a href="mailto:15istv1@mail.ru" class="form-signup__buttons-signup">Пишите нам</a></p>
 						</div>
 					</div>
