@@ -58,7 +58,7 @@ $idPodRazdel = $_GET['idPodRazdel'];
 						
 						<br>
 						
-							Выберите файл для загрузки: 
+							Выберите файл для загрузки размером не меньше 315х230: 
 							<div style="color: red; text-align:center;"><br><?=$$err_f?></div>
 							<input type="file" name="userfile">
 						<div class="form-new-material__row form-new-material__row_buttons">

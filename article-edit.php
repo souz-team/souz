@@ -60,7 +60,7 @@ require_once 'blocks/header.php';
 							<textarea name="articleText" class="form-new-material__textarea"><?echo $row['Text']?></textarea>
 						</label><br>
 						
-						 Выберите файл для загрузки:
+						 Выберите файл для загрузки размером не меньше 315х230:
 							<input type="file" name="userfile" /><br><br>
 						
 						<?php
@@ -73,7 +73,7 @@ require_once 'blocks/header.php';
 							<br><br>
 							
 						<?}?>
-						<img src="<?= $row['Image_url'] ?>" alt='' width='100'/>
+						<img src="<?= $row['Image_url'] ?>" width='100'/>
 						<div class="form-new-material__row form-new-material__row_buttons">
 							<a href="/manage-articles.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>">
 								<button class="button button_cancel">Отмена
