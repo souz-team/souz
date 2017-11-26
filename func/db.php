@@ -884,4 +884,58 @@ function delete_section_admin($connection, $section_id)
 	
 	}	
 }
-
+//Удаление поста на форуме
+function delete_boardpF ($link, $var){
+	/*
+	Функция удаляет пост на форуме по post_id в таблице boardp
+	В случае успеха возвращает true
+	*/
+	$delete_query = "DELETE FROM boardp WHERE post_id = '$var'"; 
+    $result = $link->query ($delete_query);
+    if ($result) return true;
+    else
+        die ($link->error); 
+}
+//Удаление темы и сообщений в ней на форуме.
+function delete_themeF ($link, $var){
+	/*
+	Функция удаляет сообщения по theme_id из таблицы boardp,
+	а затем удаляет саму тему по theme_id из таблицы boardt.
+	*/
+	$delete_query = "DELETE FROM boardp WHERE theme_id = '$var'"; 
+    $result = $link->query ($delete_query); //Удаляем все сообщения в теме из таблицы boardp.
+	$delete_query = "DELETE FROM boardt WHERE theme_id = '$var'"; 
+    $result = $link->query ($delete_query);// Удаляем тему из таблицы boardt.
+	if ($result) return true; //В случае успеха возвращает true
+    else
+        die ($link->error);
+}
+//Каскадное удаление раздела на форуме.
+function delete_razdelF ($link, $var){
+	/*
+	Функция получает подключение($link) и значение раздела(номер)($var)
+	Затем в таблице boardt ищет записи тем которые относятся к этому разделу.
+	Список тем записывается в массив $array
+	Циклом текущее значение массива $array передаётся в функцию delete_themeF для удаления топиков в этой теме и самой темы.
+	Когда все темы удалены, удаляется раздел из таблицы boardsection
+	*/
+	$select = "SELECT theme_id FROM boardt WHERE id_section = '$var'";
+    $result = $link->query ($select);
+	if ($result)
+    {
+        $rows = $result->num_rows;
+    }
+	//Пытаемся получить список ID тем, которые относятся к $var разделу
+	$array = array(); 
+        for ($i=0; $i<$rows; $i++) {
+            $result->data_seek($i);
+            $row = $result->fetch_array(MYSQLI_NUM);
+			$array[$i] = $row[$i];			
+	}   
+	for ($i=0; $i<$rows; $i++) {// циклом удаляем все темы и топики в них
+		delete_themeF ($link, $array[$i][0]);
+	}
+	$delete_query = "DELETE FROM boardsection WHERE section_id = '$var'"; 
+    $result = $link->query ($delete_query);// Удаляем раздел из таблицы boardsection.
+}
+?>
