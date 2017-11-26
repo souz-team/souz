@@ -6,7 +6,13 @@ if (($_SESSION['userlevel']==1) || ($_SESSION['userlevel']==2)) {
 if (isset($_GET['id']) && $_GET['id'] != 0)
 {
 	$sectionid = $_GET['id'];
-	$zagolovok = "Изменение раздела";
+    $is_Razdel = Is_Razdel ($link, $sectionid);
+    if ($is_Razdel === true) {
+        $zagolovok = "Изменение раздела";
+    }
+    else {
+        $zagolovok = "Изменение подраздела";
+    }
 }	
 ?>
 
@@ -39,7 +45,7 @@ if (isset($_GET['id']) && $_GET['id'] != 0)
 				
 						<div class="table-input-info__row">
 							<label class="table-input-info__label">
-								<?php if($_SESSION['userlevel']==1) {?>
+								<?php if($_SESSION['userlevel']==1 && $is_Razdel===true) {?>
 								<div class="table-input-info__wrap-text">
 									<span class="table-input-info__text">Администратор</span>
 								</div>
