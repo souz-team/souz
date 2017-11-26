@@ -40,7 +40,9 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 									<div class="manage-table__cell manage-table__cell_actions">
 									<?php if(($_SESSION['userlevel']==2 AND $id_section_admin['user_id'] == $_SESSION['user_id']) OR $_SESSION['userlevel']==1) {?>
 										<a href="/section-change.php?id=<?= $section['id'] ?>" class="manage-table__action-link">Изменить</a>
+										<?php if($_SESSION['userlevel']==1) {?>
 										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+										<?php } ?>
 										<a href="/section-create.php?sectionParent=<?= $section['id'] ?>" class="manage-table__action-link">Создать подраздел</a>
 									<?php } ?>
 									</div>
@@ -55,16 +57,20 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 
 								<?php if ($subsections) { ?>
 									<?php foreach ($subsections as $subsection) { ?>
-
+										<?php $id_section_admin = show_section_admin($link, $subsection['P_id']); 
+											$name_section_admin = edit_user($link, $id_section_admin['user_id']);
+										?>
 										<div class="manage-table__row manage-table__row_subsection manage-table__row_body" entity-id="<?= $subsection['id'] ?>">
 											<div class="manage-table__cell manage-table__cell_name">
 												<a href='manage-articles.php?id=<?= $subsection['id'] ?>' class='manage-table__name-link'><?= $subsection['Name'] ?></a>
 											</div>
-										<!--	<div class="manage-table__cell manage-table__cell_moderator">moderator</div> -->
+										<div class="manage-table__cell manage-table__cell_moderator"><?= $name_section_admin['login']?></div>
 											<div class="manage-table__cell manage-table__cell_count-articles"><?= Articles_Amount($link, $subsection['id']) ?></div>
 											<div class="manage-table__cell manage-table__cell_actions">
+											<?php if(($_SESSION['userlevel']==2 AND $id_section_admin['user_id'] == $_SESSION['user_id']) OR $_SESSION['userlevel']==1) {?>
 												<a href="/section-change.php?id=<?= $subsection['id'] ?>" class="manage-table__action-link">Изменить</a>
 												<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
+											<?php } ?>
 											</div>
 										</div>
 
@@ -76,13 +82,13 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 						</div>
 					</div>
 				</div>
-				
+				<?php if($_SESSION['userlevel']==1) {?>
 				<div class="manage-sections__wrap-button">
 					<a href="/section-create.php?id=<?= 0 ?>" class="manage-sections__link-new-section">
 						<button class="button button_default">Создать раздел</button>
 					</a>
 				</div>
-
+				<?php } ?>
 			</div>
 		</div>
 	</section>
