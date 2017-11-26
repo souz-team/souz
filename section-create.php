@@ -42,7 +42,7 @@ else {
 				
 						<div class="table-input-info__row">
 							<label class="table-input-info__label">
-
+								<?php if($sectionid == 0){ ?>
 								<div class="table-input-info__wrap-text">
 									<span class="table-input-info__text">Администратор</span>
 								</div>
@@ -52,11 +52,11 @@ else {
 									<select class='table-input-info__select' name = 'selected_admin'>
                                     <?php for ($i = 0; $i < count($admin); $i++) { ?>
 										<option value="<?=$admin[$i]['id']?>"><?=$admin[$i]['login']?></option>
-                                         <?php  }?>
+                                    <?php } ?>
 									</select>
                                    
 								</div>
-
+								<?php } ?>
 							</label>
 						</div>
 
