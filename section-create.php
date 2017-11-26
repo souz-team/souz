@@ -42,6 +42,7 @@ else {
 				
 						<div class="table-input-info__row">
 							<label class="table-input-info__label">
+                            	<?php if($_SESSION['userlevel']==1 && ($zagolovok === "Создание раздела" || $zagolovok === "Изменение раздела")) {?>
 
 								<div class="table-input-info__wrap-text">
 									<span class="table-input-info__text">Администратор</span>
@@ -56,7 +57,11 @@ else {
 									</select>
                                    
 								</div>
-
+                                <?php } ?>
+                                <?php else {
+                                    $admin = show_section_admin($link, $sectionid);
+                                    <input class="table-input-info__textfield" type="hidden" name = "selected_admin" value = "<?=$admin[$i]['login']?>">
+                                } ?>
 							</label>
 						</div>
 
