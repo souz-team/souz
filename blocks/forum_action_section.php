@@ -32,9 +32,23 @@ if(isset($_POST['edit_section']))
 	require_once '/blocks/forum-change-section.php';
 	
 }
-
-
-
+if(isset($_POST['delete_section']))
+{
+	$section_id = $_POST['section_id'];
+	if($section_id==4){
+		$errors[] = 'Этот раздел нельзя удалять!';
+		require_once '/forum-action-section.php';
+	}
+	else 
+	{
+		$del_sec = delete_razdelF($link, $section_id);
+		if($del_sec)
+		{
+		$errors[] = 'Раздел удален!';
+		require_once '/forum-action-section.php';
+		}
+	}
+}
 ?>
 
 
