@@ -446,7 +446,7 @@ function Delete_Article ($connection, $var) // Принимает подключ
     if (!$result) die ($connect->error);
     $row =$result->fetch_array (MYSQLI_ASSOC);
     if ($row['Image_url']) {
-        $path = "../".$row['Image_url'];
+        $path = "../".$row['Image_url']; // Работает только в том случае, если удаляющий файл находится ниже основной директории
         $is_delete = Delete_Photo($connection, $path);
     }
     if ($is_delete || $row['Image_url'] == "")
