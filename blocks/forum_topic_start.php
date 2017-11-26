@@ -45,7 +45,7 @@
 		<div class="new-topic">
 			<form action="/forum-new-topic.php?id=<?= $id ?>" method="POST">
 			<input type = "hidden" name = "id_section" value = <?=$id?>>
-				<p class="new-material__title">Создние темы</p>
+				<p class="new-material__title">Создание темы</p>
 								
 					<?php if(!empty($errors)){?>
 					<div style="color: red;text-align: center; font-weight: 600;"><?php echo array_shift($errors);?></div>
