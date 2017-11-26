@@ -46,7 +46,7 @@ if (isset($_GET['id']) && $_GET['id'] != 0)
                                 <div class="table-input-info__wrap-textfield">
                                         <?php $admin = Show_Admin($link);?>
                                         
-									<select class='table-input-info__select'>
+									<select class='table-input-info__select' name = 'selected_admin'>
                                     <?php for ($i = 0; $i < count($admin); $i++) { ?>
 										<option value="<?=$admin[$i]['id']?>"><?=$admin[$i]['login']?></option>
                                          <?php  }?>

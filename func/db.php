@@ -81,9 +81,13 @@ function Delete_Razdel ($connection, $var)
 function Add_Podrazdel ($connection, $P_id, $Name)
 {
 		$add_query ="INSERT INTO Razdel VALUES(NULL, '$P_id','$Name')";
-		$result = $connection->query($add_query); 
-        if ($result) 
-            return true;
+		$result = $connection->query($add_query);
+		$id = mysqli_insert_id($connection);
+        if ($result) {
+			$podrazdel = array(true, $id);
+			return $podrazdel;
+			mysqli_close($connection);
+        }
         else
             die ($connect->error);
 }
@@ -802,3 +806,66 @@ function DoctorString ($var)
     $var = htmlentities ($var, ENT_QUOTES, "UTF-8"); //заменяет все угловые скобки, используемые в качестве составляющих HTML-тегов
     return $var;
 }
+
+function set_section_admin($connection, $section_id, $user_id)
+{
+	$section_admin ="INSERT INTO section_admin VALUES('$section_id','$user_id')";
+	// выполняем запрос
+	$result = $connection->query($section_admin);
+	if ($result) 
+		return true;
+	else
+		die ($connection->error);
+	mysqli_close($link);
+}
+
+function change_section_admin($connection, $section_id, $user_id)
+{
+	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
+	$resultsql = $connection->query ($sql);
+	$row =$resultsql->fetch_array (MYSQLI_ASSOC);
+	if(!empty($row))
+	{
+		$update = "UPDATE section_admin SET user_id='$user_id' WHERE section_id='$section_id'";
+		
+		$result = $connection->query ($update);
+		if ($result){
+			return true;
+		}
+		else
+			die ($connect->error);
+	}
+	else
+	{
+		$section_admin ="INSERT INTO section_admin VALUES('$section_id','$user_id')";
+	// выполняем запрос
+	$result = $connection->query($section_admin);
+	if ($result) 
+		return true;
+	else
+		die ($connection->error);
+	}
+	
+	mysqli_close($link);
+}
+
+function show_section_admin($connection, $section_id)
+{
+	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$row =$result->fetch_array (MYSQLI_ASSOC);
+	return $row;
+}
+
+function delete_section_admin($connection, $section_id)
+{
+	$delete = "DELETE FROM section_admin WHERE section_id = '$section_id'";
+    $result = $connection->query ($delete);
+    if ($result) return true;
+    else
+        die ($connect->error);
+	
+	
+}
+
