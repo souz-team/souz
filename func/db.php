@@ -446,15 +446,26 @@ function Delete_Article ($connection, $var) // Принимает подключ
     if (!$result) die ($connect->error);
     $row =$result->fetch_array (MYSQLI_ASSOC);
     if ($row['Image_url']) {
-        unlink($row['Image_url']);  
+        $path = "../".$row['Image_url'];
+        $is_delete = Delete_Photo($connection, $path);
     }
+    if ($is_delete || $row['Image_url'] == "")
+    {
     $delete_query = "DELETE FROM Articles WHERE id = '$var'";
     $result = $connection->query ($delete_query);
     if ($result) return true;
     else
-        die ($connect->error); // TODO: Каскадное удаление сообщений из личного форума
+        die ($connect->error); 
+    }
 }
 
+function Delete_Photo ($connection, $var)
+{
+    $is_delete = unlink($var);
+    if ( $is_delete)
+        return 1;
+    else return 0;  
+}
 // Обрезание текста
 
 function Cut ($string, $length)
