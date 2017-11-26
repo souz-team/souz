@@ -60,7 +60,7 @@ require_once 'blocks/header.php';
 							<textarea name="articleText" class="form-new-material__textarea"><?echo $row['Text']?></textarea>
 						</label><br>
 						
-						 Выберите файл для загрузки размером не меньше 315х230:
+						 Выберите файл для загрузки размером не меньше 315х230 формат:jpeg/png/gif
 							<input type="file" name="userfile" /><br><br>
 						
 						<?php

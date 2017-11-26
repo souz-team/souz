@@ -9,6 +9,7 @@ if (isset($_POST['do_create_article']))
 $idPodRazdel = $_GET['idPodRazdel'];
 
 
+
 ?>
 
 	<section class="section section_content">
@@ -23,6 +24,7 @@ $idPodRazdel = $_GET['idPodRazdel'];
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
 							<input type="text" name="articleName" class="form-new-material__textfield">
+							<input type="hidden" name="id_Podrazdel" class="form-new-material__textfield">
 						</label>
 
 						<div class="form-new-material__row form-new-material__row_selects">
@@ -42,7 +44,7 @@ $idPodRazdel = $_GET['idPodRazdel'];
 											$lastParentId = $parentId;
 											$optionList .= "<option disabled>$parentName</option>";
 										}
-										$isSelected = ($childId ==$idPodRazdel  )?'selected':'';
+										$isSelected = ($childId == $idPodRazdel  )?'selected':'';
 										$optionList .= "<option $isSelected value=\"$childId\">&nbsp;&nbsp;&nbsp;&nbsp;$childName</option>";
 									}
 									echo $optionList;
@@ -58,8 +60,8 @@ $idPodRazdel = $_GET['idPodRazdel'];
 						
 						<br>
 						
-							Выберите файл для загрузки размером не меньше 315х230: 
-							<div style="color: red; text-align:center;"><br><?=$$err_f?></div>
+							Выберите файл для загрузки размером не меньше 315х230 формат:jpeg/png/gif 
+							<div style="color: red; text-align:center;"><br><?=$err_f?></div>
 							<input type="file" name="userfile">
 						<div class="form-new-material__row form-new-material__row_buttons">
 							<a href="/manage-sections.php"><div class="button button_cancel">Назад</div>
