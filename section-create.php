@@ -1,19 +1,27 @@
 <?php require 'config.php';?>
-<?php require_once 'blocks/header.php';?>
-
 <?php 
-if (($_SESSION['userlevel']==1) || ($_SESSION['userlevel']==2)) {
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2) {
+	header('Location: /');
+	exit;
+}
+?>
+<?php require_once 'blocks/header.php';?>
+<?php	
 if (isset($_GET['id']) && $_GET['id'] != 0)
 {
 	$sectionid = $_GET['id'];
 	$zagolovok = "Изменение раздела";
 }	
-else if ($_GET['sectionParent'] != 0) {
+else if ($_GET['sectionParent'] != 0)
+{
     $sectionid = $_GET['sectionParent'];
-	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $sectionid);}
-else {
+	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $sectionid);
+}
+else 
+{
     $sectionid = 0;
-	$zagolovok = "Создание раздела";}
+	$zagolovok = "Создание раздела";
+}
 ?>
 
 	<section class="section section_content">
@@ -67,7 +75,7 @@ else {
                                 <?php } ?>
 							</label>
 						</div>
-						<?php if($_SESSION['userlevel']==1) {?>
+						<?php if($_SESSION['userlevel']<=2) {?>
 						<div class="table-input-info__buttons">
 					<button class="button button_article" name="create">Создать</button>
 					<a href='/manage-sections.php' ><div class="button button_cancel">Отмена</div></a>
@@ -80,8 +88,4 @@ else {
 		</div>
 	</section>
 
-
-<?php } 
-else 
-    echo "<br>"."You don't have rights to be here."; ?>	
 <?php require_once 'blocks/footer.php'; ?>

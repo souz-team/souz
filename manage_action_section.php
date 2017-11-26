@@ -8,7 +8,10 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2)
 		if ($name != "" && $parent_id!="") {
 			$result = Add_Podrazdel ($link, $parent_id, $name);
             $id = $result[1];
-            $section_admin = set_section_admin($link, $id, $selected_admin);
+			if(!empty($selected_admin))
+			{
+				$section_admin = set_section_admin($link, $id, $selected_admin);
+			}
 		}
 		
 		
@@ -21,7 +24,10 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2)
 		$parent_id = DoctorString ($_POST['P_id']);
 		if ($name != "" && $parent_id!="") {
 			$result = Change_Razdel ($link, $id, $parent_id, $name);
-            $section_admin = change_section_admin($link, $id, $selected_admin);
+			if(!empty($selected_admin))
+			{
+				$section_admin = change_section_admin($link, $id, $selected_admin);
+			}
 		}	
 	}
 	header ("location: manage-sections.php");
