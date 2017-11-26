@@ -1,6 +1,6 @@
-<?php require 'config.php';?>
-<?php 
-if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2) {
+<?php require 'config.php';
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
+{
 	header('Location: /');
 	exit;
 }

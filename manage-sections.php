@@ -1,5 +1,10 @@
 <?php require 'config.php';
-if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
+{
+	header('Location: /');
+	exit;
+}
+?>
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-section.php';?>
 	<section class="section section-content">
@@ -102,9 +107,4 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 			</div>
 		</div>
 	</section>
-<?php require_once 'blocks/footer.php';}
-else{
-header ("location: index.php");
-exit;
-}
-?>
+<?php require_once 'blocks/footer.php';?>
