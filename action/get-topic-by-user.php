@@ -1,8 +1,10 @@
 <?php
 
 	$topics = Show_Topic($link, NULL, NULL, $email);
-	$topics = array_reverse($topics);
-	
+	If(!empty($topics))
+	{
+		$topics = array_reverse($topics);
+	}
 	
 
 ?>
