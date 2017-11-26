@@ -40,6 +40,10 @@
 				}
 			}	
 		}
+		else
+		{
+		 echo "Пока не написано ни одной статьи";
+		}
 		
 		// Функция подгонки размера изображения
 		function AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, $strFileThumb )
