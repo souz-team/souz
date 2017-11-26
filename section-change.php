@@ -49,12 +49,14 @@ if (isset($_GET['id']) && $_GET['id'] != 0)
 								</div>
                                 <div class="table-input-info__wrap-textfield">
                                         <?php $admin = Show_Admin($link);?>
-                                        
 									<select class='table-input-info__select' name = 'selected_admin'>
                                     <?php for ($i = 0; $i < count($admin); $i++) { ?>
-										<option value="<?=$admin[$i]['id']?>"><?=$admin[$i]['login']?></option>
-                                         <?php  }?>
+									<?php $real_admin = show_section_admin($link, $sectionid) ?>
+									
+										<option value="<?=$admin[$i]['id']?>"<?= ($admin[$i]['id'] == $real_admin['user_id']) ? 'selected' : '' ?> ><?=$admin[$i]['login']?></option>
+                                    <?php } ?>
 									</select>
+									
 								</div>
 								<?php } ?>
 							</label>
