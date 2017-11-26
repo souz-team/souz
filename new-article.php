@@ -24,7 +24,6 @@ $idPodRazdel = $_GET['idPodRazdel'];
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
 							<input type="text" name="articleName" class="form-new-material__textfield">
-							<input type="hidden" name="id_Podrazdel" class="form-new-material__textfield">
 						</label>
 
 						<div class="form-new-material__row form-new-material__row_selects">

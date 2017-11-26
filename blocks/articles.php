@@ -1,6 +1,3 @@
-
-<div class='section-1__articles'>
-
 	<?php
 
 		require_once 'config.php';
@@ -13,35 +10,36 @@
 		$iMaxHeight = 230;
 		$strFileThumb = '';
 		
-		
-		foreach ($articles as $article) {
+		if($articles != NULL){
+			foreach ($articles as $article) {
 
-			// Разбиваем статью по переменным
-			$fullText = $article["Text"];
-			$lengthText = mb_strlen($fullText, 'utf-8'); 
-			$text = Cut($fullText, $maxLengthText);
+				// Разбиваем статью по переменным
+				$fullText = $article["Text"];
+				$lengthText = mb_strlen($fullText, 'utf-8'); 
+				$text = Cut($fullText, $maxLengthText);
 
-			//условие добавления многоточия в конце текста
-			if($lengthText > $maxLengthText) {
-				$text = "$text...";
-			}
+				//условие добавления многоточия в конце текста
+				if($lengthText > $maxLengthText) {
+					$text = "$text...";
+				}
 
-			$acrtcleId = $article['id'];
-			$authorName = $article['Author'];
-			$articleImage = $article['Image_url'];
-			$authorDate = $article['Date'];
-			$title = $article['Name'];
+				$acrtcleId = $article['id'];
+				$authorName = $article['Author'];
+				$articleImage = $article['Image_url'];
+				$authorDate = $article['Date'];
+				$title = $article['Name'];
+				
+						
+				// подключаем файл статьи
+				include './parts/article-preview.php';
+
 			
-					
-			// подключаем файл статьи
-			include './parts/article-preview.php';
-
-		
-			if($articleImage !=''){
-				$objImageData = AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, '' );
-				//var_dump($objImageData);
-			}
-		}	
+				if($articleImage !=''){
+					$objImageData = AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, '' );
+					//var_dump($objImageData);
+				}
+			}	
+		}
 		
 		// Функция подгонки размера изображения
 		function AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, $strFileThumb )
@@ -132,4 +130,3 @@
 
 	?>
 
-</div>

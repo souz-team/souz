@@ -8,7 +8,9 @@
 					<div class="section-1__menu">
 						<?php require_once "menu.php"; ?>
 					</div>
+					<div class='section-1__articles'>
 					<?php require_once "blocks/articles.php"; ?>
+					</div>
 				</div>
 			</div>
 		</section>
