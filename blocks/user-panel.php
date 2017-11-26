@@ -5,7 +5,7 @@
 			<?php
 				
 				switch ($_SESSION['gender']) {
-					case 0:
+					case 2:
 						$imageName = 'user-women.png';
 						break;
 					

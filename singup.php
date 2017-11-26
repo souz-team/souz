@@ -149,7 +149,7 @@ if( isset($data['do_singup']))
 							<select class="form-auth__textfield form-signup__textfield_signup" name = "gender" size="1" required>
 								<option disabled selected>Пол:</option>
 								<option value="1">мужской</option>
-								<option value="0">женский</option>
+								<option value="2">женский</option>
 							</select>
 							<!--</p><input class="form-auth__textfield form-signup__textfield_signup" name="email" placeholder="Email" type="text" value="<?php echo @$data['email'];?>"/> -->
 						</label>

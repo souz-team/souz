@@ -76,7 +76,7 @@
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_username">
 								<?php
-									if ($user['gender'] == 0) {
+									if ($user['gender'] == 2) {
 
 										$genderImageName = 'user-women.png';
 										$titleText = 'Девушка';

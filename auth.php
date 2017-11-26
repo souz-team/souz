@@ -20,6 +20,7 @@ if( isset($data['do_login']))
 			if($username) 
 			{
 				$row = mysqli_fetch_row($username);
+				$user_id = $row[0];
 				$login = $row[1];
 				$email = $row[3];
 				$name = $row[4];
@@ -32,6 +33,7 @@ if( isset($data['do_login']))
 					$rowlevel = mysqli_fetch_array($level);
 					$userlevelname=$rowlevel['name'];
 				} */
+				$_SESSION['user_id'] = $user_id;
 				$_SESSION['login'] = $login;
 				$_SESSION['email'] = $email;
 				$_SESSION['fio']=$name." ".$surname;

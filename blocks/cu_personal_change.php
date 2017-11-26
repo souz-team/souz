@@ -72,7 +72,7 @@
 						<div class="table-input-info__wrap-textfield">
 							<select name='user_gender' class="table-input-info__textfield">
 								<option disabled>Выберите значение:</option>
-									<?php for($i = 0; $i < $total_gender; $i++) { ?>
+									<?php for($i = 1; $i < $total_gender; $i++) { ?>
 										<option  value="<?= $i ?>" <?= ($i == $user_gender) ? 'selected' : '' ?>><?= $gender[$i] ?></option>
 									<?php } ?>
 							</select>
