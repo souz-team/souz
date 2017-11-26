@@ -12,6 +12,6 @@ $id = filter_input(INPUT_POST, 'del_id', FILTER_VALIDATE_INT);
 header ("location: ../manage-sections.php");
 exit;}
 else {
-header ("location: /index.php");
+header ("location: ../index.php");
 exit;
 }
