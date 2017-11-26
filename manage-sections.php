@@ -30,9 +30,11 @@ if ($_SESSION['userlevel']==1 || $_SESSION['userlevel']==2){ ?>
 								$name_section_admin = edit_user($link, $id_section_admin['user_id']);
 								?>
 								<div class="manage-table__row manage-table__row_body" entity-id="<?= $section['id'] ?>">
+									
 									<div class="manage-table__cell manage-table__cell_name manage-table__cell_section-name">
 										<a href='#' class='manage-table__name-link'><?= $section['Name'] ?></a>
 									</div>
+									
 
 									<div class="manage-table__cell manage-table__cell_moderator"><?= $name_section_admin['login']?></div>
 									<div class="manage-table__cell manage-table__cell_count-articles"></div>
