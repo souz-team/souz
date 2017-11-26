@@ -25,7 +25,7 @@ require_once '/func/db.php';
 							<div class="seсtion-contacts__groups">
 								<div class="seсtion-contacts__group">
 									<p class="section-contacts__name-group">Руководитель проекта</p>
-									<p>Матявин Алкександр Игоревич</p>
+									<p>Матявин Александр Игоревич</p>
 								</div>
 								<div class="seсtion-contacts__group">
 									<p class="section-contacts__name-group">Дизайнеры</p>
