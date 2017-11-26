@@ -57,10 +57,13 @@ else {
 									</select>
                                    
 								</div>
+
                                 
                                 <?php } else { 
+
                                     $admin = show_section_admin($link, $sectionid); ?>
                                     <input class="table-input-info__textfield" type="hidden" name = "selected_admin" value = "<?=$admin[$i]['login']?>">
+									
                                 <?php } ?>
 							</label>
 						</div>
