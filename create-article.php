@@ -77,7 +77,7 @@
 			//$msg[] = "Статья добавлена!";
 		}
 	
-	
-	//header('Location: /manage-articles.php');
-	
+	if($all == NULL && $err_f == NULL){
+	header("Location: /manage-articles.php?id=$idPodRazdel");
+	}
 ?>

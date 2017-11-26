@@ -1,5 +1,12 @@
 <?php require 'config.php';
-require_once 'blocks/header.php'; 
+require_once 'blocks/header.php';
+
+/*if (isset($_POST['do_edit_article']))
+{
+	
+	require "articleEdit.php";
+
+}*/
 ?>
 
 	<section class="section section_content">

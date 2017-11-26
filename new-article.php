@@ -1,5 +1,6 @@
-<?php require 'config.php';?>
-<?php require_once 'blocks/header.php';
+<?php require 'config.php';
+	
+
 if (isset($_POST['do_create_article']))
 {
 	
@@ -7,6 +8,7 @@ if (isset($_POST['do_create_article']))
 
 }
 $idPodRazdel = $_GET['idPodRazdel'];
+ require_once 'blocks/header.php';
 
 
 
