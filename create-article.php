@@ -1,7 +1,7 @@
 <?php
 	$authorName = $_SESSION['fio'];
 	$idPodRazdel = $_POST['id_Podrazdel'];
-	var_dump($idPodRazdel);
+	
 	$artName = trim(filter_input(INPUT_POST, 'articleName'));
 	$artText = trim(filter_input(INPUT_POST, 'articleText'));
 	$msg = array();
@@ -61,6 +61,9 @@
 		{
 			$str1 = cheсk_post($link, 'articleName');
 			$str2 = cheсk_post($link, 'articleText');
+			
+			$artName = htmlentities($str1, ENT_QUOTES);
+			$artText = htmlentities($str2, ENT_QUOTES);
 			
 			if($successfulUppload == 1){
 				
