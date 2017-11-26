@@ -823,8 +823,8 @@ function change_section_admin($connection, $section_id, $user_id)
 {
 	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
 	$resultsql = $connection->query ($sql);
-	$row =$resultsql->fetch_array (MYSQLI_ASSOC);
-	if(!empty($row))
+	$rows = $resultsql->num_rows;
+	if(!empty($rows))
 	{
 		$update = "UPDATE section_admin SET user_id='$user_id' WHERE section_id='$section_id'";
 		
@@ -860,12 +860,17 @@ function show_section_admin($connection, $section_id)
 
 function delete_section_admin($connection, $section_id)
 {
-	$delete = "DELETE FROM section_admin WHERE section_id = '$section_id'";
-    $result = $connection->query ($delete);
-    if ($result) return true;
-    else
-        die ($connect->error);
+	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
+	$resultsql = $connection->query ($sql);
+	$rows = $resultsql->num_rows;
+	if(!empty($rows))
+	{
+		$delete = "DELETE FROM section_admin WHERE section_id = '$section_id'";
+		$result = $connection->query ($delete);
+		if ($result) return true;
+		else
+			die ($connect->error);
 	
-	
+	}	
 }
 

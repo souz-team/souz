@@ -39,10 +39,11 @@ if (isset($_GET['id']) && $_GET['id'] != 0)
 				
 						<div class="table-input-info__row">
 							<label class="table-input-info__label">
-
+								<?php if($_SESSION['userlevel']==1) {?>
 								<div class="table-input-info__wrap-text">
 									<span class="table-input-info__text">Администратор</span>
 								</div>
+								
                                 <div class="table-input-info__wrap-textfield">
                                         <?php $admin = Show_Admin($link);?>
                                         
@@ -53,7 +54,7 @@ if (isset($_GET['id']) && $_GET['id'] != 0)
 									</select>
                                    
 								</div>
-
+								<?php } ?>
 							</label>
 						</div>
 
