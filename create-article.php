@@ -1,5 +1,6 @@
 <?php
 	$authorName = $_SESSION['fio'];
+	$login = $_SESSION['login'];
 	$idPodRazdel = $_POST['id_Podrazdel'];
 	$artName = trim(filter_input(INPUT_POST, 'articleName'));
 	$artText = trim(filter_input(INPUT_POST, 'articleText'));
@@ -66,12 +67,12 @@
 			
 			if($successfulUppload == 1){
 				
-			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`) VALUES( '$idPodRazdel', '$artName', '$authorName', '$uploadfile', '$artText', Now() )";
+			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`, `login`) VALUES( '$idPodRazdel', '$artName', '$authorName', '$uploadfile', '$artText', Now(),'$login' )";
 			mysql_query($strSQL) or die (mysql_error());}
 			
 			else{
 				if($successfulUppload == 2){
-				$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`) VALUES( '$idPodRazdel', '$artName', '$authorName', '', '$artText', Now() )";
+				$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`, `login`) VALUES( '$idPodRazdel', '$artName', '$authorName', '', '$artText', Now(), '$login' )";
 				mysql_query($strSQL) or die (mysql_error());}
 			}
 			//$msg[] = "Статья добавлена!";
