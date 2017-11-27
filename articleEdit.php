@@ -76,26 +76,26 @@
 //картинки нет и добавляем	
 	if($previousImageUrl =='' && $successfulUppload == 1) {
 		
-		$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now() WHERE id = '$artId'")
+		$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now(), login = '$login'  WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());	
 	}
 	else{
 // картинки нет и не добавляем
 		if($previousImageUrl =='' && $successfulUppload == 2) {
 		
-			$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '', Text = '$artText', Date = Now() WHERE id = '$artId'")
+			$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '', Text = '$artText', Date = Now(), login = '$login' WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());
 		}
 		else{
 //картинка есть, и не меняем
 			if($previousImageUrl != '' && $successfulUppload == 2){
-				$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$previousImageUrl', Text = '$artText', Date = Now() WHERE id = '$artId'")
+				$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$previousImageUrl', Text = '$artText', Date = Now(),login = '$login' WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());
 			}
 			else{
 //картинка есть, но меняем
 				if($previousImageUrl != '' && $successfulUppload == 1) {
-					$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now() WHERE id = '$artId'")
+					$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now(),login = '$login' WHERE id = '$artId'")
 						or die ("Error in query: $sql. ".mysql_error());
 						unlink($previousImageUrl); 
 				}
