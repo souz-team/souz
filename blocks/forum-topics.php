@@ -35,14 +35,21 @@
 		
 		<div class="forum-table__body">
 			<?php
-			$theme = mysqli_query($link, "SELECT * FROM boardt WHERE id_section='$id'");
+			$per_page = 10;
+			if (isset($_GET['page'])) {
+				$page = $_GET['page'] -1;
+			} else {
+				$page = 0;
+			}
+			$start = abs($page*$per_page);	
+			
+			$theme = mysqli_query($link, "SELECT * FROM boardt WHERE id_section='$id' LIMIT $start, $per_page");
 			while ($row_t = mysqli_fetch_array ($theme)) {
 				$theme_id = $row_t['theme_id'];	
 				$date =  mysqli_query ($link, "SELECT MAX(m_date) FROM boardp WHERE theme_id='$theme_id'");
 				$row_date = mysqli_fetch_array($date);
 				$date_post = $row_date[0];
 				
-				$per_page = 10;
 				$q = "SELECT count(*) as count FROM boardp WHERE theme_id='$row_t[theme_id]'"; //считаем сколько у нас записей,
 				$res = mysql_query($q); 	//которые нужно 
 				$row = mysql_fetch_assoc($res); //разбить по страницам.
@@ -68,7 +75,12 @@
 						</div>
 						';
 					}
-			} 
+			}
+			$q = "SELECT count(*) as count FROM boardt WHERE id_section='$id'"; //считаем сколько у нас записей,
+			$res = mysql_query($q); 	//которые нужно 
+			$row = mysql_fetch_assoc($res); //разбить по страницам.
+			$total_rows = $row['count']; //высчитываем сколько
+			$num_pages = ceil($total_rows/$per_page); // получится страниц
 //<a href='/blocks/forum_topic_start.php'>
 			?>
 		</div>

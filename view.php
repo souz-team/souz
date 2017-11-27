@@ -19,23 +19,18 @@ require('config.php');
 					<ul class="lu-link">
 						<?php
 						//переменная, задающая количество сообщений, выводимых на странице
-						$per_page = 1;
+						$per_page = 20;
 						//вычисляем номер страницы
 						if (isset($_GET['page'])) {
 							$page = $_GET['page'] -1;
 						} else {
 							$page = 0;
 						}
-						//вычисляем значение переменной, с которой начнется считывание с бд
 						$start = abs($page*$per_page);	
 						$n=$start;
-						//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
 						$result = Show_Articles_Limit($link, $id, $start, $per_page);
-						//print_r($result);
 						if ($result==0){
 							echo "В этом подразделе нет статей!";
-							//echo $id;
-							//echo $result;
 						} else {
 							for ($i=0; $i<count($result); $i++) {
 								++$n;
@@ -46,7 +41,7 @@ require('config.php');
 						$num_pages = ceil($total_rows/$per_page); // получится страниц
 					?>
 					</ul>
-					<?php if($num_pages != 0){?>
+					<?php if($num_pages > 1){?>
 					<div class="section__pagination">
 						<div class='pagination'>
 

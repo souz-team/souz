@@ -1,11 +1,8 @@
 <?php 
 	$crumbs = array();    
 	$cur_url = $_SERVER['REQUEST_URI'];
-	//echo $cur_url;
 	$page1 = parse_url($cur_url,  PHP_URL_PATH);
-	//echo $page1;
 	$id1 = $_GET['id'];
-	//echo $id1;
 	$flag=1;
 	$num_razd=0;
 	do{
@@ -17,8 +14,20 @@
 		} else if($page1 == "/article-menu.php"){
 			array_unshift($crumbs, array('text' => "Статьи", 'url' => "article-menu.php"));
 			$page1 = "/index.php";
+		} else if($page1 == "/singup.php"){
+			array_unshift($crumbs, array('text' => "Регистрация", 'url' => "singup.php"));
+			$page1 = "/index.php";
 		} else if($page1 == "/forum.php"){
 			array_unshift($crumbs, array('text' => "Форум", 'url' => 'forum.php'));
+			$page1 = "/index.php";
+		} else if($page1 == "/reg.php"){
+			array_unshift($crumbs, array('text' => "Подтверждение регистрации", 'url' => 'reg.php'));
+			$page1 = "/index.php";
+		} else if($page1 == "/section-create.php" && $id1 > 0){
+			array_unshift($crumbs, array('text' => "Создание подраздела", 'url' => 'section-create.php'));
+			$page1 = "/index.php";
+		} else if($page1 == "/section-create.php" && $id1 == 0){
+			array_unshift($crumbs, array('text' => "Создание раздела", 'url' => 'section-create.php'));
 			$page1 = "/index.php";
 		} else if($page1 == "/feedback.php"){
 			array_unshift($crumbs, array('text' => "Обратная связь", 'url' => "feedback.php"));
@@ -40,7 +49,6 @@
 		} else if($page1 == "/view-subsection.php" ){
 			$row = queryNameRazdel($id1, 'Razdel', 'id', $link);
 			$name = $row['Name'];
-			echo $id1;
 			array_unshift($crumbs, array('text' => $name, 'url' => "view-subsection.php?id=$id1"));
 			$page1 = "/article-menu.php";
 		} else if ($page1 == "/view.php" ){
