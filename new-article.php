@@ -3,10 +3,9 @@
 
 if (isset($_POST['do_create_article']))
 {
-	
 	require "create-article.php";
-
 }
+
 $idPodRazdel = $_GET['idPodRazdel'];
  require_once 'blocks/header.php';
 

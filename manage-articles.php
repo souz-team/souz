@@ -48,7 +48,7 @@
 											<div class="manage-table__cell manage-table__cell_author"><?echo $array[$i]['Author'] ?></div>
 											<div class="manage-table__cell manage-table__cell_date"><?echo $array[$i]['Date'] ?></div>
 											<div class="manage-table__cell manage-table__cell_actions">
-												<a href="/article-edit.php?artId=<?=$array[$i]['id']?>&podrazId=<?=$podrazdelId?>" class="manage-table__action-link">Изменить</a>
+												<a href="/article-edit.php?artId=<?=$array[$i]['id']?>&podrazdelId=<?=$podrazdelId?>" class="manage-table__action-link">Изменить</a>
 												<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 											</div>
 								</div>
