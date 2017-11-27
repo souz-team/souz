@@ -7,7 +7,7 @@
 			</p>
 			<div class="form-remove__buttons">
 				<input type='submit' class='button button_default' value='Разумею подтвердить'>
-				<button class='button button_cancel'>Отмена</button>
+				<a class='button button_cancel'>Отмена</a>
 			</div>
 		</form>
 		<i class='popup__close'>&times;</i>
