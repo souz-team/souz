@@ -35,6 +35,11 @@ body {
 
 img {
 	vertical-align: middle;
+
+}
+.img-article{
+	float:left;
+	margin: 4px 10px 2px 0px;
 }
 
 
@@ -1328,6 +1333,10 @@ img {
 	-ms-flex-pack: center;
 	justify-content: center;
 	font-size: 18px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+
 }
 
 .navigation__item_manage {
@@ -1337,6 +1346,7 @@ img {
 .navigation__item:hover {
 	background-color: #fff;
 	color: #0072bc;
+
 	/*width: 100%;*/
 }
 
