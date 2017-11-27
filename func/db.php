@@ -938,4 +938,25 @@ function delete_razdelF ($link, $var){
 	$delete_query = "DELETE FROM boardsection WHERE section_id = '$var'"; 
     $result = $link->query ($delete_query);// Удаляем раздел из таблицы boardsection.
 }
+
+function show_admin_section($connection, $user_id)
+{
+	$sql = "SELECT * FROM section_admin WHERE user_id = $user_id";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    if (!$rows) return 0;
+    else
+    {
+        $array = array ();
+        for ($i=0; $i<$rows; $i++)
+        {
+            $result->data_seek ($i);
+            $row =$result->fetch_array (MYSQLI_ASSOC);
+            $array["$i"] = $row;
+        }   
+    }
+    return $array; 
+
+}
 ?>
