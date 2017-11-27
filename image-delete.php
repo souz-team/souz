@@ -3,6 +3,7 @@ require 'config.php';
 
 $imageDelete = $_GET['deleteImage'];
 
+
 	if (isset($imageDelete)) { 
 				$queryImageToDelete = mysql_query("SELECT Image_url FROM Articles WHERE id = '$imageDelete'");
 				$row = mysql_fetch_assoc($queryImageToDelete);

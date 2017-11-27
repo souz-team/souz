@@ -1,26 +1,24 @@
 <?php require 'config.php';
+if (isset($_POST['do_edit_article']))
+{
+	require "articleEdit.php";
+}
 require_once 'blocks/header.php';
 
-/*if (isset($_POST['do_edit_article']))
-{
-	
-	require "articleEdit.php";
-
-}*/
 ?>
-
-	<section class="section section_content">
+<section class="section section_content">
 		<div class="section__wrap">
 			<div class="new-material">
 				<p class="new-material__title">Редактирование статьи</p>
+				<div style="color: red; text-align:center;"><br><?=$all?></div>
 				
 				<?php
-				//$authorName = $_SESSION['fio'];
+				
 				if (isset($_GET['artId'])){
 					$artId = $_GET['artId'];
 				}
-				if (isset($_GET['podrazId'])){
-				$podrazdelId = $_GET['podrazId'];
+				if (isset($_GET['podrazdelId'])){
+				$podrazdelId = $_GET['podrazdelId'];
 				}
 				
 				$queryArticle =mysql_query("SELECT id, id_Podrazdel, Name, Image_url, Text FROM Articles WHERE id = '$artId'");
@@ -29,7 +27,10 @@ require_once 'blocks/header.php';
 				?>
 				
 				<div class="new-material__form">
-					<form action="articleEdit.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>&previousimageurl=<?=$previousImageUrl?>" method="post" class="form-new-material" ENCTYPE="multipart/form-data">
+					<form action="#" method="post" class="form-new-material" ENCTYPE="multipart/form-data">
+					
+					<input type="hidden" name = "id" value="<?=$artId?>">
+					<input type="hidden" name = "previousimageurl" value="<?=$previousImageUrl?>">
 						<label class="form-new-material__row">
 							<p class="form-new-material__label">Название</p>
 							<input type="text" name="articleName" value="<?echo $row['Name']?>" class="form-new-material__textfield">
@@ -68,6 +69,7 @@ require_once 'blocks/header.php';
 						</label><br>
 						
 						 Выберите файл для загрузки размером не меньше 315х230 формат:jpeg/png/gif
+						 <div style="color: red; text-align:center;"><br><?=$err_f?></div>
 							<input type="file" name="userfile" /><br><br>
 						
 						<?php
@@ -82,11 +84,11 @@ require_once 'blocks/header.php';
 						<?}?>
 						<img src="<?= $row['Image_url'] ?>" width='100'/>
 						<div class="form-new-material__row form-new-material__row_buttons">
-							<a href="/manage-articles.php?podRazId=<?=$podrazdelId?>&artID=<?=$artId?>">
+							<a href="/manage-articles.php?id=<?=$podrazdelId?>&artID=<?=$artId?>">
 								<button class="button button_cancel">Отмена
 								</button>
 							</a>
-							<button class="button button_default"input type="submit">Изменить</button>
+							<button class="button button_default" name="do_edit_article">Изменить</button>
 							
 						</div>
 									
@@ -102,5 +104,3 @@ require_once 'blocks/header.php';
 <?php 
 require_once 'blocks/footer.php'; 
 ?>
-
-
