@@ -502,6 +502,15 @@ img {
 	font-weight: 500;
 
 }
+.section-header__service-name1 {
+	font-size: 17px;
+	text-shadow: 1px 1px 5px #000;
+	color: #fff;
+	text-align: right;
+	font-weight: 500;
+	font-style: italic;
+
+}
 
 .section-menu {
 	display: -webkit-box;
