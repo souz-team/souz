@@ -1149,9 +1149,20 @@ img {
 	transition: border-color 300ms;
 	margin-left: 20px;
 }
+.form-auth__link-signup-li {
+	color: #000;
+	border-bottom: 1px dashed rgba(51,51,51,0);
+	-webkit-transition: border-color 300ms;
+	-o-transition: border-color 300ms;
+	transition: border-color 300ms;
+	margin-left: 20px;
+}
 
 .form-auth__link-signup:hover {
 	border-color: #333;
+}
+.form-auth__link-signup-li:hover {
+	border-color: #000;
 }
 
 .form-auth__label {
