@@ -502,6 +502,15 @@ img {
 	font-weight: 500;
 
 }
+.section-header__service-name1 {
+	font-size: 17px;
+	text-shadow: 1px 1px 5px #000;
+	color: #fff;
+	text-align: right;
+	font-weight: 500;
+	font-style: italic;
+
+}
 
 .section-menu {
 	display: -webkit-box;
@@ -1133,7 +1142,15 @@ img {
 }
 
 .form-auth__link-signup {
-	color: #333;
+	color: #fff;
+	border-bottom: 1px dashed rgba(51,51,51,0);
+	-webkit-transition: border-color 300ms;
+	-o-transition: border-color 300ms;
+	transition: border-color 300ms;
+	margin-left: 20px;
+}
+.form-auth__link-signup-li {
+	color: #000;
 	border-bottom: 1px dashed rgba(51,51,51,0);
 	-webkit-transition: border-color 300ms;
 	-o-transition: border-color 300ms;
@@ -1143,6 +1160,9 @@ img {
 
 .form-auth__link-signup:hover {
 	border-color: #333;
+}
+.form-auth__link-signup-li:hover {
+	border-color: #000;
 }
 
 .form-auth__label {

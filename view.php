@@ -48,7 +48,7 @@ require('config.php');
 						} else {
 							for ($i=0; $i<count($result); $i++) {
 								++$n;
-								echo "<li class='li-link'>$n. <a  class='form-auth__link-signup' href='article.php?id={$result[$i]['id']}'>".$result[$i]['Name']."</a></li>";
+								echo "<li class='li-link'>$n. <a  class='form-auth__link-signup-li' href='article.php?id={$result[$i]['id']}'>".$result[$i]['Name']."</a></li>";
 							}
 						}							
 						$total_rows = Count_Articles($link, $id);
