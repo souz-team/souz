@@ -40,9 +40,8 @@
 				}
 			}	
 		}
-		else
-		{
-		 echo "Пока не написано ни одной статьи";
+		else{
+			include './blocks/absence-of-articles.php';
 		}
 		
 		// Функция подгонки размера изображения

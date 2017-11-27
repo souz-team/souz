@@ -2444,3 +2444,26 @@ img {
 	width: 25px;
 	height: 25px;
 }
+
+.absence-of-articles {
+	background-color: #fff;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 50px 0;
+}
+
+.absence-of-articles__image {
+	max-width: 200px;
+}
+
+.absence-of-articles__message {
+	margin-top: 30px;
+	font-size: 18px;
+	color: #515151;
+}
