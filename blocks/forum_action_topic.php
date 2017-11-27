@@ -1,4 +1,5 @@
 <?php
+require_once '/config.php';
 if(isset($_GET['edit']) AND ($_SESSION['userlevel']==1)){
 	$id_topic = $_GET['edit'];
 require_once '/action/get-topic-by-id.php';
@@ -29,8 +30,11 @@ if(isset($_POST['edit_topic']))
 	{
 		$errors[] = 'А где же содержание темы?';
 	}
+if(isset($_POST['delete_topic'])){
 	
-	
+	delete_themeF($link, $_POST['id_topic']);
+	header ("location: /forum-topic.php?id=$_POST['section_id']");
+}	
 	
 	
 	

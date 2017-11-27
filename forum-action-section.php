@@ -6,7 +6,12 @@
 		header("Location: /");
 		exit;
 	}
-
+	if(isset($_POST['delete_section']))//Проверяем, нажали ли кнопку "Удалить раздел"
+	{
+		$delrazdel=$_POST['section_id'];
+		delete_razdelF($link, $delrazdel);
+		header("location: /forum.php");
+	}
 ?>
 
 <?php require_once 'blocks/header.php'; ?>

@@ -886,7 +886,7 @@ function delete_section_admin($connection, $section_id)
 }
 //Удаление поста на форуме
 function delete_boardpF ($link, $var){
-	/*
+	/* Автор: Шпанеров Станислав
 	Функция удаляет пост на форуме по post_id в таблице boardp
 	В случае успеха возвращает true
 	*/
@@ -898,7 +898,7 @@ function delete_boardpF ($link, $var){
 }
 //Удаление темы и сообщений в ней на форуме.
 function delete_themeF ($link, $var){
-	/*
+	/* Автор: Шпанеров Станислав
 	Функция удаляет сообщения по theme_id из таблицы boardp,
 	а затем удаляет саму тему по theme_id из таблицы boardt.
 	*/
@@ -912,7 +912,7 @@ function delete_themeF ($link, $var){
 }
 //Каскадное удаление раздела на форуме.
 function delete_razdelF ($link, $var){
-	/*
+	/* Автор: Шпанеров Станислав
 	Функция получает подключение($link) и значение раздела(номер)($var)
 	Затем в таблице boardt ищет записи тем которые относятся к этому разделу.
 	Список тем записывается в массив $array
