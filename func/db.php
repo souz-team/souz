@@ -959,4 +959,19 @@ function show_admin_section($connection, $user_id)
     return $array; 
 
 }
+
+function Are_There_Children ($connection, $var)
+{
+    $search = "SELECT * FROM Razdel WHERE P_id = '$var'";
+    $result = $connection->query ($search);
+    if ($result) {
+        $rows = $result->fetch_array (MYSQLI_ASSOC);
+    }
+    if ($rows) return true;
+    else return false;
+}
+
+
+
+
 ?>

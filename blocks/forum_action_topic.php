@@ -30,19 +30,17 @@ if(isset($_POST['edit_topic']))
 	{
 		$errors[] = 'А где же содержание темы?';
 	}
-if(isset($_POST['delete_topic'])){
-	
-	delete_themeF($link, $_POST['id_topic']);
-	header ("location: /forum-topic.php?id=$_POST['section_id']");
-}	
-	
-	
 	
 require_once '/action/get-topic-by-id.php';
 require_once '/blocks/forum-change-topic.php';
 	
 }
 
+if(isset($_POST['delete_topic'])){
+	$section_id = $_POST['section_id'];
+	delete_themeF($link, $_POST['id_topic']);
+	header ("location: /forum-topic.php?id=$section_id");
+}
 
 
 ?>

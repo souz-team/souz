@@ -1,17 +1,31 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+//header('Content-Type: text/html; charset=utf-8');
 require('config.php');
-//require '/func/db.php';
 ?>
+<?php
+	$id = $_GET['id'];	
+	$proverka_na_razdel = is_razdel ($link, $id);
+	if($proverka_na_razdel)
+	{
+		$child = Are_There_Children ($link, $id);
+		if(!$child)
+		{
+			header('Location: /article-menu.php');
+		}
+	}
+?>	
+
 <?php
 	require_once 'blocks/header.php'; ?>
 	<section class="section section_1 section_content">
 		<div class="section__wrap">
 			<div class="section-1">
 				<div class="section-1__menu">
-					<?php
-						$id = $_GET['id'];	
-						$_SESSION['idfont']=$id;
+					
+						
+						
+					<?php	
+						//$_SESSION['idfont']=$id;
 						require_once "menu.php";						
 					?>
 				</div>
@@ -29,7 +43,7 @@ require('config.php');
 						$start = abs($page*$per_page);	
 						$n=$start;
 						$result = Show_Articles_Limit($link, $id, $start, $per_page);
-						if ($result==0){
+						if (!$result){
 							echo "В этом подразделе нет статей!";
 						} else {
 							for ($i=0; $i<count($result); $i++) {
