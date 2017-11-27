@@ -5,7 +5,6 @@
       		<div class="section__wrap">
       			<div class="section-article">
 					<?php
-					
 						$wwwlink=$_SERVER['HTTP_REFERER'];
 						$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 						$row= Show_One_Article($link, $id);
@@ -14,7 +13,6 @@
 						$image = $row['Image_url'];
 					 	$text = $row['Text'];
 					 	$date = $row['Date'];
-					 	
 					?>
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">

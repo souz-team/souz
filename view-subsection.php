@@ -1,7 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 require('config.php');
-//require '/func/db.php';
 ?>
 <?php
 	require_once 'blocks/header.php'; ?>
@@ -19,7 +18,7 @@ require('config.php');
 					<ul class="lu-link">
 						<?php
 						//переменная, задающая количество сообщений, выводимых на странице
-						$per_page = 1;
+						$per_page = 20;
 						//вычисляем номер страницы
 						if (isset($_GET['page'])) {
 							$page = $_GET['page'] -1;
@@ -29,13 +28,9 @@ require('config.php');
 						//вычисляем значение переменной, с которой начнется считывание с бд
 						$start = abs($page*$per_page);	
 						$n=$start;
-						//$link = mysqli_connect($host, $login, $pswrd, $db_name) or die("Ошибка " . mysqli_error($link));
 						$result = Show_Subsection_Limit($link, $id, $start, $per_page);
-						//print_r($result);
 						if ($result==0){
 							echo "В этом подразделе нет статей!";
-							//echo $id;
-							//echo $result;
 						} else {
 							for ($i=0; $i<count($result); $i++) {
 								++$n;
@@ -43,16 +38,15 @@ require('config.php');
 							}
 						}							
 						$total_rows = countSubsection($link, $id);
-						$num_pages = ceil($total_rows/$per_page); // получится страниц
+						$num_pages = ceil($total_rows/$per_page); // количество страниц
 					?>
 					</ul>
-					<?php if($num_pages != 0){?>
+					<?php
+					if($num_pages > 1){?>
 					<div class="section__pagination">
 						<div class='pagination'>
-
 							<div class="pagination__content">
 								<span class="pagination__arrow pagination__arrow_prev pagination__item"><a href='<?= $_SERVER['PHP_SELF'] ?>?id=<?= $id ?>&page=<?= ($page < 2 ? 1 : $page) ?>' class='pagination__link'>&#10094;</a></span>
-
 								<ul class="pagination__pages">
 									<?php for($i=1; $i<=$num_pages; $i++) { ?>
 										<li class="pagination__item <?= $i-1 == $page ? 'pagination__item_current' : '' ?>">
@@ -60,10 +54,8 @@ require('config.php');
 										</li>
 									<?php } ?>
 								</ul>
-
 								<span class="pagination__arrow pagination__arrow_prev pagination__item"><a href='<?= $_SERVER['PHP_SELF'] ?>?id=<?= $id ?>&page=<?= ($page+1 >= $num_pages ? $num_pages : $page+2) ?>' class='pagination__link'>&#10095;</a></span>
 							</div>
-
 						</div>
 					</div>
 					<?}?>

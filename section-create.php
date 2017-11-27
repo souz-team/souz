@@ -14,7 +14,7 @@ if (isset($_GET['id']) && $_GET['id'] == 0) {
 }   
 elseif (isset($_GET['id']) && $_GET['id'] != 0) {
     $sectionid = $_GET['id'];
-	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $id);
+	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $sectionid);
 }
 ?>
 
