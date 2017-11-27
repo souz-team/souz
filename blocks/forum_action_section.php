@@ -5,14 +5,7 @@ require_once '/action/get-section-by-id.php';
 require_once '/blocks/forum-change-section.php';
 
 }
-/*
-if(isset($_GET['delete']) AND ($_SESSION['userlevel']==1)){
-	$data = $_GET['delete'];
-	require_once '/action/get-section-by-id.php';
-	require_once '/blocks/delete/forum-delete-section.php';
-	
-}
-*/
+
 if(isset($_POST['edit_section']))
 {
 	$errors=array();//массив сообшений ошибок
@@ -26,8 +19,7 @@ if(isset($_POST['edit_section']))
 	{
 		$errors[] = 'Введите название раздела!';
 	}
-	
-	
+
 	require_once '/action/get-section-by-id.php';
 	require_once '/blocks/forum-change-section.php';
 	
@@ -44,9 +36,15 @@ if(isset($_POST['delete_section']))
 		$del_sec = delete_razdelF($link, $section_id);
 		if($del_sec)
 		{
-		$errors[] = 'Раздел удален!';
-		require_once '/forum-action-section.php';
-		}
+		$errors[] = 'Раздел удален!'; ?>
+		<script>
+		setTimeout(function() {
+		
+			window.location.href = '/forum.php';
+		
+		}, 3000);
+	</script>
+<?php }
 	}
 }
 ?>

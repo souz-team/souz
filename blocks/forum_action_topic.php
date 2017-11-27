@@ -37,9 +37,21 @@ require_once '/blocks/forum-change-topic.php';
 }
 
 if(isset($_POST['delete_topic'])){
+	
 	$section_id = $_POST['section_id'];
-	delete_themeF($link, $_POST['id_topic']);
-	header ("location: /forum-topic.php?id=$section_id");
+	$deltopic = delete_themeF($link, $_POST['id_topic']);
+	if($deltopic)
+	{ ?>
+		<script>
+		setTimeout(function() {
+		
+			window.location.href = '/forum-topic.php?id=<?=$section_id?>';
+		
+		}, 3);
+	</script>
+		
+		
+	<?php }
 }
 
 

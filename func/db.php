@@ -937,6 +937,9 @@ function delete_razdelF ($link, $var){
 	}
 	$delete_query = "DELETE FROM boardsection WHERE section_id = '$var'"; 
     $result = $link->query ($delete_query);// Удаляем раздел из таблицы boardsection.
+	if ($result) return true; //В случае успеха возвращает true
+    else
+        die ($link->error);
 }
 
 function show_admin_section($connection, $user_id)
