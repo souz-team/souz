@@ -43,7 +43,7 @@
 				<form action="/reg.php" class="section-confirm__form" method="POST">
 					<p class="section-confirm__title-main">Подтверждение</p>
 					<div class="section-confirm__content">
-						<p class="section-confirm__title">Вам на почту отправлен код подтверждения авторизации.</p>
+						<p class="section-confirm__title">Вам на почту отправлен код подтверждения регистрации.</p>
 						<p class="section-confirm__label">Введите код</p>
 						<div class="section-confirm__form-wrap">
 							<input class="section-confirm__textfield" name="code" placeholder="Введите код" type="text"/>

@@ -22,6 +22,7 @@
 				</label>
 				<div><br/>
 					<button class="button button_article" name="edit_section">Изменить</button>
+					<button onclick='return confirm("Вы уверены?")' class="button button_cancel" name="delete_section">Удалить раздел</button>
 					<a href='/forum.php' ><div class="button button_cancel">Назад</div></a>
 				</div>
 			</form>

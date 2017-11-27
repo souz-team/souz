@@ -81,9 +81,13 @@ function Delete_Razdel ($connection, $var)
 function Add_Podrazdel ($connection, $P_id, $Name)
 {
 		$add_query ="INSERT INTO Razdel VALUES(NULL, '$P_id','$Name')";
-		$result = $connection->query($add_query); 
-        if ($result) 
-            return true;
+		$result = $connection->query($add_query);
+		$id = mysqli_insert_id($connection);
+        if ($result) {
+			$podrazdel = array(true, $id);
+			return $podrazdel;
+			mysqli_close($connection);
+        }
         else
             die ($connect->error);
 }
@@ -442,15 +446,26 @@ function Delete_Article ($connection, $var) // Принимает подключ
     if (!$result) die ($connect->error);
     $row =$result->fetch_array (MYSQLI_ASSOC);
     if ($row['Image_url']) {
-        unlink($row['Image_url']);  
+        $path = "../".$row['Image_url']; // Работает только в том случае, если удаляющий файл находится ниже основной директории
+        $is_delete = Delete_Photo($connection, $path);
     }
+    if ($is_delete || $row['Image_url'] == "")
+    {
     $delete_query = "DELETE FROM Articles WHERE id = '$var'";
     $result = $connection->query ($delete_query);
     if ($result) return true;
     else
-        die ($connect->error); // TODO: Каскадное удаление сообщений из личного форума
+        die ($connect->error); 
+    }
 }
 
+function Delete_Photo ($connection, $var)
+{
+    $is_delete = unlink($var);
+    if ( $is_delete)
+        return 1;
+    else return 0;  
+}
 // Обрезание текста
 
 function Cut ($string, $length)
@@ -627,14 +642,18 @@ function Topic_Amount ($connection, $var)
 
 // Возврат массива тем
 
-function Show_Topic ($connection, $var_s, $var_t) // Принимает подключение и id, возвращает массив пользователей
+function Show_Topic ($connection, $var_s, $var_t, $var_e) // Принимает подключение и id, возвращает массив пользователей
 {
     if(isset($var_s)){
-	$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
+		$search = "SELECT * FROM boardt WHERE id_section='$var_s'";
 	}
 	elseif(isset($var_t))
 	{
 		$search = "SELECT * FROM boardt WHERE theme_id='$var_t'";
+	}
+	elseif(isset($var_e))
+	{
+		$search = "SELECT * FROM boardt WHERE email='$var_e'";
 	}
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
@@ -799,3 +818,124 @@ function DoctorString ($var)
     return $var;
 }
 
+function set_section_admin($connection, $section_id, $user_id)
+{
+	$section_admin ="INSERT INTO section_admin VALUES('$section_id','$user_id')";
+	// выполняем запрос
+	$result = $connection->query($section_admin);
+	if ($result) 
+		return true;
+	else
+		die ($connection->error);
+	mysqli_close($link);
+}
+
+function change_section_admin($connection, $section_id, $user_id)
+{
+	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
+	$resultsql = $connection->query ($sql);
+	$rows = $resultsql->num_rows;
+	if(!empty($rows))
+	{
+		$update = "UPDATE section_admin SET user_id='$user_id' WHERE section_id='$section_id'";
+		
+		$result = $connection->query ($update);
+		if ($result){
+			return true;
+		}
+		else
+			die ($connect->error);
+	}
+	else
+	{
+		$section_admin ="INSERT INTO section_admin VALUES('$section_id','$user_id')";
+	// выполняем запрос
+	$result = $connection->query($section_admin);
+	if ($result) 
+		return true;
+	else
+		die ($connection->error);
+	}
+	
+	mysqli_close($link);
+}
+
+function show_section_admin($connection, $section_id)
+{
+	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
+	$result = $connection->query ($sql);
+	if (!$result) die ($connect->error);
+	$row =$result->fetch_array (MYSQLI_ASSOC);
+	return $row;
+}
+
+function delete_section_admin($connection, $section_id)
+{
+	$sql = "SELECT * FROM section_admin WHERE section_id = $section_id";
+	$resultsql = $connection->query ($sql);
+	$rows = $resultsql->num_rows;
+	if(!empty($rows))
+	{
+		$delete = "DELETE FROM section_admin WHERE section_id = '$section_id'";
+		$result = $connection->query ($delete);
+		if ($result) return true;
+		else
+			die ($connect->error);
+	
+	}	
+}
+//Удаление поста на форуме
+function delete_boardpF ($link, $var){
+	/*
+	Функция удаляет пост на форуме по post_id в таблице boardp
+	В случае успеха возвращает true
+	*/
+	$delete_query = "DELETE FROM boardp WHERE post_id = '$var'"; 
+    $result = $link->query ($delete_query);
+    if ($result) return true;
+    else
+        die ($link->error); 
+}
+//Удаление темы и сообщений в ней на форуме.
+function delete_themeF ($link, $var){
+	/*
+	Функция удаляет сообщения по theme_id из таблицы boardp,
+	а затем удаляет саму тему по theme_id из таблицы boardt.
+	*/
+	$delete_query = "DELETE FROM boardp WHERE theme_id = '$var'"; 
+    $result = $link->query ($delete_query); //Удаляем все сообщения в теме из таблицы boardp.
+	$delete_query = "DELETE FROM boardt WHERE theme_id = '$var'"; 
+    $result = $link->query ($delete_query);// Удаляем тему из таблицы boardt.
+	if ($result) return true; //В случае успеха возвращает true
+    else
+        die ($link->error);
+}
+//Каскадное удаление раздела на форуме.
+function delete_razdelF ($link, $var){
+	/*
+	Функция получает подключение($link) и значение раздела(номер)($var)
+	Затем в таблице boardt ищет записи тем которые относятся к этому разделу.
+	Список тем записывается в массив $array
+	Циклом текущее значение массива $array передаётся в функцию delete_themeF для удаления топиков в этой теме и самой темы.
+	Когда все темы удалены, удаляется раздел из таблицы boardsection
+	*/
+	$select = "SELECT theme_id FROM boardt WHERE id_section = '$var'";
+    $result = $link->query ($select);
+	if ($result)
+    {
+        $rows = $result->num_rows;
+    }
+	//Пытаемся получить список ID тем, которые относятся к $var разделу
+	$array = array(); 
+        for ($i=0; $i<$rows; $i++) {
+            $result->data_seek($i);
+            $row = $result->fetch_array(MYSQLI_NUM);
+			$array[$i] = $row[$i];			
+	}   
+	for ($i=0; $i<$rows; $i++) {// циклом удаляем все темы и топики в них
+		delete_themeF ($link, $array[$i][0]);
+	}
+	$delete_query = "DELETE FROM boardsection WHERE section_id = '$var'"; 
+    $result = $link->query ($delete_query);// Удаляем раздел из таблицы boardsection.
+}
+?>

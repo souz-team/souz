@@ -65,7 +65,7 @@
 				</div>
 
 				<div class="manage-table__body">
-
+				<?php if(!empty($users)) { ?>
 					<?php foreach($users as $i => $user) { ?>
 						<div class="manage-table__row manage-table__row_body">
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_number">
@@ -76,7 +76,7 @@
 							</div>
 							<div class="manage-table__cell manage-table__cell_body manage-table__cell_username">
 								<?php
-									if ($user['gender'] == 0) {
+									if ($user['gender'] == 2) {
 
 										$genderImageName = 'user-women.png';
 										$titleText = 'Девушка';
@@ -120,7 +120,7 @@
 							</div>
 						</div>
 					<?php } ?>
-
+				<?php } ?>
 				</div>
 			
 			</div>

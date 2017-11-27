@@ -9,10 +9,10 @@ if(isset($data['do_change']))
 	
 	
 	if(!empty($errors))
-{ 
-	$er=1;
-	//echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
-}
+	{ 
+		$er=1;
+		//echo '<div style="color: red;">'.array_shift($errors).'</div><hr>';
+	}
 	
 	
 }

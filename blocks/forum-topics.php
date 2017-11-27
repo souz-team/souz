@@ -63,8 +63,7 @@
 					else{	
 						echo '
 						<div class="forum-table__cell forum-table__cell_messages">
-							<a  href="/forum-action-topic.php?edit='.$row_t[theme_id].'"><img src="/images/edit.png" width = "20" height = "20"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-							<a  href="#'.$section[$i]['section_id'].'"><img src="/images/delete.png" width = "20" height = "20"></a>
+							<a  href="/forum-action-topic.php?edit='.$row_t[theme_id].'"><img src="/images/edit.png" width = "20" height = "20"></a>
 						</div>
 						</div>
 						';

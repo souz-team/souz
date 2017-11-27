@@ -17,7 +17,7 @@
 	$user_gender = $user['gender'];
 	$user_level_id = $user['level_id'];
 	$level = array ('root', 'admin', 'user');
-	$gender = array ('девушка', 'парень');
+	$gender = array (NULL, 'парень', 'девушка');
 	$total = count($level);
 	$total_gender = count($gender);
 	$user_level = $level[$user['level_id'] - 1];

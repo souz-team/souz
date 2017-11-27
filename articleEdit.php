@@ -18,7 +18,7 @@
 	
 	if(isset($_FILES['userfile']))
 	{
-		if(($_FILES['userfile']['type'] == 'image/gif' || $_FILES['userfile']['type'] == 'image/jpeg' || $_FILES['userfile']['type'] == 'image/png') && ($_FILES['userfile']['size'] != 0 and $_FILES['userfile']['size']<=1024000)) 
+		if(($_FILES['userfile']['type'] == 'image/gif' || $_FILES['userfile']['type'] == 'image/jpeg' || $_FILES['userfile']['type'] == 'image/png') && ($_FILES['userfile']['size'] != 0 and $_FILES['userfile']['size']<=5242880)) 
 		{ 
 		 
 			if(move_uploaded_file($_FILES["userfile"]["tmp_name"], $uploadfile))	{
@@ -29,10 +29,10 @@
 		else{ 
 			if ($_FILES['userfile']['size']!= 0){
 			
-			$error_file[] = "Размер файла не должен превышать 1Мб или формат файла не jpeg/png/gif!";
+			$error_file[] = "Размер файла не должен превышать 5Мб или формат файла не jpeg/png/gif!";
 			}
 			else 
-			$successfulUppload = 2;
+			$successfulUppload = 2;// статья без изображения
 		}
 	}	
 	if (isset($_POST["articleName"]))

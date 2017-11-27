@@ -1,19 +1,21 @@
-<?php require 'config.php';?>
-<?php require_once 'blocks/header.php';?>
-
-<?php 
-if (($_SESSION['userlevel']==1) || ($_SESSION['userlevel']==2)) {
-if (isset($_GET['id']) && $_GET['id'] != 0)
+<?php require 'config.php';
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
 {
-	$sectionid = $_GET['id'];
-	$zagolovok = "Изменение раздела";
-}	
-else if ($_GET['sectionParent'] != 0) {
-    $sectionid = $_GET['sectionParent'];
-	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $sectionid);}
-else {
+	header('Location: /');
+	exit;
+}
+?>
+<?php require_once 'blocks/header.php';?>
+<?php	
+
+if (isset($_GET['id']) && $_GET['id'] == 0) {
     $sectionid = 0;
-	$zagolovok = "Создание раздела";}
+	$zagolovok = "Создание раздела";
+}   
+elseif (isset($_GET['id']) && $_GET['id'] != 0) {
+    $sectionid = $_GET['id'];
+	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $id);
+}
 ?>
 
 	<section class="section section_content">
@@ -42,6 +44,7 @@ else {
 				
 						<div class="table-input-info__row">
 							<label class="table-input-info__label">
+                            	<?php if($_SESSION['userlevel']==1 && ($zagolovok === "Создание раздела" || $zagolovok === "Изменение раздела")) {?>
 
 								<div class="table-input-info__wrap-text">
 									<span class="table-input-info__text">Администратор</span>
@@ -49,7 +52,7 @@ else {
                                 <div class="table-input-info__wrap-textfield">
                                         <?php $admin = Show_Admin($link);?>
                                         
-									<select class='table-input-info__select'>
+									<select class='table-input-info__select' name = 'selected_admin'>
                                     <?php for ($i = 0; $i < count($admin); $i++) { ?>
 										<option value="<?=$admin[$i]['id']?>"><?=$admin[$i]['login']?></option>
                                          <?php  }?>
@@ -57,14 +60,21 @@ else {
                                    
 								</div>
 
+                                
+                                <?php } else { 
+
+                                    $admin = show_section_admin($link, $sectionid); ?>
+                                    <input class="table-input-info__textfield" type="hidden" name = "selected_admin" value = "<?=$admin[$i]['login']?>">
+									
+                                <?php } ?>
 							</label>
 						</div>
-
+						<?php if($_SESSION['userlevel']<=2) {?>
 						<div class="table-input-info__buttons">
 					<button class="button button_article" name="create">Создать</button>
 					<a href='/manage-sections.php' ><div class="button button_cancel">Отмена</div></a>
 						</div>
-
+						<?php }?>
 					</form>
 				</div>
 
@@ -72,8 +82,4 @@ else {
 		</div>
 	</section>
 
-
-<?php } 
-else 
-    echo "<br>"."You don't have rights to be here."; ?>	
 <?php require_once 'blocks/footer.php'; ?>

@@ -12,7 +12,7 @@ if(empty($errors)){
 		}
 	}
 }
-$topic = Show_Topic($link, NULL, $id_topic);
+$topic = Show_Topic($link, NULL, $id_topic, NULL);
 $topic_msg = $topic[0]['topic'];
 $topic_subject = $topic[0]['subject'];
 $topic_section_id = $topic[0]['id_section'];

@@ -1470,6 +1470,11 @@ img {
 	
 }
 
+.manage-table__body_scroll {
+	max-height: 550px;
+	overflow-y: auto;
+}
+
 .manage-table__row {
 	display: -webkit-flex;
 	display: -moz-flex;

@@ -3,20 +3,21 @@ require '/config.php';
 //require '/func/db.php';
 
 $data = $_POST;
-$doSingup = trim(filter_input(INPUT_POST, 'do_singup'));
+//$doSingup = trim(filter_input(INPUT_POST, 'do_singup'));
 $err=0;
-if( isset($doSingup))
+$loginuser = trim(filter_input(INPUT_POST, 'login'));
+$name = trim(filter_input(INPUT_POST, 'name'));
+$surname = trim(filter_input(INPUT_POST, 'surname'));
+$gender = trim(filter_input(INPUT_POST, 'gender'));
+$email = trim(filter_input(INPUT_POST, 'email'));
+//$email = htmlentities(mysql_real_escape_string($data['email']), ENT_QUOTES, 'UTF-8');
+$password = trim(filter_input(INPUT_POST, 'password'));
+$password_2 = trim(filter_input(INPUT_POST, 'password_2'));
+if( isset($data['do_singup']))
 	{
 		$errors=array();//массив сообшений ошибок
 	
-		$loginuser = trim(filter_input(INPUT_POST, 'login'));
-		$name = trim(filter_input(INPUT_POST, 'name'));
-		$surname = trim(filter_input(INPUT_POST, 'surname'));
-		$gender = trim(filter_input(INPUT_POST, 'gender'));
-		$email = trim(filter_input(INPUT_POST, 'email'));
-		//$email = htmlentities(mysql_real_escape_string($data['email']), ENT_QUOTES, 'UTF-8');
-		$password = trim(filter_input(INPUT_POST, 'password'));
-		$password_2 = trim(filter_input(INPUT_POST, 'password_2'));
+		
 		if(empty($loginuser)) //проверка на пустое значение поля ввода логина
 		{
 			$errors[] = 'Введите логин!';
@@ -122,42 +123,46 @@ if( isset($doSingup))
 				</div>
 				<p class="section-signup__main-title"><span class="section-signup__first-letter">С</span>ервис <span class="section-signup__first-letter">О</span>бработки <span class="section-signup__first-letter">Ю</span>зерских <span class="section-signup__first-letter">З</span>аявок</p>
 				<p class="section-signup__title">Регистрация</p>
+				
 				<div class="section-signup__form">
+				
 				<?php if($err==1){?>
 				<div style="color: red; text-align: center;"><?=array_shift($errors)?></div>
 				<?php }?>
+				
 					<form class="form-signup" action="/singup.php" method="POST">
+					<p style = "font-size: 8pt">Все поля, отмеченные звездочкой, являются обязательными</p>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Логин
+							<p class="form-signup__label">Логин*
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="login" placeholder="Логин" type="text" value="<?php echo @$data['login'];?>"/>
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Имя
+							<p class="form-signup__label">Имя*
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="name" placeholder="Имя" type="text" value="<?php echo @$data['name'];?>"/>
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Фамилия
+							<p class="form-signup__label">Фамилия*
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="surname" placeholder="Фамилия" type="text" value="<?php echo @$data['surname'];?>"/>
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Пол:</p>
+							<p class="form-signup__label">Пол*:</p>
 							<select class="form-auth__textfield form-signup__textfield_signup" name = "gender" size="1" required>
 								<option disabled selected>Пол:</option>
 								<option value="1">мужской</option>
-								<option value="0">женский</option>
+								<option value="2">женский</option>
 							</select>
 							<!--</p><input class="form-auth__textfield form-signup__textfield_signup" name="email" placeholder="Email" type="text" value="<?php echo @$data['email'];?>"/> -->
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Email
+							<p class="form-signup__label">Email*
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="email" placeholder="abc@domain.com" type="text" pattern = "^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$" value="<?php echo @$data['email'];?>"/>
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Пароль
+							<p class="form-signup__label">Пароль*
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="password" placeholder="Пароль" type="password"/>
 						</label>
 						<label class="form-signup__textfield-wrap form-signup__textfield-wrap_with-label">
-							<p class="form-signup__label">Подтвердите пароль
+							<p class="form-signup__label">Подтвердите пароль*
 							</p><input class="form-auth__textfield form-signup__textfield_signup" name="password_2" placeholder="Подтвердите пароль" type="password"/>
 						</label>
 						<div class="form-signup__buttons">
