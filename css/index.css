@@ -19,6 +19,7 @@ body {
 	user-select: inherit;
 	text-decoration: inherit;
 	letter-spacing: inherit;
+
 }
 
 html {
@@ -29,6 +30,7 @@ body {
 	background-color: #e6e7e9;
 	font-family: 'Roboto', sans-serif;
 	height: 100%;
+
 }
 
 img {
@@ -129,6 +131,7 @@ img {
 	max-width: 1140px;
 	margin: 0 auto;
 	flex-grow: 1;
+
 }
 .section__pagination {
 	margin-top: 20px;
@@ -488,13 +491,13 @@ img {
 	
 }
 .section-header__logo {
-	width: 300px;
+	width: 120px;
 }
 
 .section-header__service-name {
 	font-size: 38px;
-	text-shadow: 1px 1px 0 #000;
-	color: #079fd1;
+	text-shadow: 1px 1px 5px #000;
+	color: #fff;
 	text-align: center;
 	font-weight: 500;
 
@@ -1169,7 +1172,7 @@ img {
 }
 
 .logo__image {
-	width: 300px;
+	width: 120px;
 }
 .navigation {
 	display: -webkit-box;

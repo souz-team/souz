@@ -31,8 +31,8 @@
 								</a>
 							</div>
 						</div>
-<!-- 						<div class="section-header__service-name">Если у вас есть проблема, <br>мы поможем её решить.
-						</div> -->
+						<div class="section-header__service-name">Система обработки юзерских заявок
+						</div>
 						<div class="section-header__form-auth">
 							
 								<?php if($_SESSION['auch'] == 1)
