@@ -37,6 +37,12 @@ img {
 	vertical-align: middle;
 
 }
+
+#editor1{
+	width: 100%;
+	min-height: 150px;
+	resize: vertical;
+}
 .img-article{
 	float:left;
 	margin: 4px 10px 2px 0px;
@@ -383,7 +389,6 @@ img {
 	display: -o-flex;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 }
 
 .section-2 {
