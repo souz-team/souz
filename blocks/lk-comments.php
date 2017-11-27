@@ -4,6 +4,7 @@ require '/action/get-section-by-user-id.php';
 ?>
 <div class="lk-comments">
   <?php //for($i=1; $i<5; $i++) { ?>
+  <?php if($section_id) { ?>
   <?php foreach ($section_id as $section) { ?>
   <?php $section_name = Show_Podrazdel($link, $section['section_id']) ?>
 	 <div class="lk-comments__item"> 
@@ -11,5 +12,8 @@ require '/action/get-section-by-user-id.php';
    <!-- <p class="lk-comments__comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde earum placeat mollitia maiores ratione, accusantium corrupti eos. Impedit, consectetur doloremque!</p>
     <p class="lk-comments__date">19.10.2010</p> -->
   </div>
+  <?php } ?>
+  <?php } else {?>
+  <p>Мне не доверили ни одного раздела</p>
   <?php } ?>
 </div>

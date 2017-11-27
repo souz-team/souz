@@ -3,7 +3,7 @@
 require('config.php');
 ?>
 <?php
-	$id = $_GET['id'];	
+	$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 	$proverka_na_razdel = is_razdel ($link, $id);
 	if($proverka_na_razdel)
 	{
