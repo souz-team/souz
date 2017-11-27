@@ -7,20 +7,14 @@ if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
 ?>
 <?php require_once 'blocks/header.php';?>
 <?php	
-if (isset($_GET['id']) && $_GET['id'] != 0)
-{
-	$sectionid = $_GET['id'];
-	$zagolovok = "Изменение раздела";
-}	
-else if ($_GET['sectionParent'] != 0)
-{
-    $sectionid = $_GET['sectionParent'];
-	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $sectionid);
-}
-else 
-{
+
+if (isset($_GET['id']) && $_GET['id'] == 0) {
     $sectionid = 0;
 	$zagolovok = "Создание раздела";
+}   
+elseif (isset($_GET['id']) && $_GET['id'] != 0) {
+    $sectionid = $_GET['id'];
+	$zagolovok = "Создание подраздела в разделе ".Name_Podrazdel($link, $id);
 }
 ?>
 

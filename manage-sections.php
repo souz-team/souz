@@ -54,7 +54,7 @@ if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
 										<?php if($_SESSION['userlevel']==1) {?>
 										<a href="#" class="manage-table__action-link manage-table__action-link_remove">Удалить</a>
 										<?php } ?>
-										<a href="/section-create.php?sectionParent=<?= $section['id'] ?>" class="manage-table__action-link">Создать_подраздел</a>
+										<a href="/section-create.php?id=<?= $section['id'] ?>" class="manage-table__action-link">Создать_подраздел</a>
 									<?php } ?>
 									</div>
 									
