@@ -35,6 +35,17 @@ body {
 
 img {
 	vertical-align: middle;
+
+}
+
+#editor1{
+	width: 100%;
+	min-height: 150px;
+	resize: vertical;
+}
+.img-article{
+	float:left;
+	margin: 4px 10px 2px 0px;
 }
 
 
@@ -378,7 +389,6 @@ img {
 	display: -o-flex;
 	display: flex;
 	flex-direction: column;
-	height: 100%;
 }
 
 .section-2 {
@@ -1328,6 +1338,10 @@ img {
 	-ms-flex-pack: center;
 	justify-content: center;
 	font-size: 18px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+
 }
 
 .navigation__item_manage {
@@ -1337,6 +1351,7 @@ img {
 .navigation__item:hover {
 	background-color: #fff;
 	color: #0072bc;
+
 	/*width: 100%;*/
 }
 

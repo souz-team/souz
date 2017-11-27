@@ -16,7 +16,7 @@
 					?>
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">
-						<img src="<?= $image ?>">
+						<img class="img-article" src="<?= $image ?>">
 						<p class="section-article__text"><?= $text ?></p>
 					</div>
 					<div class="section-article__footer">
