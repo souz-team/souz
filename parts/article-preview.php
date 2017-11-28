@@ -1,9 +1,6 @@
 <div class='section-1__article'>
 	<article class='article'>
-	<?php if($articleImage !=''){ 
-				
-				
-				?>
+	<?php if(file_exists($articleImage)) { ?>
 		<div class='article__image-wrap'>
 		
 			<img class='article__image' src =<?= $articleImage?> height = '' width='315' role='presentation'/>

@@ -73,7 +73,7 @@ require_once 'blocks/header.php';
 							<input type="file" name="userfile" /><br><br>
 						
 						<?php
-							if ($row['Image_url'] !=''){
+							if ($row['Image_url'] !='' && file_exists($row['Image_url'])){
 								echo "Оставьте текущее изображение или";
 						?>
 						

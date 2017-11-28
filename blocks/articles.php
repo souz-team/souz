@@ -34,9 +34,9 @@
 				include './parts/article-preview.php';
 
 			
-				if($articleImage !=''){
+				if($articleImage !=''&& file_exists($articleImage)){
 					$objImageData = AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, '' );
-					//var_dump($objImageData);
+					
 				}
 			}	
 		}

@@ -5,7 +5,7 @@
 	
 	$id_Podrazdel = $_POST['id_Podrazdel'];
 	$artId = $_GET['artId'];
-	//var_dump($id_Podrazdel);
+	
 	
 	$artName = trim(filter_input(INPUT_POST, 'articleName'));
 	$artText = trim(filter_input(INPUT_POST, 'articleText'));
@@ -16,7 +16,6 @@
 	$uploadfile =  "$uploaddir$apend";
 	$successfulUppload = 0;
 	$previousImageUrl = $_POST['previousimageurl'];
-	//var_dump($previousImageUrl);
 	
 	if(isset($_FILES['userfile']))
 	{
