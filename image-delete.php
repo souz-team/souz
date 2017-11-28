@@ -13,7 +13,7 @@ $imageDelete = $_GET['deleteImage'];
 		$sql = mysql_query ("UPDATE Articles SET	Image_url = REPLACE(Image_url, '$previousImageUrl', '')  WHERE id = '$imageDelete'")
 					or die ("Error in query: $sql. ".mysql_error());
 					
-		if($previousImageUrl !=''){
+		if($previousImageUrl !='' && file_exists($articleImage)){
 			unlink($previousImageUrl); 
 		}
 	}

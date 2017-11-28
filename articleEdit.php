@@ -5,7 +5,7 @@
 	
 	$id_Podrazdel = $_POST['id_Podrazdel'];
 	$artId = $_GET['artId'];
-	//var_dump($id_Podrazdel);
+	
 	
 	$artName = trim(filter_input(INPUT_POST, 'articleName'));
 	$artText = trim(filter_input(INPUT_POST, 'articleText'));
@@ -16,7 +16,6 @@
 	$uploadfile =  "$uploaddir$apend";
 	$successfulUppload = 0;
 	$previousImageUrl = $_POST['previousimageurl'];
-	//var_dump($previousImageUrl);
 	
 	if(isset($_FILES['userfile']))
 	{
@@ -69,33 +68,33 @@
 			$str1 = cheсk_post($link, 'articleName');
 			$str2 = cheсk_post($link, 'articleText');
 			
-			$artName = htmlentities($str1, ENT_QUOTES);
-			$artText = htmlentities($str2, ENT_QUOTES);
+			$artName = htmlentities($str1, ENT_QUOTES, 'UTF-8');
+			$artText = htmlentities($str2, ENT_QUOTES, 'UTF-8');
 						
 		}
 //картинки нет и добавляем	
 	if($previousImageUrl =='' && $successfulUppload == 1) {
 		
-		$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now() WHERE id = '$artId'")
+		$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now(), login = '$login'  WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());	
 	}
 	else{
 // картинки нет и не добавляем
 		if($previousImageUrl =='' && $successfulUppload == 2) {
 		
-			$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '', Text = '$artText', Date = Now() WHERE id = '$artId'")
+			$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '', Text = '$artText', Date = Now(), login = '$login' WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());
 		}
 		else{
 //картинка есть, и не меняем
 			if($previousImageUrl != '' && $successfulUppload == 2){
-				$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$previousImageUrl', Text = '$artText', Date = Now() WHERE id = '$artId'")
+				$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$previousImageUrl', Text = '$artText', Date = Now(),login = '$login' WHERE id = '$artId'")
 					or die ("Error in query: $sql. ".mysql_error());
 			}
 			else{
 //картинка есть, но меняем
 				if($previousImageUrl != '' && $successfulUppload == 1) {
-					$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now() WHERE id = '$artId'")
+					$sql = mysql_query("UPDATE Articles SET	id_Podrazdel = '$id_Podrazdel', Name = '$artName', Author = '$authorName', Image_url = '$uploadfile', Text = '$artText', Date = Now(),login = '$login' WHERE id = '$artId'")
 						or die ("Error in query: $sql. ".mysql_error());
 						unlink($previousImageUrl); 
 				}

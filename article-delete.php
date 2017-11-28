@@ -7,7 +7,7 @@
 		$row = mysql_fetch_assoc($queryImageToDelete);
 		$previousImageUrl = $row['Image_url'];
 		$delArt = mysql_query("DELETE FROM Articles WHERE id=$id");
-		if($previousImageUrl !=''){
+		if($previousImageUrl !='' && file_exists($articleImage)){
 			unlink($previousImageUrl); 
 		}
 		header("Location: /manage-articles.php?id=$podrazdelId");

@@ -22,7 +22,10 @@
 				if($lengthText > $maxLengthText) {
 					$text = "$text...";
 				}
-
+				if($lengthText < $maxLengthText) {
+					$text = $fullText;
+				}
+				
 				$acrtcleId = $article['id'];
 				$authorName = $article['Author'];
 				$articleImage = $article['Image_url'];
@@ -34,9 +37,9 @@
 				include './parts/article-preview.php';
 
 			
-				if($articleImage !=''){
+				if($articleImage !=''&& file_exists($articleImage)){
 					$objImageData = AdjustPicture( $articleImage, $iMaxWidth, $iMaxHeight, '' );
-					//var_dump($objImageData);
+					
 				}
 			}	
 		}

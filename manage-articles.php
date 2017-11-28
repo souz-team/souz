@@ -9,9 +9,7 @@
 				<?php
                 if (isset($_GET['id']))
 					$podrazdelId = $_GET['id'];
-					//$podrazdelName = mysql_query ("SELECT Name FROM Razdel WHERE id = '$podrazdelId'");
-					//$row = mysql_fetch_row($podrazdelName);
-                   // $row = Name_Podrazdel($link, $podrazdelId);
+					
 				?>
 				<p class="manage-articles__title">Статьи подраздела <span class="manage-articles__name"><?= Name_Podrazdel($link, $podrazdelId) ?></span></p>
 				<div class="manage-articles__manage-table">
