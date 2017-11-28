@@ -39,7 +39,7 @@
 	
 	
 	$num_rows_post = mysqli_num_rows($posts);
-	//$reg_info_post = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM Users WHERE login='$topic_author'"));
+	$reg_info_post = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM Users WHERE login='$topic_author'"));
 	//$row_posts = mysqli_fetch_array($posts);
 	
 	$num_author_message = countAuthorMess($link, $row_topic['author']);
