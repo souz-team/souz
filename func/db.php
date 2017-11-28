@@ -296,9 +296,9 @@ function Delete_User ($connection, $var) // Принимает подключе�
 }
 
 // Показ СТАТЕЙ 
-function Show_All_Articles ($connection) // Принимает подключение и id, возвращает массив пользователей
+function Show_All_Articles ($connection, $login) // Принимает подключение и id, возвращает массив пользователей
 {
-    $search = "SELECT * FROM Articles";
+    $search = "SELECT * FROM Articles WHERE login = '$login'";
     $result = $connection->query ($search);
     if (!$result) die ($connect->error);
     $rows = $result->num_rows;

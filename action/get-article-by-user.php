@@ -1,9 +1,9 @@
 <?php
 
-	$topics = Show_Topic($link, NULL, NULL, $email);
-	If(!empty($topics))
+	$articles = Show_All_Articles($link, $auth_login);
+	If(!empty($articles))
 	{
-		$topics = array_reverse($topics);
+		$articles = array_reverse($articles);
 	}
 	
 

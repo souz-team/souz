@@ -14,18 +14,18 @@ require '/action/get-article-by-user.php';
 		</div>
 	</div>
 	<div class="manage-table__body manage-table__body_scroll">
-	<?php if(!empty($topics)){?>
-		<?php foreach($topics as $i => $topic) { ?>
+	<?php if(!empty($articles)){?>
+		<?php foreach($articles as $i => $article) { ?>
 			<div class="manage-table__row manage-table__row_body">
 				<div class="manage-table__cell manage-table__cell_name">
-					<a href='/topic-view.php?id=<?= $topic['theme_id']?>' class='manage-table__name-link'><?=($i+1).'. '.$topic['subject']?></a>
+					<a href='/article.php?id=<?= $article['id']?>' class='manage-table__name-link'><?=($i+1).'. '.$article['Name']?></a>
 				</div>
 				
-				<p class="manage-table__cell manage-table__cell_date"><?=$topic['create_date']?></p>
+				<p class="manage-table__cell manage-table__cell_date"><?=$article['Date']?></p>
 			</div>
 		<?php } ?>
 	<?php } else { ?>
-	<p> Вы не создали ни одной темы на форуме </p>
+	<p> Вы не написали ни одной статьи </p>
 		<?php } ?>
 	</div>
 </div>

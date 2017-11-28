@@ -34,7 +34,7 @@ require_once 'config.php';?>
 						</div>
 
 						<div class="lk__content-item lk__comments" id='lk-comments'>
-							<?php require('./blocks/lk-comments.php') ?>
+							<?php require('./blocks/lk-articles.php') ?>
 						</div>
 					</div>
 				</div>
