@@ -3,7 +3,7 @@
 
 	$data=$_POST;
 	$capcha = $_SESSION['rand_code'];
-	$date = date("Y-m-d");
+	$date = date("Y-m-d H:i:s");
 
 	$doFeedback = filter_input(INPUT_POST, 'do_feedback');
 	
