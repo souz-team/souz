@@ -17,7 +17,7 @@
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">
 					<?php
-					if($image !='' && file_exists($articleImage)){
+					if($image !='' && file_exists($image)){
 					?>
 						<img class="img-article" src="<?= $image ?>">
 					<?	} ?>				
