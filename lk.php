@@ -19,7 +19,7 @@ require_once 'config.php';?>
 								<a href="#" class="lk__navigation-link">Мои темы на форуме</a>
 							</li>
 							<li class="lk__navigation-item" block='lk-comments'>
-								<a href="#" class="lk__navigation-link">Я здесь администратор</a>
+								<a href="#" class="lk__navigation-link">Мои статьи</a>
 							</li>
 						</ul>
 					</div>
