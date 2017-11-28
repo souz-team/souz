@@ -22,7 +22,10 @@
 				if($lengthText > $maxLengthText) {
 					$text = "$text...";
 				}
-
+				if($lengthText < $maxLengthText) {
+					$text = $fullText;
+				}
+				
 				$acrtcleId = $article['id'];
 				$authorName = $article['Author'];
 				$articleImage = $article['Image_url'];
