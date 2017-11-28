@@ -16,8 +16,12 @@
 					?>
 					<p class="section-article__title"><?= $name ?></p>
 					<div class="section-article__content">
+					<?php
+					if($image !='' && file_exists($articleImage)){
+					?>
 						<img class="img-article" src="<?= $image ?>">
-						<p class="section-article__text"><?= $text ?></p>
+					<?	} ?>				
+					<p class="section-article__text"><?= $text ?></p>
 					</div>
 					<div class="section-article__footer">
 					<form action="<?php echo $wwwlink; ?>" method="POST">
