@@ -17,7 +17,7 @@
 	//$auth_login = $_SESSION['login'];
 	//$auth_email = $_SESSION['email'];
 	//$auth_fio = $_SESSION['fio'];
-	$date = date("Y-m-d");
+	$date = date("Y-m-d H:i:s");
 
 	$topic_start = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id=$id_topic") or die("Ошибка " . mysqli_error($link));
 	

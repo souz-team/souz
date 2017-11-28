@@ -4,7 +4,7 @@
 	$auth_login = $_SESSION['login'];
 	$auth_email = $_SESSION['email'];
 	$auth_fio = $_SESSION['fio'];
-	$date = date("Y-m-d");
+	$date = date("Y-m-d H:i:s");
 	$id_topic = $data['id_topic'];
 	$page = $data['page']+1;
 

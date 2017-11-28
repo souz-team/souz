@@ -42,7 +42,7 @@ if(isset($_POST['delete_section']))
 		
 			window.location.href = '/forum.php';
 		
-		}, 3000);
+		}, 3);
 	</script>
 <?php }
 	}

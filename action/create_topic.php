@@ -2,7 +2,7 @@
 
 	$auth_login = $_SESSION['login'];
 	$auth_email = $_SESSION['email'];	
-	$date = date("Y-m-d");
+	$date = date("Y-m-d H:i:s");
 	$subject = htmlentities(mysql_real_escape_string($data['subject']), ENT_QUOTES, 'UTF-8');
 	$topic = htmlentities(mysql_real_escape_string($data['topic']), ENT_QUOTES, 'UTF-8');
 	$id_section = htmlentities(mysql_real_escape_string($data['id_section']), ENT_QUOTES, 'UTF-8');
