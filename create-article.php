@@ -62,11 +62,11 @@
 			$str1 = cheсk_post($link, 'articleName');
 			$str2 = cheсk_post($link, 'articleText');
 			
-			$artName = htmlentities($str1, ENT_QUOTES);
-			$artText = htmlentities($str2, ENT_QUOTES);
+			$artName = htmlentities($str1, ENT_QUOTES, 'UTF-8');
+			$artText = htmlentities($str2, ENT_QUOTES, 'UTF-8');
 			
 			if($successfulUppload == 1){
-				
+			
 			$strSQL = "INSERT INTO `Articles` (`id_Podrazdel`, `Name`, `Author`, `Image_url`,`Text`, `Date`, `login`) VALUES( '$idPodRazdel', '$artName', '$authorName', '$uploadfile', '$artText', Now(),'$login' )";
 			mysql_query($strSQL) or die (mysql_error());}
 			
