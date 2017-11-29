@@ -394,6 +394,7 @@ img {
 .section-2 {
 	background-color: #fff;
 	margin-bottom: 20px;
+	margin: 20px 0;
 }
 
 .section-2__wrap {
@@ -595,6 +596,7 @@ img {
 	background-color: #fff;
 	padding: 20px;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .section-contacts__contents{
 	display: -webkit-flex;
