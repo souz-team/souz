@@ -14,6 +14,18 @@
 		} else if($page1 == "/article-menu.php"){
 			array_unshift($crumbs, array('text' => "Статьи", 'url' => "article-menu.php"));
 			$page1 = "/index.php";
+		} else if($page1 == "/section-change.php"){
+			if (isset($_GET['id']) && $_GET['id'] != 0){
+				$sectionid = $_GET['id'];
+				$is_Razdel = Is_Razdel ($link, $sectionid);
+				if ($is_Razdel === true) {
+					$name = "Изменение раздела";
+				} else {
+					$name = "Изменение подраздела";
+				}
+			}
+			array_unshift($crumbs, array('text' =>  $name, 'url' => "section-change.php"));
+			$page1 = "/index.php";
 		} else if($page1 == "/singup.php"){
 			array_unshift($crumbs, array('text' => "Регистрация", 'url' => "singup.php"));
 			$page1 = "/index.php";
