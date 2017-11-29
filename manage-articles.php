@@ -1,5 +1,10 @@
-<?php require 'config.php';?>
-
+<?php require 'config.php';
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
+{
+	header('Location: /');
+	exit;
+}
+?>
 <?php require_once 'blocks/header.php';?>
 <?php require_once 'blocks/popup-remove-article.php';?>
 
