@@ -1,5 +1,9 @@
-<?php
-	require 'config.php';
+<?php require 'config.php';
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
+{
+	header('Location: /');
+	exit;
+}
 	$id = filter_input(INPUT_POST, 'del_id', FILTER_VALIDATE_INT);
 	if (isset($id)) { 
 		$podrazdelId = filter_input(INPUT_POST, 'podrazdelId', FILTER_VALIDATE_INT);

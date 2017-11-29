@@ -1,4 +1,11 @@
 <?php require 'config.php';
+if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
+{
+	header('Location: /');
+	exit;
+}
+?>
+<?php
 if (isset($_POST['do_edit_article']))
 {
 	require "articleEdit.php";
