@@ -3,29 +3,53 @@
 ?>
 
 <div class="section__wrap">
-		<div class="new-topic">
-			<form action="/forum-action-section.php" method="POST">
-				<p class="new-material__title">Редактирование раздела</p><br>
-				<label>
-					<p class="form-new-material__label">Название раздела:
-					<input type="hidden" name="section_id" value = "<?=$data?>"/>
-					<input class="form-new-material__label" name="section_name" type="text" value = "<?=$section_name?>"/></p>
-					<br/>
-					<?php if(!empty($errors)){?>
-					<div style="color: red;text-align: left;"><?php echo array_shift($errors);?></div>
-					<?php } ?>
-					<br/>
-					<!--<p class="form-new-material__label">Скрытый раздел</p>-->
-					<!-- <input  class="form-new-material__textarea" name="topic" placeholder="Ваше сообщение"></textarea>-->
-					<p class="form-new-material__label"> Закрытый раздел: <input type='checkbox' <?=$checked?> name='section_closed' value='1'/> </p>
-					
-				</label>
-				<div><br/>
-					<button class="button button_article" name="edit_section">Изменить</button>
-					<button onclick='return confirm("Вы уверены?")' class="button button_cancel" name="delete_section">Удалить раздел</button>
-					<a href='/forum.php' ><div class="button button_cancel">Назад</div></a>
+		<div class="section-2">
+			<div class="section-2__wrap">
+			<p class="section-2__title">Редактирование раздела</p>
+
+				<div class="section-2__form-auth">
+					<form action="/forum-action-section.php" method="POST" class='table-input-info'>
+						<div class="table-input-info__row">
+							<label class='table-input-info__label'>
+								<div class="table-input-info__wrap-text">
+									<span class="table-input-info__text">Название раздела:</span>
+								</div>
+								<div class="table-input-info__wrap-textfield">
+									<input type="hidden" name="section_id" value = "<?=$data?>"/>
+									<input class="table-input-info__textfield" name="section_name" type="text" value = "<?=$section_name?>"/>
+								</div>
+							</label>
+						</div>
+						<div class="table-input-info__row">
+								
+								<?php if(!empty($errors)){?>
+									<div style="color: red;text-align: left;"><?php echo array_shift($errors);?></div>
+								<?php } ?>
+								<br/>
+								<label class='table-input-info__label'>
+									<div class="table-input-info__wrap-text table-input-info__wrap-text_top">
+										<span class="table-input-info__text">Закрытый раздел:</span>
+									</div>
+									<div class="table-input-info__wrap-textfield">
+										<input type='checkbox' <?=$checked?> name='section_closed' value='1'/>
+									</div>
+								</label>
+								
+							
+							<div>
+								<button class="button button_article" name="edit_section">Изменить
+								</button>
+								<button onclick='return confirm("Вы уверены?")' class="button button_cancel" name="delete_section">Удалить раздел
+								</button>
+								<a href='/forum.php' >
+									<div class="button button_cancel">Назад
+									</div>
+								</a>
+							</div>
+						</div>
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 
