@@ -23,10 +23,17 @@
 	
 	//$post = mysqli_query($link, "SELECT * FROM boardt WHERE theme_id='$id'");
 	$row_topic = mysqli_fetch_array($topic_start);
+	
 		if(empty($row_topic)){
+			
 		header('Location: /errors/404.htm');
 		die();		
 	}
+	if ($_SESSION['userlevel']!=1 AND $row_topic['id_section']==4)
+		{
+			header('Location: /');
+			exit;
+		}
 	$topic_id = $row_topic['theme_id'];
 	$topic_author = $row_topic['author'];
 	$reg_info_topic = mysqli_fetch_array(mysqli_query($link, "SELECT * FROM Users WHERE login='$topic_author'"));
