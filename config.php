@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$host = "95.79.75.10:8888";
+$host = "5.164.229.81:8888";
 $db_name = "SOUZ";
 $login = "admin";
 $pswrd = "15istv1";
