@@ -13,7 +13,7 @@ if ($_SESSION['userlevel']!=1 AND $_SESSION['userlevel']!=2)
 			<div class="manage-articles">
 				<?php
                 if (isset($_GET['id']))
-					$podrazdelId = $_GET['id'];
+					$podrazdelId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT)
 					
 				?>
 				<p class="manage-articles__title">Статьи подраздела <span class="manage-articles__name"><?= Name_Podrazdel($link, $podrazdelId) ?></span></p>
