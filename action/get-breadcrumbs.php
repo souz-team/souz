@@ -26,6 +26,12 @@
 			}
 			array_unshift($crumbs, array('text' =>  $name, 'url' => "section-change.php"));
 			$page1 = "/index.php";
+		} else if($page1 == "/forum-action-section.php"){
+			array_unshift($crumbs, array('text' => "Редактирование раздела", 'url' => "forum-action-section.php"));
+			$page1 = "/index.php";
+		} else if($page1 == "/forum-action-topic.php"){
+			array_unshift($crumbs, array('text' => "Редактирование темы", 'url' => "forum-action-topic.php"));
+			$page1 = "/index.php";
 		} else if($page1 == "/singup.php"){
 			array_unshift($crumbs, array('text' => "Регистрация", 'url' => "singup.php"));
 			$page1 = "/index.php";
